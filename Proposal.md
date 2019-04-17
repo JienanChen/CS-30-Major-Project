@@ -3,18 +3,19 @@ This project is based on the PJM Productions film *La rédemption*. In this proj
 
 ## Needs to Have List
 1. An algorithm which can place the enemies in random spots (3 in the Spasky mode, 8 in the Charter mode).
-2. 
+2. A mode selection page utilizing a function which can draw buttons and the mousepressed function.
+3. State variables to control the changes (i.e. going from the mode selection mode to the grid portion of the game, from there to the battle portion, and from anywhere back to the innitial menu).
 
 ## Nice to Have List
 1. Start menu with a live background 
-2. An introductory video which plays when the start button is poressed (ajmn excerpt from the motion picture  *La rédemption*)
+2. An introductory video which plays when the start button is pressed (an excerpt (or more) from the motion picture  *La rédemption*)
 3. A character selection menu with animations.
 4. Music composed especially by Dr. Jienan Chen.
 5. An algorithmn relying on a 2d-array system which landscapes the "playing field" with trees, mountains, puddles etc.
-6. Spasky (Muhammad) and Charter (Jienan) sounds
-7. Sound effects (! Spasky and Charter sounds)
+6. Intergrate Spasky (Muhammad) and Charter (Jienan) sounds
+7. Sound effects (! Spasky and Charter sounds)  
 8. Obstacles
-   * Interactive animations and scenes
+   * Interactive animations and scenes (featuring aditional characters from the film, including Xavier; Jack; M. Soucy; bartender; Elena, also featuring Kenneth Braunaugh; Charlie Chaplin; Wilson Li; and Warren Bodes)
    * Mini games and fights
    * Consequences and rewards
 9. A shop section
