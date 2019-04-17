@@ -15,7 +15,7 @@ This project is based on the PJM Productions film *La rédemption*. In this proj
 6. Intergrate Spasky (Muhammad) and Charter (Jienan) sounds
 7. Sound effects (! Spasky and Charter sounds)  
 8. Obstacles
-   * Interactive animations and scenes (featuring aditional characters from the film, including Xavier; Jack; M. Soucy; bartender; Elena, also featuring Kenneth Braunaugh; Charlie Chaplin; Wilson Li; and Warren Bodes)
+   * Interactive animations and scenes (featuring aditional characters from the film, including Xavier; Jack; M. Soucy; bartender; Elena, also featuring Kenneth Braunaugh; Charlie Chaplin; Wilson Li; and Warren Bodes).
    * Mini games and fights
    * Consequences and rewards
 9. A shop section
