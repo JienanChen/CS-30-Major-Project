@@ -14,9 +14,9 @@ This project is based on the PJM Productions film *La rédemption*. In this proj
 6. Spasky (Muhammad) and Charter (Jienan) sounds
 7. Sound effects (! Spasky and Charter sounds)
 8. Obstacles
-..8. Interactive animations and scenes
-..8. Mini games and fights
-..8. Consequences and rewards
+ 1. Interactive animations and scenes
+ 2. Mini games and fights
+ 3. Consequences and rewards
 9. A shop section
 10. A character skill tree system
 11. Campaign mode for story
