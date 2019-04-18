@@ -1,3 +1,5 @@
+//By Jienan Chen
+
 # Major Project Proposal
 This project is based on the PJM Productions film *La rédemption*. In this project, there exists two modes-Spasky and Charter-one less difficult than the other. In both modes, the objective is to locate the enemy (Blaviken von Everic) who is hidden in three different locations. Evidently, this system relies on a 2d-array, and the difficulty varies between the two modes due to the fact that in the spasky mode, the grid is a simple 3 x 3 grid, whereas one plays on an 8 x 8 grid. Once a Blaviken is found, the game digresses to a battle between either Spasky (if in the Spasky mode) and Blaviken, or between Charter (if in the Charter mode) and Blaviken. However, in the Spasky mode, if after three turns blaviken is still at large, you will have lost, having lost a turn every time you clicked on a grid thinking Blaviken was there and being proven otherwise. The same applies to the Charter mode. 
 
@@ -8,7 +10,7 @@ This project is based on the PJM Productions film *La rédemption*. In this proj
 4. Counter system which can keep track of how many times the player has not been able to click on a square on the grid containing a Blaviken.
 5. Instructions 
 6. Collision detection for contact with the enemy. 
-7. Collision resolution between polayer (mouse) and various objects. 
+7. Collision resolution between player (mouse) and various objects. 
 
 ## Nice to Have List
 1. Start menu with a live background 
