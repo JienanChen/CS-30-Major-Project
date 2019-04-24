@@ -8,7 +8,7 @@ This project is based on the PJM Productions film *La rédemption*. In this proj
 4. Counter system which can keep track of how many times the player has not been able to click on a square on the grid containing a Blaviken.
 5. Instructions 
 6. Collision detection for contact with the enemy. 
-7. Collision resolution between polayer (mouse) and various objects. 
+7. Collision resolution between player (mouse) and various objects. 
 
 ## Nice to Have List
 1. Start menu with a live background 
