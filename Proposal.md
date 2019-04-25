@@ -25,3 +25,4 @@ This project is based on the PJM Productions film *La rédemption*. In this proj
 9. A shop section
 10. A character skill tree system
 11. Campaign mode for story
+12. A light and dark mode.
