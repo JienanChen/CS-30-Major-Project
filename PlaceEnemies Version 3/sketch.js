@@ -1,6 +1,6 @@
-// Project Title
-// Your Name
-// Date
+// Version 3 of PlaceEnemies() (the one being used currently)
+// Jienan Chen
+// April 14, 2019
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
@@ -47,11 +47,11 @@ function displayGrid() {
 
 function createRandom2DArray(cols, rows) {
   let blackCols = [];
-  let free=[]
+  let free=[];
   let emptyArray = [];
   for (let h = 0; h < gridSize; h++){
     free.push([h]); 
-   //console.log("h=",free[h])
+    //console.log("h=",free[h])
   }
     
    
@@ -59,22 +59,22 @@ function createRandom2DArray(cols, rows) {
     emptyArray.push([]);
     choice = random(free); 
     while (blackCols.includes(choice)){    
-    choice=random(free);
-      }       
+      choice=random(free);
+    }       
                 
     for (let j = 0; j < cols ; j++) {    
-          if (j==choice){
-        emptyArray[i].push(1)
-              }
+      if (j==choice){
+        emptyArray[i].push(1);
+      }
       else{
         emptyArray[i].push(0);       
-    }
+      }
       
     }
     blackCols.push(choice);
-     }
+  }
   
  
-return emptyArray
+  return emptyArray;
 }
 
