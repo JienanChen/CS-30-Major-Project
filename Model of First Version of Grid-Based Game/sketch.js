@@ -1,5 +1,5 @@
 // Model of First Version of Grid Based Game
-// Jienan Chen
+// Jienan Chen, Pouya Pourhaj
 // April 24, 2019
 //
 // Extra for Experts:
