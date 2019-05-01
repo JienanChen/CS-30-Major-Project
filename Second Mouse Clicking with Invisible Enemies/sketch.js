@@ -16,8 +16,8 @@ let angry;
 
 function preload(){
   soundFormats("mp3","m4a");
-  applause = loadSound("applause crowd cheering sound effect.mp3");
-  grainger = loadSound("PercyGrainger_BritishFolkMusicSettingsNo22CountryGardens_894231793622_1_1.mp3");  
+  applause = loadSound("assets/applause crowd cheering sound effect.mp3");
+  grainger = loadSound("assets/PercyGrainger_BritishFolkMusicSettingsNo22CountryGardens_894231793622_1_1.mp3");  
 }
 
 
