@@ -57,8 +57,8 @@ function createRandom2DArray(cols, rows) {
       emptyArray[i].push(choice[i]);
       emptyArray[i].push(choice2[i]);
       emptyArray[i].push(choice3[i]);
-      }
     }
+  }
   return emptyArray;
 }
 
