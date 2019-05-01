@@ -1,6 +1,6 @@
-// Project Title
-// Your Name
-// Date
+// Model of First Version of Grid Based Game
+// Jienan Chen
+// April 24, 2019
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
@@ -28,8 +28,8 @@ let angry;
 
 function preload() {
   soundFormats("mp3","m4a");
-  happy = loadSound("applause crowd cheering sound effect.mp3");
-  angry = loadSound("300 people fake laugh SOUND EFFECT.mp3");
+  happy = loadSound("assets/applause crowd cheering sound effect.mp3");
+  angry = loadSound("assets/300 people fake laugh SOUND EFFECT.mp3");
 }
 
 function setup() {
