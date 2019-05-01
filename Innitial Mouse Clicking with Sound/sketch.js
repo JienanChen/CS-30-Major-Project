@@ -16,8 +16,8 @@ let angry;
 
 function preload(){
   soundFormats("m4a");
-  happy = loadSound("happiness.m4a");
-  angry = loadSound("Frustrated Noise.m4a");  
+  happy = loadSound("assets/happiness.m4a");
+  angry = loadSound("assets/Frustrated Noise.m4a");  
 }
 
 
