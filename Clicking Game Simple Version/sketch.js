@@ -12,7 +12,7 @@ let angry;
 let squareSize;
 
 function preload(){
-  soundFormats('m4a');
+  soundFormats("m4a");
   happy = loadSound("happiness.m4a");
   angry = loadSound("Frustrated Noise.m4a");  
 }
@@ -34,7 +34,7 @@ function draw() {
 function drawSquare(){
   stroke(25);
   fill(255);
-  square(xCor, yCor, squareSize);
+  rect(xCor, yCor, squareSize, squareSize);
 }
 
 
