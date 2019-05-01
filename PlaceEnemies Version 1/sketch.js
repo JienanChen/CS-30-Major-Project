@@ -1,4 +1,4 @@
-// First Version of Placeenemies()
+// First Version of PlaceEnemies()
 // Jienan Chen
 // April 5, 2019
 //
