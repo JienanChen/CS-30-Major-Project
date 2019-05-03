@@ -1,9 +1,16 @@
-// Project Title
-// Your Name
-// Date
+// Loading Image Practice
+// Jienan Chen
+// ay 3, 2019
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
+
+
+let chap;
+
+function preload(){
+  chap = loadImage("verdoux.jpg");
+}
 
 
 function setup() {
@@ -11,5 +18,5 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(chap);
 }
