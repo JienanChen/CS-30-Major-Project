@@ -20,9 +20,12 @@ function setup() {
 }
 
 function draw() {
+  //white background
   background(255);
+  //draws rectangle
   strokeWeight(13);
   rect(15, 15, rectWidth, rectHeight);
+  //image displaying and resizing to fit inside rectangle
   image(chap, 15, 15);
   chap.resize(rectWidth, rectHeight);
   
