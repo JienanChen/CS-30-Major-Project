@@ -9,7 +9,7 @@
 let chap;
 
 function preload(){
-  chap = loadImage("verdoux.jpg");
+  chap = loadImage("assets/verdoux.jpg");
 }
 
 
