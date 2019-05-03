@@ -15,7 +15,7 @@ function preload(){
 
 function setup() {
   createCanvas(500, 500);
-  rectX = random(0, 400);
+  rectX = random(0, 295);
   rectY = random(0, 345);
   rectWidth = random(25, 75);
   rectHeight = random(15, 50);
