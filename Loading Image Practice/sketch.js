@@ -1,6 +1,6 @@
 // Loading Image Practice
 // Jienan Chen
-// ay 3, 2019
+// May 3, 2019
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
