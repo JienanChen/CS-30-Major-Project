@@ -8,7 +8,7 @@
 let chap;
 
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(windowWidth, windowHeight);
   chap = createVideo("assets/skating.mp4");
   chap.hide(); // by default video shows up in separate dom
   // element. hide it and draw it to the canvas
