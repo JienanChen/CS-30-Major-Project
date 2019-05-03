@@ -17,8 +17,8 @@ function setup() {
   createCanvas(500, 500);
   rectX = random(0, 400);
   rectY = random(0, 345);
-  rectWidth = random(100, 200);
-  rectHeight = random(90, 150);
+  rectWidth = random(25, 75);
+  rectHeight = random(15, 50);
   noLoop();
 }
 
