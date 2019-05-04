@@ -20,27 +20,27 @@ let choose;
 let state;
 
 function preload(){
-  backgroundImage = loadImage("chaplin.jpg");
+  backgroundImage = loadImage("assets/chaplin.jpg");
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  skating = createVideo("skating.mp4");
+  skating = createVideo("assets/skating.mp4");
   skating.hide(); 
   
-  hat = createVideo("hat.mp4");
+  hat = createVideo("assets/hat.mp4");
   hat.hide();     
   
-  bird = createVideo("bird.mp4");
+  bird = createVideo("assets/bird.mp4");
   bird.hide();
   
-  bread = createVideo("bread.mp4");
+  bread = createVideo("assets/bread.mp4");
   bread.hide();
   
-  cocktail = createVideo("cocktail.mp4");
+  cocktail = createVideo("assets/cocktail.mp4");
   cocktail.hide();
   
-  pushed = createVideo("camera.mp4");
+  pushed = createVideo("assets/camera.mp4");
   pushed.hide();
   
   state = 0;
