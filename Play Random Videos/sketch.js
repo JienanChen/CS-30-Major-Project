@@ -49,7 +49,7 @@ function setup() {
 function draw() {
   if (state === 0){
     background(backgroundImage);
-    fill(246, 251, 255);
+    fill(236, 251, 121);
     //Title
     textFont("Georgia")
     textSize(height*0.18);
@@ -58,7 +58,7 @@ function draw() {
     //Shading behind title
     rectMode(CENTER);
     noStroke();
-    fill(123, 145, 181, 55);
+    fill(123, 145, 181, 120);
     rect(width/2, height/3.5, width, height*0.342);
   }
   if (state === "skate"){
