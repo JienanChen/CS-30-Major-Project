@@ -50,10 +50,16 @@ function draw() {
   if (state === 0){
     background(backgroundImage);
     fill(246, 251, 255);
+    //Title
     textFont("Georgia")
     textSize(height*0.18);
     textAlign(CENTER);
     text("The Chaplin Experience", width/2, height/3);
+    //Shading behind title
+    rectMode(CENTER);
+    noStroke();
+    fill(123, 145, 181, 55);
+    rect(width/2, height/3.5, width, height*0.342);
   }
   if (state === "skate"){
     background(0);
