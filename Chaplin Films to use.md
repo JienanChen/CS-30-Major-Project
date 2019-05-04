@@ -4,3 +4,5 @@
 2. Kid Auto Races at Venice
 3. The Rink
 4. A Jitoney Elopement
+5. The Adventurer
+6. Modern Times
