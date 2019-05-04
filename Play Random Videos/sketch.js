@@ -93,30 +93,32 @@ function chooseChaplinFilmToPlay(){
     state = "skate";
     skate.play();
   }
-  
   if (choose === 2){
     state = "hat";
     hat.play();
   }
-  
   if (choose === 3){
     state = "bird";
     state.play();
   }
-  
   if (choose === 4){
     state = "bread";
     bread.play();
   }
-  
   if (choose === 5){
     state = "cocktail";
     cocktail.play();
   }
-  
   if (choose === 6){
     state = "pushed";
     pushed.play();
   }
-  
+}
+
+function keyPressed(){
+  if (keyCode === LEFT_ARROW){
+    state = 0;
+  }
+  }
+
 }
