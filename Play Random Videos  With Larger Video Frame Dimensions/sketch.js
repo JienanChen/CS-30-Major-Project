@@ -14,8 +14,7 @@ let hat;
 let chicken;
 let pushed;
 let bread;
-
-let choose;
+let block;
 
 let state;
 
@@ -42,6 +41,9 @@ function setup() {
   
   pushed = createVideo("assets/camera.mp4");
   pushed.hide();
+
+  block = createVideo("assets/block.mp4");
+  block.hide();
   
   state = 0;
 }
@@ -96,6 +98,11 @@ function draw() {
     imageMode(CENTER);
     image(pushed, width/2, height/2);
   }
+  if (state === "block"){
+    background(0);
+    imageMode(CENTER);
+    image(block, width/2, height/2);
+  }
 }
 
  function mousePressed() {
@@ -105,7 +112,7 @@ if (state === 0){
  }
 
 function chooseChaplinFilmToPlay(){
-  choices = [1, 2, 3, 4, 5, 6];
+  choices = [1, 2, 3, 4, 5, 6, 7];
   choose = random(choices);
   if (choose === 1){
     state = "skate";
@@ -131,6 +138,10 @@ function chooseChaplinFilmToPlay(){
     state = "pushed";
     pushed.play();
   }
+  if (choose === 7){
+    state = "block";
+    block.play();
+  }
 }
 
 function stopVideos(){
@@ -140,6 +151,7 @@ function stopVideos(){
   bread.stop();
   cocktail.stop();
   pushed.stop();
+  block.stop();
 }
 
 function keyPressed(){
