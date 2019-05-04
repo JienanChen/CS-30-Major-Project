@@ -60,6 +60,11 @@ function draw() {
     noStroke();
     fill(123, 145, 181, 120);
     rect(width/2, height/3.5, width, height*0.342);
+    //instructions
+    textFont("Times New Romans");
+    textSize(height*0.0625);
+    fill(130, 135, 64);
+    text("Click the image. To return to this page, click the LEFT_ARROW key.", width/2, height * 0.854)
   }
   if (state === "skate"){
     background(0);
