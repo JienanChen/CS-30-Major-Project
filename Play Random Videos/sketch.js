@@ -64,7 +64,7 @@ function draw() {
     textFont("Times New Romans");
     textSize(height*0.0625);
     fill(130, 135, 64);
-    text("Click the image. To return to this page, click the LEFT_ARROW key.", width/2, height * 0.854)
+    text("Click the image.\n To return to this page, click the LEFT_ARROW key.", width/2, height * 0.854)
   }
   if (state === "skate"){
     background(0);
