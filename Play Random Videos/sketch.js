@@ -58,7 +58,7 @@ function draw() {
     //Shading behind title
     rectMode(CENTER);
     noStroke();
-    fill(123, 145, 181, 120);
+    fill(123, 145, 181, 77);
     rect(width/2, height/3.5, width, height*0.342);
     //instructions
     textFont("Times New Romans");
