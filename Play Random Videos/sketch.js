@@ -8,7 +8,7 @@
 
 let backgroundImage;
 
-let skating;
+let skate;
 let cocktail;
 let hat;
 let chicken;
@@ -25,8 +25,8 @@ function preload(){
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  skating = createVideo("assets/skating.mp4");
-  skating.hide(); 
+  skate = createVideo("assets/skating.mp4");
+  skate.hide(); 
   
   hat = createVideo("assets/hat.mp4");
   hat.hide();     
@@ -83,7 +83,9 @@ function draw() {
 }
 
  function mousePressed() {
-   chooseChaplinFilmToPlay();
+if (state === 0){
+  chooseChaplinFilmToPlay();
+  }
  }
 
 function chooseChaplinFilmToPlay(){
@@ -99,7 +101,7 @@ function chooseChaplinFilmToPlay(){
   }
   if (choose === 3){
     state = "bird";
-    state.play();
+    bird.play();
   }
   if (choose === 4){
     state = "bread";
@@ -115,8 +117,19 @@ function chooseChaplinFilmToPlay(){
   }
 }
 
+function stopVideos(){
+  skate.stop();
+  hat.stop();
+  bird.stop();
+  bread.stop();
+  cocktail.stop();
+  pushed.stop();
+}
+
 function keyPressed(){
   if (keyCode === LEFT_ARROW){
+    stopVideos();
+    imageMode(CORNERS)
     state = 0;
   }
   }
