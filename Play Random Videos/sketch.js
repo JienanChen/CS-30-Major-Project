@@ -50,20 +50,39 @@ function draw() {
   if (state === 0){
     background(backgroundImage);
   }
-  else{
+  if (state === "skate"){
     background(0);
     imageMode(CENTER);
-    image(skating, width/2, height/2);
+    image(skate, width/2, height/2);
+  }
+  if (state === "hat"){
+    background(0);
+    imageMode(CENTER);
     image(hat, width/2, height/2);
+  }
+  if (state === "bird"){
+    background(0);
+    imageMode(CENTER);
     image(bird, width/2, height/2);
+  }
+  if (state === "bread"){
+    background(0);
+    imageMode(CENTER);
     image(bread, width/2, height/2);
+  }
+  if (state === "cocktail"){
+    background(0);
+    imageMode(CENTER);
     image(cocktail, width/2, height/2);
+  }
+  if (state === "pushed"){
+    background(0);
+    imageMode(CENTER);
     image(pushed, width/2, height/2);
   }
 }
 
  function mousePressed() {
-   state = 1;
    chooseChaplinFilmToPlay();
  }
 
@@ -71,33 +90,33 @@ function chooseChaplinFilmToPlay(){
   choices = [1, 2, 3, 4, 5, 6];
   choose = random(choices);
   if (choose === 1){
-    //image(skating, width/2, height/2);
-    skating.show();
-    skating.play();
+    state = "skate";
+    skate.play();
   }
+  
   if (choose === 2){
-    //image(hat, width/2, height/2);
-    hat.show();
+    state = "hat";
     hat.play();
   }
+  
   if (choose === 3){
-    //image(bird, width/2, height/2);
-    bird.show();
-    bird.play();
+    state = "bird";
+    state.play();
   }
+  
   if (choose === 4){
-    //image(bread, width/2, height/2);
-    bread.show();
+    state = "bread";
     bread.play();
   }
+  
   if (choose === 5){
-    //image(cocktail, width/2, height/2);
-    cocktail.show();
+    state = "cocktail";
     cocktail.play();
   }
+  
   if (choose === 6){
-    //image(pushed, width/2, height/2);
-    pushed.show();
+    state = "pushed";
     pushed.play();
   }
+  
 }
