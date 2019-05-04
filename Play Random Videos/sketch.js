@@ -49,6 +49,10 @@ function setup() {
 function draw() {
   if (state === 0){
     background(backgroundImage);
+    fill(246, 251, 218);
+    textFont("Georgia")
+    textSize(77);
+    text("The Chaplin Experience", width*0.03, height*0.02);
   }
   if (state === "skate"){
     background(0);
