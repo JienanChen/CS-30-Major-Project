@@ -1,6 +1,6 @@
-// THe Chaplin Experience
+// THe Chaplin Experience Version 2
 // Jienan Chen
-// May 3, 2019
+// May 4, 2019
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
