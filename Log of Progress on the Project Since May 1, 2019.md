@@ -12,3 +12,8 @@ Tinkered with placing an image within a box. Looked for Chaplin clips to include
    2. Placing the image in the confines of a box.
    3. Setting variables for the box, which will be utilized by the image.
 2. Learned how to play a video in p5js.
+3. Wrote a program which plays random clips from Chaplin films.
+
+## May 4, 2019
+1. Realized that the size of a video frame limits its display size in a program.
+2. Realized that in Visual Studio Code, there is no limit to the size of a file in assets like there is in the online p5js editor.
