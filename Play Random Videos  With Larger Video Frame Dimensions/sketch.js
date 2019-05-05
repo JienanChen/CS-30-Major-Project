@@ -1,4 +1,4 @@
-// THe Chaplin Experience Version 2
+// The Chaplin Experience Version 2
 // Jienan Chen
 // May 4, 2019
 //
