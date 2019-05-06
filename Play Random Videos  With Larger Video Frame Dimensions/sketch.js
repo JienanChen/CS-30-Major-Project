@@ -11,7 +11,7 @@ let backgroundImage;
 let skate;
 let cocktail;
 let hat;
-let chicken;
+let bird;
 let pushed;
 let bread;
 let block;
@@ -109,7 +109,7 @@ function draw() {
     background(backgroundImage);
     fill(236, 251, 121);
     //Title
-    textFont("Georgia")
+    textFont("Georgia");
     textSize(height*0.18);
     textAlign(CENTER);
     text("The Chaplin Experience", width/2, height/3);
@@ -122,7 +122,7 @@ function draw() {
     textFont("Times New Romans");
     textSize(height*0.0625);
     fill(130, 135, 64);
-    text("Click the image.\n To return to this page, click the LEFT_ARROW key.", width/2, height * 0.854)
+    text("Click the image.\n To return to this page, click the LEFT_ARROW key.", width/2, height * 0.854);
   }
   if (state === "skate"){
     background(0);
@@ -231,15 +231,15 @@ function draw() {
   }
 }
 
- function mousePressed() {
-if (state === 0){
-  chooseChaplinFilmToPlay();
+function mousePressed() {
+  if (state === 0){
+    chooseChaplinFilmToPlay();
   }
- }
+}
 
 function chooseChaplinFilmToPlay(){
-  choices = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
-  choose = random(choices);
+  let choices = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
+  let choose = random(choices);
   if (choose === 1){
     state = "skate";
     skate.play();
@@ -353,8 +353,8 @@ function stopVideos(){
 function keyPressed(){
   if (keyCode === LEFT_ARROW){
     stopVideos();
-    imageMode(CORNERS)
+    imageMode(CORNERS);
     state = 0;
   }
-  }
+}
 
