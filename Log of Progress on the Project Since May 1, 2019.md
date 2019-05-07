@@ -17,3 +17,7 @@ Tinkered with placing an image within a box. Looked for Chaplin clips to include
 ## May 4, 2019
 1. Realized that the size of a video frame limits its display size in a program.
 2. Realized that in Visual Studio Code, there is no limit to the size of a file in assets like there is in the online p5js editor.
+
+## May 5, 2019
+1. Pondered how to use videos in the proper game (final project).
+2. Thought about the possible battles one can indulge in with Blaviken.
