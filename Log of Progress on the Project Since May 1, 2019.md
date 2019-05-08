@@ -23,7 +23,7 @@ Tinkered with placing an image within a box. Looked for Chaplin clips to include
 2. Thought about the possible battles one can indulge in with Blaviken.
 
 ## May 6, 2019
-No Progress
+Thought about interactive scenes with Blaviken.
 
 ## May 7, 2019
 1. Tinkered with the landscaping algorithm with no success.
