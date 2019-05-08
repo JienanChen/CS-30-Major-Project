@@ -21,3 +21,10 @@ Tinkered with placing an image within a box. Looked for Chaplin clips to include
 ## May 5, 2019
 1. Pondered how to use videos in the proper game (final project). The videos do not seem to be able to be displayed full-screened. 
 2. Thought about the possible battles one can indulge in with Blaviken.
+
+## May 6, 2019
+Thought about interactive scenes with Blaviken.
+
+## May 7, 2019
+1. Tinkered with the landscaping algorithm with no success.
+2. Started work on interactive scenes with Blaviken.
