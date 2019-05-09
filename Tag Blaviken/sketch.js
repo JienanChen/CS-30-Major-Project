@@ -50,8 +50,8 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  rectWidth = width / 2.78;
-  rectHeight = width / 2;
+  rectWidth = width / 6.78;
+  rectHeight = width / 6;
   rectX = random(0, width - rectWidth);
   rectY = random(0, height - rectHeight);
   imageRectWidth = width/2;
@@ -110,9 +110,8 @@ function drawPoints() {
 }
 
 function moveRect() {
-  rectX += 5;
-  rectY += 5;
-
+  rectX += 20;
+  rectY += 20;
 
   if (rectX + rectWidth >= width || rectX <= 0) {
     rectX = (random(0, width - rectWidth));
