@@ -110,10 +110,11 @@ function drawPoints() {
 }
 
 function moveRect() {
-  rectX += 20;
-  rectY += 20;
+  pseudoWidth = random(width - (rectWidth + 15), width);
+  rectX += 7;
+  rectY += random(2, 13);
 
-  if (rectX + rectWidth >= width || rectX <= 0) {
+  if (rectX + rectWidth >= pseudoWidth || rectX <= 0) {
     rectX = (random(0, width - rectWidth));
   }
    if (rectY + rectHeight >= height || rectY <= 0) {
@@ -131,7 +132,9 @@ function mousePressed() {
   else{
     playWinSound();
     userLossCounter ++;
-    console.log("loss = ", userLossCounter)  
+    console.log("loss = ", userLossCounter);
+    rectX = random(width+40, width - rectWidth);
+    rectY = random(40, height - rectHeight);  
   }
 }
 
