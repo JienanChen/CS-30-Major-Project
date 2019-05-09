@@ -49,7 +49,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth, windowHeight);
   rectWidth = width / 2.78;
   rectHeight = width / 2;
   rectX = random(0, width - rectWidth);
@@ -75,7 +75,6 @@ function draw() {
     noLoop();
     playMusic();
   }
-  //playMusic();
 }
 
 function displayBlaviken() {
