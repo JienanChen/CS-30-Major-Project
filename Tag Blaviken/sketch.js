@@ -111,8 +111,8 @@ function drawPoints() {
 
 function moveRect() {
   pseudoWidth = random(width - (rectWidth + 15), width);
-  rectX += 7;
-  rectY += random(2, 13);
+  rectX += 5;
+  rectY += random(-35, 35);
 
   if (rectX + rectWidth >= pseudoWidth || rectX <= 0) {
     rectX = (random(0, width - rectWidth));
