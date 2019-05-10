@@ -13,6 +13,8 @@ let lossImage;
 let rectX, rectY;
 let rectWidth, rectHeight;
 
+let imageRectWidth , imageRectHeight;
+
 let win1, win2, win3, win4, win5, win6, win7, win8;
 let loss1, loss2, loss3, loss4, loss5, loss6, loss7, loss8, loss9;
 let victory;
@@ -60,7 +62,7 @@ function setup() {
   imageRectHeight = width / 3.2;
   userLossCounter = 0;
   userWinCounter = 0;
-  livesLost = 3;
+  livesLeft = 3;
   state = 0;
 }
 
@@ -105,7 +107,7 @@ function drawLines() {
 
 function progressiveLines() {
   for (i = 0; i < width; i += 20) {
-    stroke(random(100, 220))
+    stroke(random(100, 220));
     strokeWeight(3);
     line(i, 0, i, height);
   }
@@ -124,19 +126,19 @@ function displayLivesLeft(){
   fill(255, 255, 255, 100);
   rect(width - livesWidth, 0, livesWidth, livesHeight);
   textAlign(CENTER);
-  textSize(width/13)
+  textSize(width/13);
   fill(0);
-  text(livesLost, width-livesWidth + livesWidth/2, livesHeight/1.75)
+  text(livesLeft, width-livesWidth + livesWidth/2, livesHeight/1.75);
 }
 
 function moveRect() {
   rectX += 5;
   rectY += random(-35, 35);
   if (rectX + rectWidth >= width || rectX <= 0) {
-    rectX = (random(0, width - rectWidth));
+    rectX = random(0, width - rectWidth);
   }
   if (rectY + rectHeight >= height || rectY <= 0) {
-    rectY = (random(0, height - rectHeight));
+    rectY = random(0, height - rectHeight);
   }
 }
 
@@ -258,10 +260,11 @@ function mousePressed() {
       playLossSound();
       userWinCounter++;
       //console.log("win = ", userWinCounter);
-    } else {
+    } 
+    else {
       playWinSound();
       userLossCounter++;
-      livesLost --;
+      livesLeft --;
       //console.log("loss = ", userLossCounter)
     }
   }
