@@ -132,33 +132,11 @@ function displayLivesLeft(){
 function moveRect() {
   rectX += 5;
   rectY += random(-35, 35);
-
-
   if (rectX + rectWidth >= width || rectX <= 0) {
     rectX = (random(0, width - rectWidth));
   }
   if (rectY + rectHeight >= height || rectY <= 0) {
     rectY = (random(0, height - rectHeight));
-  }
-}
-
-function mousePressed() {
-  stopAllSounds();
-  if (userWinCounter < 3 || userLossCounter < 3) {
-    if ((mouseX >= rectX && mouseX <= rectX + rectWidth) && (mouseY >= rectY && mouseY <= rectY + rectHeight)) {
-      playLossSound();
-      userWinCounter++;
-      //console.log("win = ", userWinCounter);
-    } else {
-      playWinSound();
-      userLossCounter++;
-      livesLost --;
-      //console.log("loss = ", userLossCounter)
-    }
-  }
-  if (userWinCounter === 3){
-    victory.setVolume(1.0);
-    victory.play();
   }
 }
 
@@ -272,3 +250,30 @@ function stopAllSounds() {
   loss8.stop();
   loss9.stop();
 }
+
+function mousePressed() {
+  stopAllSounds();
+  if (userWinCounter < 3 || userLossCounter < 3) {
+    if ((mouseX >= rectX && mouseX <= rectX + rectWidth) && (mouseY >= rectY && mouseY <= rectY + rectHeight)) {
+      playLossSound();
+      userWinCounter++;
+      //console.log("win = ", userWinCounter);
+    } else {
+      playWinSound();
+      userLossCounter++;
+      livesLost --;
+      //console.log("loss = ", userLossCounter)
+    }
+  }
+  if (userWinCounter === 3){
+    victory.setVolume(1.0);
+    victory.play();
+  }
+}
+
+function keyPressed(){
+  if (keyCode === LEFT_ARROW && (state === 1 ||state === 2)){
+    state = 0;
+  }
+}
+
