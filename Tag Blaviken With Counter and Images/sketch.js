@@ -26,7 +26,7 @@ let state;
 function preload() {
   blaviken = loadImage("assets/20180411_154733 (1) (1)A.jpg");
   winImage = loadImage("assets/DSC01815.JPG");
-  lossImage = loadImage("assets/Capture15-1.JPG");
+  lossImage = loadImage("assets/Capture15.JPG");
 
   win1 = loadSound("assets/BlavikenWin1.m4a");
   win2 = loadSound("assets/BlavikenWin2.m4a");
