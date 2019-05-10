@@ -24,31 +24,30 @@ let livesLeft;
 let state;
 
 function preload() {
-  blaviken = loadImage("20180411_154733 (1) (1)A.jpg");
-  winImage = loadImage("DSC01815.JPG");
-  lossImage = loadImage("Capture15-1.JPG");
+  blaviken = loadImage("assets/20180411_154733 (1) (1)A.jpg");
+  winImage = loadImage("assets/DSC01815.JPG");
+  lossImage = loadImage("assets/Capture15-1.JPG");
 
+  win1 = loadSound("assets/BlavikenWin1.m4a");
+  win2 = loadSound("assets/BlavikenWin2.m4a");
+  win3 = loadSound("assets/BlavikenWin3.m4a");
+  win4 = loadSound("assets/BlavikenWin4.m4a");
+  win5 = loadSound("assets/BlavikenWin5.m4a");
+  win6 = loadSound("assets/BlavikenWin6.m4a");
+  win7 = loadSound("assets/BlavikenWin7.m4a");
+  win8 = loadSound("assets/BlavikenWin8.m4a");
 
-  win1 = loadSound("BlavikenWin1.m4a");
-  win2 = loadSound("BlavikenWin2.m4a");
-  win3 = loadSound("BlavikenWin3.m4a");
-  win4 = loadSound("BlavikenWin4.m4a");
-  win5 = loadSound("BlavikenWin5.m4a");
-  win6 = loadSound("BlavikenWin6.m4a");
-  win7 = loadSound("BlavikenWin7.m4a");
-  win8 = loadSound("BlavikenWin8.m4a");
+  loss1 = loadSound("assets/BlavikenLoss1.m4a");
+  loss2 = loadSound("assets/BlavikenLoss2.m4a");
+  loss3 = loadSound("assets/BlavikenLoss3.m4a");
+  loss4 = loadSound("assets/BlavikenLoss4.m4a");
+  loss5 = loadSound("assets/BlavikenLoss5.m4a");
+  loss6 = loadSound("assets/BlavikenLoss6.m4a");
+  loss7 = loadSound("assets/BlavikenLoss7.m4a");
+  loss8 = loadSound("assets/BlavikenLoss8.m4a");
+  loss9 = loadSound("assets/BlavikenLoss9.m4a");
 
-  loss1 = loadSound("BlavikenLoss1.m4a");
-  loss2 = loadSound("BlavikenLoss2.m4a");
-  loss3 = loadSound("BlavikenLoss3.m4a");
-  loss4 = loadSound("BlavikenLoss4.m4a");
-  loss5 = loadSound("BlavikenLoss5.m4a");
-  loss6 = loadSound("BlavikenLoss6.m4a");
-  loss7 = loadSound("BlavikenLoss7.m4a");
-  loss8 = loadSound("BlavikenLoss8.m4a");
-  loss9 = loadSound("BlavikenLoss9.m4a");
-
-  victory = loadSound("victory.m4a");
+  victory = loadSound("assets/victory.m4a");
 }
 
 function setup() {
