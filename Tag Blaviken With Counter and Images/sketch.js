@@ -53,9 +53,9 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(400, 400);
-  rectWidth = width / 6.78;
-  rectHeight = width / 6;
+  createCanvas(windowWidth, windowHeight);
+  rectWidth = width / 9.78;
+  rectHeight = width / 9;
   rectX = random(0, width - rectWidth);
   rectY = random(0, height - rectHeight);
   imageRectWidth = width / 2;
@@ -132,8 +132,8 @@ function displayLivesLeft(){
 }
 
 function moveRect() {
-  rectX += 5;
-  rectY += random(-35, 35);
+  rectX += (-15, 15);
+  rectY += random(-70, 70);
   if (rectX + rectWidth >= width || rectX <= 0) {
     rectX = random(0, width - rectWidth);
   }
