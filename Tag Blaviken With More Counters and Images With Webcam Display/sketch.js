@@ -22,6 +22,9 @@ let victory;
 let userLossCounter;
 let userWinCounter;
 let livesLeft;
+let hits;
+
+let user;
 
 let state;
 
@@ -63,6 +66,10 @@ function setup() {
   userLossCounter = 0;
   userWinCounter = 0;
   livesLeft = 3;
+  hits = 0;
+  user = createCapture(VIDEO);
+  user.size(width/2.6, height/4.4);
+  user.hide();
   state = 0;
 }
 
@@ -75,6 +82,8 @@ function draw() {
     progressiveLines();
     drawPoints();
     displayLivesLeft();
+    displayHits();
+    image(user, 0, height - height/4.4);
     gameOver();
   }
   if (state === 1){
@@ -126,9 +135,26 @@ function displayLivesLeft(){
   fill(255, 255, 255, 100);
   rect(width - livesWidth, 0, livesWidth, livesHeight);
   textAlign(CENTER);
-  textSize(width/13);
   fill(0);
-  text(livesLeft, width-livesWidth + livesWidth/2, livesHeight/1.75);
+  textSize(width/26);
+  text("Lives Left", width-livesWidth + livesWidth/2, livesHeight/1.25);
+  textSize(width/13);
+  text(livesLeft, width-livesWidth + livesWidth/2, livesHeight/1.75)
+}
+
+function displayHits(){
+  let hitsWidth = width/5.79;
+  let hitsHeight = width/4.4;
+  noStroke();
+  fill(255, 255, 255, 100);
+  rect(0, 0, hitsWidth, hitsHeight);
+  textAlign(CENTER);
+  fill(0);
+  textSize(width/26);
+  text("Hits", hitsWidth/2, hitsHeight/1.25);
+  textSize(width/13);
+  fill("red");
+  text(hits, hitsWidth/2, hitsHeight/1.75)
 }
 
 function moveRect() {
