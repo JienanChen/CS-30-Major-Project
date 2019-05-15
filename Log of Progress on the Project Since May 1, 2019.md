@@ -28,3 +28,24 @@ Thought about interactive scenes with Blaviken.
 ## May 7, 2019
 1. Tinkered with the landscaping algorithm with no success.
 2. Started work on interactive scenes with Blaviken.
+
+## May 8, 2019
+Made improvements to interactive game with Blaviken. Moved the code witten in p5js to Visual Studios Code. Added music to the game which plays when the user wins, albeit with the aid of noLoop().
+
+## May 9, 2019
+Found a better way to play music when the user wins without needing noLoop(). Added a counter and a system which displays the turns left for the user to tag Blaviken.
+
+## May 10, 2019
+Experimented with using the webcam to display an image of the user during the course of the game involving Blaviken. Added a counter and a display system which shows how many times the user has tagged Blaviken, as suggested by Pouya. 
+
+## May 11, 2019
+No work.
+
+## May 12, 2019
+No work.
+
+## May 13, 2019
+No work.
+
+## May 14, 2019
+No work.
