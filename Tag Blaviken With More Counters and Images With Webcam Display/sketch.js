@@ -163,6 +163,7 @@ function displayHits(){
 
 function moveRect() {
   rectX += (-9, 7);
+  //rectX += 3;
   rectY += random(-70, 70);
   if (rectX + rectWidth >= width || rectX <= 0) {
     rectX = random(0, width - rectWidth);
@@ -289,6 +290,7 @@ function mousePressed() {
     if ((mouseX >= rectX && mouseX <= rectX + rectWidth) && (mouseY >= rectY && mouseY <= rectY + rectHeight)) {
       playLossSound();
       userWinCounter++;
+      hits ++;
       //console.log("win = ", userWinCounter);
     } 
     else {
