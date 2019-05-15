@@ -109,8 +109,10 @@ function displayBlaviken() {
 function drawLines() {
   strokeWeight(random(1, 10));
   stroke(random(48, 250));
+  fill(0);
   line(0, random(height), height, random(height));
   line(random(width), 0, height, random(width));
+  fill(random(125, 255));
   curve(random(width), random(width), random(width), random(width), random(height), random(height), random(height), random(height));
 }
 
@@ -118,6 +120,7 @@ function progressiveLines() {
   for (i = 0; i < width; i += 20) {
     stroke(random(100, 220));
     strokeWeight(3);
+    fill(random(25, 255));
     line(i, 0, i, height);
   }
 }
@@ -125,6 +128,7 @@ function progressiveLines() {
 function drawPoints() {
   stroke(random(0, 255));
   strokeWeight(random(1, 35));
+  fill(0);
   point(random(width), random(height));
 }
 
@@ -139,7 +143,7 @@ function displayLivesLeft(){
   textSize(width/26);
   text("Lives Left", width-livesWidth + livesWidth/2, livesHeight/1.25);
   textSize(width/13);
-  text(livesLeft, width-livesWidth + livesWidth/2, livesHeight/1.75)
+  text(livesLeft, width-livesWidth + livesWidth/2, livesHeight/1.75);
 }
 
 function displayHits(){
@@ -154,7 +158,7 @@ function displayHits(){
   text("Hits", hitsWidth/2, hitsHeight/1.25);
   textSize(width/13);
   fill("red");
-  text(hits, hitsWidth/2, hitsHeight/1.75)
+  text(hits, hitsWidth/2, hitsHeight/1.75);
 }
 
 function moveRect() {
