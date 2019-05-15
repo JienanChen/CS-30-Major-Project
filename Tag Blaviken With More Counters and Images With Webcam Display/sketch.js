@@ -1,6 +1,6 @@
-// Tag Blaviken (Second Version)
+// Tag Blaviken (Third Version)
 // Jienan Chen
-// May 9, 2019
+// May 10, 2019
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
@@ -132,7 +132,7 @@ function displayLivesLeft(){
 }
 
 function moveRect() {
-  rectX += (-15, 15);
+  rectX += (-9, 7);
   rectY += random(-70, 70);
   if (rectX + rectWidth >= width || rectX <= 0) {
     rectX = random(0, width - rectWidth);
