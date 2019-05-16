@@ -70,7 +70,7 @@ function setup() {
   livesLeft = 3;
   hits = 0;
   user = createCapture(VIDEO);
-  user.size(width/2.6, height/4.4);
+  user.size(width/4, height/4);
   user.hide();
   state = 0;
 }
@@ -87,7 +87,7 @@ function draw() {
     drawPoints();
     displayLivesLeft();
     displayHits();
-    image(user, 0, height - height/4.4);
+    image(user, 0, height - (height/4+40));
     gameOver();
   }
   if (state === 1){
