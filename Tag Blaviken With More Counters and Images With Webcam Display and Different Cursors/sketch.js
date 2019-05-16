@@ -1,4 +1,4 @@
-// Tag Blaviken (Third Version)
+// Tag Blaviken (Fourth Version)
 // Jienan Chen
 // May 10, 2019
 //
@@ -9,6 +9,7 @@
 let blaviken;
 let winImage;
 let lossImage;
+let finger;
 
 let rectX, rectY;
 let rectWidth, rectHeight;
@@ -32,6 +33,7 @@ function preload() {
   blaviken = loadImage("assets/20180411_154733 (1) (1)A.jpg");
   winImage = loadImage("assets/DSC01815.JPG");
   lossImage = loadImage("assets/Capture15.JPG");
+  finger = loadImage("assets/finger.png")
 
   win1 = loadSound("assets/BlavikenWin1.m4a");
   win2 = loadSound("assets/BlavikenWin2.m4a");
@@ -77,6 +79,8 @@ function draw() {
   if (state === 0) {
     background(random(125, 250));
     displayBlaviken();
+    noCursor();
+    image(finger, mouseX, mouseY, width/27, height/8);
     moveRect();
     drawLines();
     progressiveLines();
@@ -88,10 +92,12 @@ function draw() {
   }
   if (state === 1){
     imageMode(CENTER);
+    cursor(CROSS);
     image(lossImage, width/2, height/2, width/1.3, height/1.7);
   }
   if (state === 2){
     imageMode(CENTER);
+    noCross();
     image(winImage, width/2, height/2, width/1.3, height/1.7);
   } 
 }
