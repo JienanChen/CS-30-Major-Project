@@ -51,5 +51,8 @@ No work.
 No work.
 
 ## May 15, 2019
-1.Transfer of tagging game with code allowing for the webcam to function from the online p5js editor to Visul Studio Code. 
+1.Transfer of tagging game with code allowing for the webcam to function from the online p5js editor to Visul Studio Code.
 2.Experimented with the cursor.
+
+## May 16, 2019
+Worked with the webcam to take pictures and to save them to the computer.
