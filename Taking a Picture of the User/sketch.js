@@ -11,7 +11,7 @@ let button2;
 let state;
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(windowWidth, windowHeight);
   createP("");
   let button1 = createButton("Camera On");
   button1.mousePressed(cameraOn);
