@@ -310,6 +310,14 @@ function mousePressed() {
     victory.setVolume(1.0);
     victory.play();
   }
+  if (userLossCounter === 3){
+    let today = day();
+    let time = millis();
+    let message = ["youLost", "buttKicked", "ohWell", "frustratedFace", "isThatAllYourBest", "sadFace", "booHoo", "badLuck"];
+    let choose = random(message);
+    image(user, 0,0, width, height);
+    saveCanvas(choose + today + time, "jpg");
+  }
 }
 
 function keyPressed(){
