@@ -51,8 +51,18 @@ No work.
 No work.
 
 ## May 15, 2019
-1.Transfer of tagging game with code allowing for the webcam to function from the online p5js editor to Visul Studio Code.
-2.Experimented with the cursor.
+1. Transfer of tagging game with code allowing for the webcam to function from the online p5js editor to Visul Studio Code.
+2. Experimented with the cursor.
 
 ## May 16, 2019
 Worked with the webcam to take pictures and to save them to the computer.
+
+## May 17, 2019
+1. Integrated webcam photograph taking code into the "Tag Blaviken" game.
+2. Started work on a new game involving Blaviken where the player can move around using the arrow keys.
+
+## May 18, 2019
+No work.
+
+## May 19, 2019
+No work.
