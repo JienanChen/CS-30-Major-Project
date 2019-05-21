@@ -91,11 +91,13 @@ function draw() {
     gameOver();
   }
   if (state === 1){
+    stopAllSounds();
     imageMode(CENTER);
     cursor(CROSS);
     image(lossImage, width/2, height/2, width/1.3, height/1.7);
   }
   if (state === 2){
+    stopAllSounds();
     imageMode(CENTER);
     noCursor();
     image(winImage, width/2, height/2, width/1.3, height/1.7);
@@ -181,12 +183,12 @@ function moveRect() {
 
 function gameOver() {
   if (userLossCounter > 2) {
-    stopAllSounds();
+    //stopAllSounds();
     clear();
     state = 1;
   }
   if (userWinCounter > 2) {
-    stopAllSounds();
+    //stopAllSounds();
     clear();
     state = 2;
   }
