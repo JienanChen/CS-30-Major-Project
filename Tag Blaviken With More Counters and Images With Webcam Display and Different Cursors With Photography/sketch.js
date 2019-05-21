@@ -186,13 +186,6 @@ function gameOver() {
     stopAllSounds();
     clear();
     state = 1;
-
-    let today = day();
-    let time = millis();
-    let message = ["youLost", "buttKicked", "ohWell", "frustratedFace", "isThatAllYourBest", "sadFace", "booHoo", "badLuck"];
-    let choose = random(message);
-    image(user, 0,0, width, height);
-    saveCanvas(choose + today + time, "jpg");
   }
   if (userWinCounter > 2) {
     stopAllSounds();
@@ -320,14 +313,15 @@ function mousePressed() {
     victory.play();
     userWinCounter ++;
   }
-  // if (userLossCounter === 3){
-  //   let today = day();
-  //   let time = millis();
-  //   let message = ["youLost", "buttKicked", "ohWell", "frustratedFace", "isThatAllYourBest", "sadFace", "booHoo", "badLuck"];
-  //   let choose = random(message);
-  //   image(user, 0,0, width, height);
-  //   saveCanvas(choose + today + time, "jpg");
-  // }
+  if (userLossCounter === 3){
+    let today = day();
+    let time = millis();
+    let message = ["youLost", "buttKicked", "ohWell", "frustratedFace", "isThatAllYourBest", "sadFace", "booHoo", "badLuck"];
+    let choose = random(message);
+    image(user, 0,0, width, height);
+    saveCanvas(choose + today + time, "jpg");
+    userLossCounter = 4;
+   }
 }
 
 function keyPressed(){
