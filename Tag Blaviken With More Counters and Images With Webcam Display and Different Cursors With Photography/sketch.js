@@ -33,7 +33,7 @@ function preload() {
   blaviken = loadImage("assets/20180411_154733 (1) (1)A.jpg");
   winImage = loadImage("assets/DSC01815.JPG");
   lossImage = loadImage("assets/Capture15.JPG");
-  finger = loadImage("assets/finger.png")
+  finger = loadImage("assets/finger.png");
 
   win1 = loadSound("assets/BlavikenWin1.m4a");
   win2 = loadSound("assets/BlavikenWin2.m4a");
@@ -97,7 +97,7 @@ function draw() {
   }
   if (state === 2){
     imageMode(CENTER);
-    noCross();
+    noCursor();
     image(winImage, width/2, height/2, width/1.3, height/1.7);
   } 
 }
