@@ -44,6 +44,7 @@ No work.
 ## May 12, 2019
 No work.
 
+
 ## May 13, 2019
 No work.
 
@@ -65,4 +66,7 @@ Worked with the webcam to take pictures and to save them to the computer.
 No work.
 
 ## May 19, 2019
+No work.
+
+## May 20, 2019
 No work.
