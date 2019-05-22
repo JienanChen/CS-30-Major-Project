@@ -316,12 +316,12 @@ function mousePressed() {
   if (userLossCounter === 3){
     let today = day();
     let time = millis();
-    let message = ["youLost", "buttKicked", "ohWell", "frustratedFace", "isThatAllYourBest", "sadFace", "booHoo", "badLuck"];
+    let message = ["youLost", "buttKicked", "ohWell", "frustratedFace", "isThatAllYourBest", "sadFace", "booHoo", "badLuck", "sorry"];
     let choose = random(message);
     image(user, 0,0, width, height);
     saveCanvas(choose + today + time, "jpg");
     userLossCounter = 4;
-   }
+  }
 }
 
 function keyPressed(){
