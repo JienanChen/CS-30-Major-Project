@@ -80,7 +80,7 @@ function draw() {
     background(random(125, 250));
     displayBlaviken();
     noCursor();
-    image(finger, mouseX, mouseY, width/27, height/8);
+    image(finger, mouseX, mouseY + 5, width/27, height/8);
     moveRect();
     drawLines();
     progressiveLines();
