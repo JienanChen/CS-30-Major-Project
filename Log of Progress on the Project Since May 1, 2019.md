@@ -70,3 +70,10 @@ No work.
 
 ## May 20, 2019
 No work.
+
+## May 21, 2019
+1. "Fool proofed" the code for "Tag Blaviken."
+2. Worked on the Blaviken Lair game.
+
+## May 22, 2019
+Investigated how to write code corresponding to the ends of a circle's diameter, keeping in mind that the circle (drawn using an ellipse) is in the eliipseMode of CENTER.
