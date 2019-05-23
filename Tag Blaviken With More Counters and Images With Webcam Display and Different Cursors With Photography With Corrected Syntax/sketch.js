@@ -1,6 +1,6 @@
-// Tag Blaviken (Fifth Version)
+// Tag Blaviken (Sixth Version)
 // Jienan Chen
-// May 17, 2019
+// May 23, 2019
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
@@ -125,7 +125,7 @@ function drawLines() {
 }
 
 function progressiveLines() {
-  for (i = 0; i < width; i += 20) {
+  for (let i = 0; i < width; i += 20) {
     stroke(random(100, 220));
     strokeWeight(3);
     fill(random(25, 255));
@@ -299,13 +299,11 @@ function mousePressed() {
       playLossSound();
       userWinCounter++;
       hits ++;
-      //console.log("win = ", userWinCounter);
     } 
     else {
       playWinSound();
       userLossCounter++;
       livesLeft --;
-      //console.log("loss = ", userLossCounter)
     }
   }
   if (userWinCounter === 3){
@@ -318,7 +316,7 @@ function mousePressed() {
     let time = millis();
     let message = ["youLost", "buttKicked", "ohWell", "frustratedFace", "isThatAllYourBest", "sadFace", "booHoo", "badLuck", "sorry"];
     let choose = random(message);
-    image(user, 0,0, width, height);
+    image(user, 0, 0, width, height);
     saveCanvas(choose + today + time, "jpg");
     userLossCounter = 4;
   }
