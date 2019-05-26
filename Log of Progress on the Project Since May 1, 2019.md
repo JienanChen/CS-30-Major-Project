@@ -76,4 +76,14 @@ No work.
 2. Worked on the Blaviken Lair game.
 
 ## May 22, 2019
-Investigated how to write code corresponding to the ends of a circle's diameter, keeping in mind that the circle (drawn using an ellipse) is in the eliipseMode of CENTER.
+Investigated how to write code corresponding to the ends of a circle's diameter, keeping in mind that the circle (drawn using an ellipse) is in the ellipseMode of CENTER.
+
+## May 23, 2019
+Corrected minor syntax errors in the "Tag Blaviken" game.
+
+## May 24, 2019
+Tried to find a way for the server to detect when the user is on the target in the "Blaviken's Lair" game. Worked on the p5js web editor.
+
+## May 25, 2019
+No work.
+
