@@ -44,7 +44,6 @@ No work.
 ## May 12, 2019
 No work.
 
-
 ## May 13, 2019
 No work.
 
@@ -85,5 +84,8 @@ Corrected minor syntax errors in the "Tag Blaviken" game.
 Tried to find a way for the server to detect when the user is on the target in the "Blaviken's Lair" game. Worked on the p5js web editor.
 
 ## May 25, 2019
+No work.
+
+## May 26, 2019
 No work.
 
