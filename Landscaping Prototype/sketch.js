@@ -7,31 +7,35 @@
 
 
 class Tree {
-  constructor (x, y, d){
+  constructor (x, y, d, c){
     this.x = x;
     this.y = y;
     this.diameter = d; 
+    this.fill = c;
   }
   display(){
     noSmooth();
-    stroke("green");
+    stroke(this.fill);
     ellipseMode(CENTER);
     ellipse(this.x, this.y, this.diameter, this.diameter);
-    fill("green");
+    fill(this.fill);
   }
 }
 
 let trees = [];
 let numOfTrees;
-let treeDiams;
+
 
 function setup() {
-  treeDiams = random(13, 75);
   numOfTrees = random(7,21);
-  createCanvas(400, 400);
+  createCanvas(windowWidth, windowHeight);
+  let treeColours = ["green", "limeGreen", "darkGreen", "forestGreen", "thistle", "plum"];
+  let colChoice = "";
   for (let i = 0; i < numOfTrees; i++) {
-    let someTree = new Tree(random(width + 7), random(height - 7), treeDiams);
+    let colChoice = random(treeColours);
+    let someTree = new Tree(random(width), random(height), random(height * 0.15, height * 0.3), colChoice);
     trees.push(someTree);
+    colChoice = "";
   }
 }
 
