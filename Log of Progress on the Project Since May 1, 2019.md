@@ -89,3 +89,12 @@ No work.
 ## May 26, 2019
 No work.
 
+## May 27, 2019
+Created a class which would make booby traps in the Blaviken's lair game.
+
+## May 28. 2019
+Experimented with ellipses placed by a class and mouse clicks.
+
+## May 29, 2019
+Created a prototype for planting trees with a class.
+
