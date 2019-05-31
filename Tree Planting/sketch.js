@@ -1,6 +1,6 @@
-// Project Title
-// Your Name
-// Date
+// Planting Trees
+// Jienan Chen
+// May 30, 2019
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
