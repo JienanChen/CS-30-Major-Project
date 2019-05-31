@@ -1,4 +1,4 @@
-// Planting Trees
+// Planting Trees Version 2
 // Jienan Chen
 // May 30, 2019
 //
