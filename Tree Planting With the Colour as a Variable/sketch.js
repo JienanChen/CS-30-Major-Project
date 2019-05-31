@@ -1,4 +1,4 @@
-// Planting Trees Version 2
+// Planting Trees Version 3
 // Jienan Chen
 // May 30, 2019
 //
@@ -7,18 +7,21 @@
 
 
 class Tree {
-  constructor (x, y, d, c){
+  constructor (x, y, w, hMaker, im){
     this.x = x;
     this.y = y;
-    this.diameter = d;
-    this.colour = c;
-  } 
-  display(){
-    noSmooth();
-    ellipseMode(CENTER);
-    stroke(this.colour);
-    ellipse(this.x, this.y, this.diameter, this.diameter);
-    fill(this.colour);
+    this.width = w;
+    this.heightDeterminer = hMaker;
+    this.image = im;
+}
+  display(){     
+    noStroke();
+    rectMode(CENTER);
+    imageMode(CENTER);
+    noFill();
+    rect(this.x, this.y, this.width, this.width - this.heightDeterminer);  
+    image(this.image, this.x, this.y, this.width,this.width - this.heightDeterminer); 
+    
   }
 }
 
@@ -26,25 +29,26 @@ let trees = [];
 let numOfTrees;
 
 let grass;
+let treeImg;
 
 function preload(){
   grass = loadImage("grassland.png");
+  treeImg = loadImage("tree-png-top-view-furniture-1024.png");
 }
 
 
 function setup() {
   numOfTrees = random(7,21);
-  let colour = "green";
   createCanvas(800, 800);
-  for (let i = 0; i < numOfTrees; i++) {
-    let someTree = new Tree(random(width + 7), random(height - 7), random(25, 100), colour);
-    trees.push(someTree);
+  background(grass);
+  for (let i = 0; i < numOfTrees; i++) {   
+    let someTree = new Tree(random(width + 7), random(height - 7), random(60, 100), random(1,10), treeImg);
+    trees.push(someTree);    
   }
 }
 
 function draw() {
-  background(grass);
   for (let i = 0; i< trees.length; i++) {
-    trees[i].display();
+    trees[i].display();  
   }
 }
