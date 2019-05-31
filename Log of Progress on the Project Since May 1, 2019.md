@@ -98,3 +98,8 @@ Experimented with ellipses placed by a class and mouse clicks.
 ## May 29, 2019
 Created a prototype for planting trees with a class.
 
+## May 30. 2019
+1. Searched for images of Muhammad's head.
+2. Read about JSON files.
+3. Attempted to create a class which can plant trees on a bare landscape, which means utilizing an image within the parameter.
+
