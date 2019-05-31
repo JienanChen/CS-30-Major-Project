@@ -12,13 +12,13 @@ class Tree {
     this.y = y;
     this.diameter = d;
     this.colour = c;
-  }
+  } 
   display(){
     noSmooth();
     ellipseMode(CENTER);
     stroke(this.colour);
     ellipse(this.x, this.y, this.diameter, this.diameter);
-    fill(this.colour); 
+    fill(this.colour);
   }
 }
 
@@ -31,11 +31,13 @@ function preload(){
   grass = loadImage("grassland.png");
 }
 
+
 function setup() {
   numOfTrees = random(7,21);
+  let colour = "green";
   createCanvas(800, 800);
   for (let i = 0; i < numOfTrees; i++) {
-    let someTree = new Tree(random(width + 7), random(height - 7), random(25, 100), "green");
+    let someTree = new Tree(random(width + 7), random(height - 7), random(25, 100), colour);
     trees.push(someTree);
   }
 }
