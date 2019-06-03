@@ -41,6 +41,8 @@ let redMaple;
 let greenMaple;
 let orange;
 
+let birds;
+
 function preload(){
  grass = loadImage("assets/grassland.png");
 
@@ -53,6 +55,8 @@ function preload(){
  spindly = loadImage("assets/tree7.png");
  redMaple = loadImage("assets/tree8.png");
  orange = loadImage("assets/tree10.png");
+
+ birds = loadSound("assets/Amazing Natural Bird Sounds.mp3");
 }
 
 
@@ -82,7 +86,8 @@ for (let i = 0; i < numOfTrees; i++) {
 }
 
 function draw() {
-   for (let i = 0; i< trees.length; i++) {
-     trees[i].display();  
-   }
+  for (let i = 0; i< trees.length; i++) {
+    trees[i].display();  
+  }
+  //birds.loop();
 }
