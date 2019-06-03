@@ -13,7 +13,7 @@ class Tree {
     this.width = w;
     this.heightDeterminer = hMaker;
     this.image = im;
-}
+  }
   display(){     
     noStroke();
     rectMode(CENTER);
