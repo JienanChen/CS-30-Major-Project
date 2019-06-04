@@ -32,7 +32,7 @@ function displayGrid() {
       else {
         fill(0);
       }
-      rect(width/3 + x*cellSize, y*cellSize + height/4.5, cellSize, cellSize);
+      rect(width/2.75 + x*cellSize, y*cellSize + height/4.5, cellSize, cellSize);
     }
   }
 }
