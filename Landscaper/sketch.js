@@ -42,6 +42,8 @@ let orange;
 
 let birds;
 
+let state = 0;
+
 function preload(){
   grass = loadImage("assets/grassland.png");
 
@@ -79,11 +81,20 @@ function setup() {
     trees.push(someTree); 
     choice = "";
   }
+
+  state = 1;
 }
 
 function draw() {
   for (let i = 0; i< trees.length; i++) {
     trees[i].display();  
   }
-  //birds.loop();
 }
+
+function mouseMoved(){
+  if (state === 1){
+    birds.loop();
+  }
+}
+
+
