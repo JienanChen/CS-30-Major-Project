@@ -91,10 +91,10 @@ function draw() {
   }
 }
 
-function mouseMoved(){
-  if (state === 1){
-    birds.loop();
-  }
-}
+// function mouseMoved(){
+//   if (state === 1){
+//     birds.loop();
+//   }
+// }
 
 
