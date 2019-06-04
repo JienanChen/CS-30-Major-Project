@@ -8,20 +8,19 @@
 
 class Tree {
   constructor (x, y, w, hMaker, im){
-  this.x = x;
-  this.y = y;
-  this.width = w;
-  this.heightDeterminer = hMaker;
-  this.image = im;
-}
+    this.x = x;
+    this.y = y;
+    this.width = w;
+    this.heightDeterminer = hMaker;
+    this.image = im;
+  }
   display(){     
-  noStroke();
-  rectMode(CENTER);
-  imageMode(CENTER);
-  noFill();
-  rect(this.x, this.y, this.width, this.width - this.heightDeterminer);  
-  image(this.image, this.x, this.y, this.width,this.width - this.heightDeterminer); 
-    
+    noStroke();
+    rectMode(CENTER);
+    imageMode(CENTER);
+    noFill();
+    rect(this.x, this.y, this.width, this.width - this.heightDeterminer);  
+    image(this.image, this.x, this.y, this.width,this.width - this.heightDeterminer);    
   }
 }
 
@@ -31,7 +30,7 @@ let numOfTrees;
 let grass;
 
 let tree;
-let colliflowerr;
+let colliflower;
 let pine;
 let palm;
 let fir;
@@ -44,21 +43,18 @@ let orange;
 let birds;
 
 function preload(){
- grass = loadImage("assets/grassland.png");
+  grass = loadImage("assets/grassland.png");
 
- tree =loadImage("assets/tree1A.png");
- colliflower = loadImage("assets/tree2.png");
- pine = loadImage("assets/tree3A.png");
- 
- fir = loadImage("assets/tree5A.png");
- sprangy = loadImage("assets/tree6.png");
- spindly = loadImage("assets/tree7.png");
- redMaple = loadImage("assets/tree8.png");
- orange = loadImage("assets/tree10.png");
-
- birds = loadSound("assets/Amazing Natural Bird Sounds.mp3");
+  tree =loadImage("assets/tree1A.png");
+  colliflower = loadImage("assets/tree2.png");
+  pine = loadImage("assets/tree3A.png");
+  fir = loadImage("assets/tree5A.png");
+  sprangy = loadImage("assets/tree6.png");
+  spindly = loadImage("assets/tree7.png");
+  redMaple = loadImage("assets/tree8.png");
+  orange = loadImage("assets/tree10.png");
+  birds = loadSound("assets/Amazing Natural Bird Sounds.mp3");
 }
-
 
 function setup() {
   numOfTrees = random(7,21);
@@ -76,12 +72,12 @@ function setup() {
   treeImages.set("redMaple", redMaple);
   treeImages.set("orange", orange);
 
-for (let i = 0; i < numOfTrees; i++) {  
-  choices = ["tree","colliflower", "pine", "fir", "sprangy", "spindly", "redMaple",  "orange"];
-  choice = random(choices);
-  let someTree = new Tree(random(width + 7), random(height - 7), random(60, 100), random(1,10), treeImages.get(choice));
-  trees.push(someTree); 
-  choice = "";
+  for (let i = 0; i < numOfTrees; i++) {  
+    let choices = ["tree","colliflower", "pine", "fir", "sprangy", "spindly", "redMaple",  "orange"];
+    let choice = random(choices);
+    let someTree = new Tree(random(width + 7), random(height - 7), random(60, 100), random(1,10), treeImages.get(choice));
+    trees.push(someTree); 
+    choice = "";
   }
 }
 
