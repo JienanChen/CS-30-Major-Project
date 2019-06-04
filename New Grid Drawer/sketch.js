@@ -9,7 +9,6 @@
 let gridSize = 3;
 let grid;
 let cellSize;
-let autoPlay;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
