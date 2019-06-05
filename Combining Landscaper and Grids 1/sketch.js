@@ -72,7 +72,6 @@ function setup() {
   treeImages.set("tree", tree);
   treeImages.set("colliflower", colliflower);
   treeImages.set("pine", pine);
-
   treeImages.set("fir", fir);
   treeImages.set("sprangy", sprangy);
   treeImages.set("spindly", spindly);
@@ -109,17 +108,6 @@ function displayGrid() {
       rect(width/2.75 + x*cellSize, y*cellSize + height/4.5, cellSize, cellSize);
     }
   }
-}
-
-function create2DArray(cols, rows) {
-  let emptyArray = [];
-  for (let i = 0; i < rows; i++) {
-    emptyArray.push([]);
-    for (let j = 0; j < cols; j++) {
-      emptyArray[i].push(0);
-    }
-  }
-  return emptyArray;
 }
 
 function createRandom2DArray(cols, rows) {
