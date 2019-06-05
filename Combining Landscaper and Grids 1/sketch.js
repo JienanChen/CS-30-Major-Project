@@ -1,6 +1,6 @@
-// Project Title
-// Your Name
-// Date
+// Landscaper and Grid Drawer 1
+// Jienan Chen
+// June 4, 2019
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
