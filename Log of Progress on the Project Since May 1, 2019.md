@@ -103,3 +103,21 @@ Created a prototype for planting trees with a class.
 2. Read about JSON files.
 3. Attempted to create a class which can plant trees on a bare landscape, which means utilizing an image within the parameter.
 
+## May 31, 2019
+Finished landscaper. Gave up on Blaviken's Lair, due to time.
+
+## June 1, 2019
+No work.
+
+## June 2, 2019
+No work.
+
+## June 3, 2019
+Copied landscaper from p5.js web editor into Visual Studios Code, and found the appropriate images.
+
+## June 4, 2019
+Intergrated the landscaper and the grid. Work was devoted to scaling the grid so that it stands somewhat in the centre.
+
+## June 5, 2019
+Work on scaling the grid so that it stands somewhat in the centre of the screen.
+
