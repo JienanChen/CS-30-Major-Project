@@ -88,6 +88,7 @@ function draw() {
     displayLivesLeft();
     displayHits();
     image(user, 0, height - (height/4+40));
+    writeInstructions();
     gameOver();
   }
   if (state === 1){
@@ -110,9 +111,16 @@ function displayBlaviken() {
   smooth();
   rect(rectX, rectY, rectWidth, rectHeight);
   image(blaviken, rectX, rectY);
-  //tint(random(0, 255), random(0, 255));
   blaviken.resize(rectWidth, rectHeight);
 }
+
+function writeInstructions(){
+  textAlign(CENTER);
+  fill("maroon");
+  textSize (floor(width/32));
+  text("Click on Blaviken three times to win if you can !", width/2, height/13);
+}
+
 
 function drawLines() {
   strokeWeight(random(1, 10));
@@ -171,7 +179,6 @@ function displayHits(){
 
 function moveRect() {
   rectX += (-9, 7);
-  //rectX += 3;
   rectY += random(-70, 70);
   if (rectX + rectWidth >= width || rectX <= 0) {
     rectX = random(0, width - rectWidth);
@@ -192,7 +199,6 @@ function gameOver() {
     clear();
     state = 2;
   }
-  //return state;
 }
 
 function playWinSound() {
@@ -322,9 +328,5 @@ function mousePressed() {
   }
 }
 
-function keyPressed(){
-  if (keyCode === LEFT_ARROW && (state === 1 ||state === 2)){
-    state = 0;
-  }
-}
+
 
