@@ -119,5 +119,14 @@ Copied landscaper from p5.js web editor into Visual Studios Code, and found the 
 Intergrated the landscaper and the grid. Work was devoted to scaling the grid so that it stands somewhat in the centre.
 
 ## June 5, 2019
-Work on scaling the grid so that it stands somewhat in the centre of the screen.
+Worked on scaling the grid so that it stands somewhat in the centre of the screen.
+
+## June 6, 2019
+1. Added instructions to Tag Blaviken for beta testing.
+2. Worked on scaling the grid so that it stands somewhat in the centre of the screen.
+
+## June 7, 2019
+1. Beta testing.
+2. Worked on scaling the grid so that it stands somewhat in the centre of the screen.
+
 
