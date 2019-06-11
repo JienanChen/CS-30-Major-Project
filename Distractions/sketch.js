@@ -63,7 +63,7 @@ function preload(){
 function setup() {
   let choices = ["beige", "black", "orange", "purple", "yellow"];
   createCanvas(windowWidth, windowHeight);
-  for (let i=0; i< 100; i++) {
+  for (let i=0; i< 13; i++) {
     let colour = random(choices);
     let vex = new Distractions(random(width), random(height), random(75, 150), random(choices), pouya, 5);
     distractions.push(vex);
