@@ -7,10 +7,10 @@
 
 
 class Distractions {
-  constructor(x, y, width,someColour, someImage, someSpeed){
+  constructor(x, y, someWidth,someColour, someImage, someSpeed){
     this.x = x;
     this.y = y;
-    this.width = width;
+    this.width = someWidth;
     this.stroke = someColour;
     this.img = someImage;
     this.speed = someSpeed;
@@ -27,11 +27,11 @@ class Distractions {
 
   move() {
     let choice = random(100);
-    if (this.x > width/4 || this.x< 0){
-      random(width + 15, width - 15);
+    if (this.x + this.width >= width || this.x <= 0){
+      this.x = random(0, width - this.width);
     }
-    if (this.y > 0 || this.x === height){
-      random(width + 15, width - 15);
+    if (this.y + this.width - 7 >= height || this.y <= 0){
+      this.y = random(0,  height - this.width - 7);
     }
     if (choice < 25) {
       //up
@@ -61,10 +61,10 @@ function preload(){
 
 
 function setup() {
-  let choices = ["beige", "black", "orange", "purple", "yellow"];
+  choices = ["beige", "black", "orange", "purple", "yellow"];
   createCanvas(windowWidth, windowHeight);
   for (let i=0; i< 100; i++) {
-    let colour = random(choices);
+    colour = random(choices);
     let vex = new Distractions(random(width), random(height), random(75, 150), random(choices), pouya, 5);
     distractions.push(vex);
   }
@@ -72,7 +72,7 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+    background(220);
   for (let i=0; i<distractions.length; i++) {
     distractions[i].move();
     distractions[i].display();
