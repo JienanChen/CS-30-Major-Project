@@ -56,15 +56,15 @@ let distractions = [];
 let pouya;
 
 function preload(){
-  pouya = loadImage("20180411_154733-(1)-(1)A.png");
+  pouya = loadImage("assets/20180411_154733-(1)-(1)A.png");
 }
 
 
 function setup() {
-  choices = ["beige", "black", "orange", "purple", "yellow"];
+  let choices = ["beige", "black", "orange", "purple", "yellow"];
   createCanvas(windowWidth, windowHeight);
   for (let i=0; i< 100; i++) {
-    colour = random(choices);
+    let colour = random(choices);
     let vex = new Distractions(random(width), random(height), random(75, 150), random(choices), pouya, 5);
     distractions.push(vex);
   }
@@ -72,7 +72,7 @@ function setup() {
 }
 
 function draw() {
-    background(220);
+  background(220);
   for (let i=0; i<distractions.length; i++) {
     distractions[i].move();
     distractions[i].display();
