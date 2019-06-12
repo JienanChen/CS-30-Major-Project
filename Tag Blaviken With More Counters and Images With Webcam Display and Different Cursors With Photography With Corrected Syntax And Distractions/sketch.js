@@ -1,10 +1,55 @@
-// Tag Blaviken (Seventh Version)
+// Tag Blaviken (Eigth Version)
 // Jienan Chen
-// June 6, 2019
+// June 11, 2019
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
+class Distractions {
+  constructor(x, y, someWidth,someColour, someImage, someSpeed){
+    this.x = x;
+    this.y = y;
+    this.width = someWidth;
+    this.stroke = someColour;
+    this.img = someImage;
+    this.speed = someSpeed;
+  }
+
+  display() {
+    rectMode(CENTER);
+    imageMode(CENTER);
+    strokeWeight(7);
+    stroke(this.stroke);
+    rect(this.x, this.y, this.width, this.width - 7);
+    image(this.img, this.x, this.y, this.width, this.width - 7);
+  }
+
+  move() {
+    let choice = random(100);
+    if (this.x + this.width >= width || this.x <= 0){
+      this.x = random(0, width - this.width);
+    }
+    if (this.y + this.width - 7 >= height || this.y <= 0){
+      this.y = random(0,  height - this.width - 7);
+    }
+    if (choice < 25) {
+      //up
+      this.y -= this.speed* random(8);
+    }
+    else if (choice < 50) {
+      //down
+      this.y += this.speed* random(10);
+    }
+    else if (choice < 75) {
+      //left
+      this.x -= this.speed * random(8);
+    }
+    else {
+      //right
+      this.x += this.speed * random(10);
+    }
+  }
+}
 
 let blaviken;
 let winImage;
@@ -28,6 +73,8 @@ let hits;
 let user;
 
 let state;
+
+let distractions = [];
 
 function preload() {
   blaviken = loadImage("assets/20180411_154733 (1) (1)A.jpg");
@@ -73,6 +120,13 @@ function setup() {
   user.size(width/4, height/4);
   user.hide();
   state = 0;
+
+  let choices = ["beige", "black", "orange", "purple", "yellow"];
+  for (let i=0; i< 100; i++) {
+    let colour = random(choices);
+    let vex = new Distractions(random(width), random(height), random(75, 250), random(choices), blaviken, 5);
+    distractions.push(vex);
+  }
 }
 
 function draw() {
@@ -80,15 +134,26 @@ function draw() {
     background(random(125, 250));
     displayBlaviken();
     noCursor();
+
+    for (let i=0; i<distractions.length; i++) {
+      distractions[i].move();
+      distractions[i].display();
+    }
+
+    imageMode(CENTER);
     image(finger, mouseX, mouseY + 5, width/27, height/8);
+    
     moveRect();
     drawLines();
     progressiveLines();
     drawPoints();
     displayLivesLeft();
     displayHits();
+
+    imageMode(CORNER);
     image(user, 0, height - (height/4+40));
-    writeInstructions();
+
+    //writeInstructions();
     gameOver();
   }
   if (state === 1){
@@ -109,6 +174,8 @@ function displayBlaviken() {
   stroke("red");
   strokeWeight(7);
   smooth();
+  rectMode(CORNER);
+  imageMode(CORNER);
   rect(rectX, rectY, rectWidth, rectHeight);
   image(blaviken, rectX, rectY);
   blaviken.resize(rectWidth, rectHeight);
@@ -153,6 +220,7 @@ function displayLivesLeft(){
   let livesHeight = width/4.4;
   noStroke();
   fill(255, 255, 255, 100);
+  rectMode(CORNER);
   rect(width - livesWidth, 0, livesWidth, livesHeight);
   textAlign(CENTER);
   fill(0);
@@ -167,6 +235,7 @@ function displayHits(){
   let hitsHeight = width/4.4;
   noStroke();
   fill(255, 255, 255, 100);
+  rectMode(CORNER);
   rect(0, 0, hitsWidth, hitsHeight);
   textAlign(CENTER);
   fill(0);
@@ -325,6 +394,15 @@ function mousePressed() {
     image(user, 0, 0, width, height);
     saveCanvas(choose + today + time, "jpg");
     userLossCounter = 4;
+  }
+}
+
+function keyPressed(){
+  if (keyCode === LEFT_ARROW && (state === 1 ||state === 2)){
+    //state = 0;
+    background(255);
+    //clear();
+    redraw();
   }
 }
 
