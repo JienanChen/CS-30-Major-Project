@@ -172,18 +172,20 @@ function draw() {
   if (state === 2){
     introductionMenu();
   }
+
   if (state === "Spasky"){
     gridSize = 3;
-    }
     if (gridsDrawn===0){
       background(grass);
       grid = placeEnemies(gridSize, gridSize);
       displayGrid();
       for (let i = 0; i< trees.length; i++) {
         trees[i].display();
-      gridsDrawn = 1
       }
+      gridsDrawn = 1   
+    }
   }
+
   if (state === "Charter"){
     gridSize = 8;
     if (gridsDrawn===0){
