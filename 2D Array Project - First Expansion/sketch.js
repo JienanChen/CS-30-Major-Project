@@ -154,10 +154,12 @@ function setup() {
   treeImages.set("redMaple", redMaple);
   treeImages.set("orange", orange);
 
+  numOfTrees = random(7,22);
+
   for (let i = 0; i < numOfTrees; i++) {  
     let choices = ["tree","colliflower", "pine", "fir", "sprangy", "spindly", "redMaple",  "orange"];
     let choice = random(choices);
-    let someTree = new Tree(random(width + 7), random(height - 7), random(60, 100), random(1,10), treeImages.get(choice));
+    let someTree = new Tree(random(0, width - 7), random(0, height - 7), random(100, 316), random(1,21), treeImages.get(choice));
     trees.push(someTree); 
     choice = "";
   }
@@ -175,15 +177,15 @@ function draw() {
 
   if (state === "Spasky"){
     gridSize = 3;
-    if (gridsDrawn===0){
-      background(grass);
-      grid = placeEnemies(gridSize, gridSize);
-      displayGrid();
-      for (let i = 0; i< trees.length; i++) {
+     if (gridsDrawn===0){
+       background(grass);
+       grid = placeEnemies(gridSize, gridSize);
+       displayGrid();
+       for (let i = 0; i< trees.length; i++) {
         trees[i].display();
       }
-      gridsDrawn = 1   
-    }
+       gridsDrawn = 1   
+     }
   }
 
   if (state === "Charter"){
@@ -219,7 +221,7 @@ function loadStartScreen(){
 
 function writeInstructions(){
   //Writes out instructions (temporary ones) beneath the start button (by Jienan)
-  let instructionPlacement = [height/3.8, height/3.1, height/2.7];
+  let instructionPlacement = [height/3.8, height/3.1, height/2.5];
   textAlign(LEFT);
   textSize (height * 0.045);
   fill(255);
@@ -258,17 +260,18 @@ function drawButtons(){
 function displayGrid(){
   //Displays the grids(adapted by Jienan from Mr. Schellenberg's Game of Life Demo) 
   cellSize = (width/gridSize) * 0.35;
-  rectMode(CENTER);
+  rectMode(CORNER);
   stroke(0);
   for (let y = 0; y < gridSize; y++){
     for (let x = 0; x < gridSize; x++) { 
-      if (grid[y][x] === 0 || grid[y][x] === 1){
-        fill(255);
-      }
-      else {
-        fill(0);
-      }
-      rect(width/2.6 + x*cellSize, height/4 + y*cellSize, cellSize, cellSize);
+       if (grid[y][x] === 0 || grid[y][x] === 1){
+         fill(255);
+       }
+       else {
+         fill(0);
+       }
+
+      rect(width/3 + x*cellSize, height/8 + y*cellSize, cellSize, cellSize);
     }
   }
 }
@@ -419,7 +422,7 @@ function stopAllSounds(){
 function mousePressed() {
   //Changing states during the mode selection page(adapted by Pouya from Jienan's Le Chartier Project)
   clicked = true;
-  cellSize = width/gridSize;
+  cellSize = (width/gridSize) * 0.35;
   let xcoord = floor(mouseX / cellSize);
   let ycoord = floor(mouseY / cellSize);
   if (state === 2) {
