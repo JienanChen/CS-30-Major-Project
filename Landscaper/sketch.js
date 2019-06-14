@@ -77,7 +77,7 @@ function setup() {
   for (let i = 0; i < numOfTrees; i++) {  
     let choices = ["tree","colliflower", "pine", "fir", "sprangy", "spindly", "redMaple",  "orange"];
     let choice = random(choices);
-    let someTree = new Tree(random(width + 7), random(height - 7), random(60, 100), random(1,10), treeImages.get(choice));
+    let someTree = new Tree(random(width + 7), random(height - 7), random(100, 300), random(1,10), treeImages.get(choice));
     trees.push(someTree); 
     choice = "";
   }
