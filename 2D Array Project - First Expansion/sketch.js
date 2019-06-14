@@ -1,6 +1,6 @@
 // La redemption Game (Innitial Version)
 // Jienan Chen, Pouya Pourhaj
-// April 28, 2019
+// June 13, 2019
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
@@ -66,12 +66,7 @@ function preload(){
 }
 
 function setup() {
-  //Screen for the grid(by Pouya)
-  // if (windowWidth > windowHeight){
-  //   createCanvas(windowHeight, windowHeight);
-  // } else {
-  //   createCanvas(windowWidth, windowWidth);
-  // }
+
   createCanvas(windowWidth, windowHeight);
   
   //Setting the mode(by Pouya)
@@ -97,7 +92,7 @@ function setup() {
   buttonX = width / 2;
   buttonY = height / 8;
   buttonWidth = width / 2;
-  buttonHeight = (height / 2 - 10) / 2;
+  buttonHeight = (height / 2 - 25) /1.5;
   size = (height / 2 - 10) / 4;
   gridsDrawn = 0;
 }
@@ -114,6 +109,7 @@ function draw() {
   if (state === "Spasky"){
     gridSize = 3;
     if (gridsDrawn===0){
+      background(255);
       grid = placeEnemies(gridSize, gridSize);
       displayGrid();
       gridsDrawn = 1;
@@ -133,12 +129,16 @@ function loadStartScreen(){
   //display a large button on which is printed "start" (adapted by Pouya from Jienan's Le Chartier Project, fixed by Jienan)
   textAlign(CENTER);
   textSize(startButtonWidth / 4);
+  
   background("brown");
+  
   fill("white");
   stroke("grey");
   rect(startButtonX, startButtonY, startButtonWidth, startButtonHeight);
-  strokeWeight(3);
+  strokeWeight(7);
+  
   stroke("black");
+  fill("gold");
   text("Start", startButtonX, startButtonY + height / 19);
   textSize((floor(height / 2) - 10) / 5);
   if (clickedOnStartButton() && clicked) {
@@ -171,7 +171,7 @@ function introductionMenu(){
     background("black");
     fill("white");
     stroke("red");
-    strokeWeight(3);
+    strokeWeight(7);
     drawButtons();
 }
 
@@ -186,8 +186,8 @@ function drawButtons(){
 
 function displayGrid(){
   //Displays the grids(adapted by Jienan from Mr. Schellenberg's Game of Life Demo) 
-  cellSize=width/gridSize;
-  rectMode(CORNER);
+  cellSize = (width/gridSize) * 0.35;
+  rectMode(CENTER);
   stroke(0);
   for (let y = 0; y < gridSize; y++){
     for (let x = 0; x < gridSize; x++) { 
@@ -197,7 +197,7 @@ function displayGrid(){
       else {
         fill(0);
       }
-      rect(x * cellSize, y * cellSize, cellSize, cellSize);
+      rect(width/2.6 + x*cellSize, height/4 + y*cellSize, cellSize, cellSize);
     }
   }
 }
