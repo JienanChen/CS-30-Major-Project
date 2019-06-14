@@ -18,8 +18,6 @@ let clicked = false;
 
 //Instructions related global variables (by Jienan)
 let instructionText = ["1. Select one of the two modes.", "2. Find the enemies by clicking on the grid.","3. If you desire to change modes, click r."];
-let instructionPlacement = [130, 160, 190];
-
 
 //Grid related global variables (adapted by Jienan)
 let gridSize;
@@ -69,11 +67,12 @@ function preload(){
 
 function setup() {
   //Screen for the grid(by Pouya)
-  if (windowWidth > windowHeight){
-    createCanvas(windowHeight, windowHeight);
-  } else {
-    createCanvas(windowWidth, windowWidth);
-  }
+  // if (windowWidth > windowHeight){
+  //   createCanvas(windowHeight, windowHeight);
+  // } else {
+  //   createCanvas(windowWidth, windowWidth);
+  // }
+  createCanvas(windowWidth, windowHeight);
   
   //Setting the mode(by Pouya)
   state = 1;
@@ -90,8 +89,9 @@ function setup() {
   //Assigning start menu button values(by Pouya)
   startButtonX = width / 2;
   startButtonY = height / 2;
-  startButtonWidth = 250;
-  startButtonHeight = 125;
+  startButtonWidth = width/3;
+  startButtonHeight = height/3.5;
+
 
   //Introduction menu button placement/values(by Pouya)
   buttonX = width / 2;
@@ -132,15 +132,15 @@ function draw() {
 function loadStartScreen(){
   //display a large button on which is printed "start" (adapted by Pouya from Jienan's Le Chartier Project, fixed by Jienan)
   textAlign(CENTER);
-  textSize((floor(height / 2) - 10) / 5);
+  textSize(startButtonWidth / 4);
   background("brown");
   fill("white");
   stroke("grey");
   rect(startButtonX, startButtonY, startButtonWidth, startButtonHeight);
   strokeWeight(3);
   stroke("black");
-  text("Start", startButtonX, startButtonY);
-  textSize(startButtonWidth / 5, startButtonHeight / 5);
+  text("Start", startButtonX, startButtonY + height / 19);
+  textSize((floor(height / 2) - 10) / 5);
   if (clickedOnStartButton() && clicked) {
     state = 2;
   }
@@ -148,6 +148,7 @@ function loadStartScreen(){
 
 function writeInstructions(){
   //Writes out instructions (temporary ones) beneath the start button (by Jienan)
+  let instructionPlacement = [height/3.8, height/3.1, height/2.7];
   textAlign(LEFT);
   textSize (height * 0.045);
   fill(255);
