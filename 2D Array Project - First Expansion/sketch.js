@@ -5,6 +5,24 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
+class Tree {
+  constructor (x, y, w, hMaker, im){
+  this.x = x;
+  this.y = y;
+  this.width = w;
+  this.heightDeterminer = hMaker;
+  this.image = im;
+}
+display(){     
+  noStroke();
+  rectMode(CENTER);
+  imageMode(CENTER);
+  noFill();
+  rect(this.x, this.y, this.width, this.width - this.heightDeterminer);  
+  image(this.image, this.x, this.y, this.width,this.width - this.heightDeterminer);    
+  }
+}
+
 let state;
 
 //Button related global variables(by Pouya)
@@ -33,6 +51,23 @@ let sWin1, sWin2, sWin3;
 //Charter sounds
 let cLoss1, cLoss2, cLoss3, cLoss4, cLoss5, cLoss6;
 let cWin1, cWin2;
+
+//Landscaping
+let trees = [];
+let numOfTrees;
+
+let grass;
+
+let tree;
+let colliflower;
+let pine;
+let palm;
+let fir;
+let sprangy;
+let spindly;
+let redMaple;
+let greenMaple;
+let orange;
 
 function preload(){
   //Preload sounds(Text within the function by Jienan. The function already exists.)
@@ -63,6 +98,17 @@ function preload(){
   //Otherwise, in Charter mode
   cWin1 = loadSound("assets/charterWin1.m4a");
   cWin2 = loadSound("assets/charterWin2.m4a");
+  
+  grass = loadImage("assets/grassland.png");
+  
+  tree =loadImage("assets/tree1A.png");
+  colliflower = loadImage("assets/tree2.png");
+  pine = loadImage("assets/tree3A.png");
+  fir = loadImage("assets/tree5A.png");
+  sprangy = loadImage("assets/tree6.png");
+  spindly = loadImage("assets/tree7.png");
+  redMaple = loadImage("assets/tree8.png");
+  orange = loadImage("assets/tree10.png");
 }
 
 function setup() {
@@ -95,6 +141,26 @@ function setup() {
   buttonHeight = (height / 2 - 25) /1.5;
   size = (height / 2 - 10) / 4;
   gridsDrawn = 0;
+
+  //Landscaping
+  let treeImages = new Map();
+  treeImages.set("tree", tree);
+  treeImages.set("colliflower", colliflower);
+  treeImages.set("pine", pine);
+
+  treeImages.set("fir", fir);
+  treeImages.set("sprangy", sprangy);
+  treeImages.set("spindly", spindly);
+  treeImages.set("redMaple", redMaple);
+  treeImages.set("orange", orange);
+
+  for (let i = 0; i < numOfTrees; i++) {  
+    let choices = ["tree","colliflower", "pine", "fir", "sprangy", "spindly", "redMaple",  "orange"];
+    let choice = random(choices);
+    let someTree = new Tree(random(width + 7), random(height - 7), random(60, 100), random(1,10), treeImages.get(choice));
+    trees.push(someTree); 
+    choice = "";
+  }
 }
 
 function draw() {
@@ -108,11 +174,14 @@ function draw() {
   }
   if (state === "Spasky"){
     gridSize = 3;
+    }
     if (gridsDrawn===0){
-      background(255);
+      background(grass);
       grid = placeEnemies(gridSize, gridSize);
       displayGrid();
-      gridsDrawn = 1;
+      for (let i = 0; i< trees.length; i++) {
+        trees[i].display();
+      gridsDrawn = 1
       }
   }
   if (state === "Charter"){
@@ -120,10 +189,10 @@ function draw() {
     if (gridsDrawn===0){
       grid = placeEnemies(gridSize, gridSize);
       displayGrid();
-      gridsDrawn = 1;
+      gridsDrawn = 1;  
+      }
+   }
     }
-  }
-}
 
 function loadStartScreen(){
   //display a large button on which is printed "start" (adapted by Pouya from Jienan's Le Chartier Project, fixed by Jienan)

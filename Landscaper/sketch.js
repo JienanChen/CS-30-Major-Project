@@ -40,7 +40,7 @@ let redMaple;
 let greenMaple;
 let orange;
 
-let birds;
+//let birds;
 
 let state = 0;
 
@@ -55,7 +55,7 @@ function preload(){
   spindly = loadImage("assets/tree7.png");
   redMaple = loadImage("assets/tree8.png");
   orange = loadImage("assets/tree10.png");
-  birds = loadSound("assets/Amazing Natural Bird Sounds.mp3");
+  //birds = loadSound("assets/Amazing Natural Bird Sounds.mp3");
 }
 
 function setup() {
