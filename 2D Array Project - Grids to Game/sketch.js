@@ -127,6 +127,11 @@ function draw() {
       gridsDrawn = 1;
     }
   }
+
+  if (state === "Choose"){
+    background(0);
+  }
+  
 }
 
 function loadStartScreen(){
@@ -365,6 +370,7 @@ function mousePressed() {
       playSpaskyWinSound();
       grid[ycoord][xcoord] = 2;
       displayGrid();
+      state = "Choose";
     } 
    else if (state === "Spasky" && grid[ycoord][xcoord] === 0){
       stopAllSounds();
