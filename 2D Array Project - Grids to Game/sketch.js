@@ -753,6 +753,36 @@ function mousePressed() {
       state = "Find"
     }
   }
+
+  if (state === "Tag"){
+    stopAllBlavikenSounds();
+  if (state === "Tag" && (userWinCounter < 3 || userLossCounter < 3)) {
+    if ((mouseX >= rectX && mouseX <= rectX + rectWidth) && (mouseY >= rectY && mouseY <= rectY + rectHeight)) {
+      playBlavikenLossSound();
+      userWinCounter++;
+      hits ++;
+    } 
+    else {
+      playBlavikenWinSound();
+      userLossCounter++;
+      livesLeft --;
+    }
+  }
+  // if (userWinCounter === 3){
+  //   victory.setVolume(1.0);
+  //   victory.play();
+  //   userWinCounter ++;
+  // }
+  if (userLossCounter === 3){
+    let today = day();
+    let time = millis();
+    let message = ["youLost", "buttKicked", "ohWell", "frustratedFace", "isThatAllYourBest", "sadFace", "booHoo", "badLuck", "sorry"];
+    let choose = random(message);
+    image(user, 0, 0, width, height);
+    saveCanvas(choose + today + time, "jpg");
+    userLossCounter = 4;
+  }
+  }
 }
 
 function keyPressed() {
