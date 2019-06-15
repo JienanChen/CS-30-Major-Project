@@ -291,10 +291,8 @@ function draw() {
     imageMode(CORNER);
     image(user, 0, height - (height/4+40));
 
-    //gameOver();
+    gameOver();
   }
-
-  
 }
 
 function loadStartScreen(){
@@ -706,6 +704,19 @@ function stopAllBlavikenSounds() {
   loss9.stop();
 }
 
+function gameOver() {
+  if (userLossCounter > 2) {
+    stopAllSounds();
+    clear();
+    state = 1;
+  }
+  if (userWinCounter > 2) {
+    stopAllSounds();
+    clear();
+    state = 1;
+  }
+}
+
 function mousePressed() {
   //Changing states during the mode selection page(adapted by Pouya from Jienan's Le Chartier Project)
   clicked = true;
@@ -770,11 +781,12 @@ function mousePressed() {
       livesLeft --;
     }
   }
-  // if (userWinCounter === 3){
-  //   victory.setVolume(1.0);
-  //   victory.play();
-  //   userWinCounter ++;
-  // }
+   if (userWinCounter === 3){
+    //  victory.setVolume(1.0);
+    //  victory.play();
+    //  userWinCounter ++;
+    state = "loss";
+   }
   if (userLossCounter === 3){
     let today = day();
     let time = millis();
