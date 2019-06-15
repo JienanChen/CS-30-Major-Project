@@ -36,6 +36,9 @@ let sWin1, sWin2, sWin3;
 let cLoss1, cLoss2, cLoss3, cLoss4, cLoss5, cLoss6;
 let cWin1, cWin2;
 
+//Images
+let choooseStateBackground;
+
 function preload(){
   //Preload sounds(Text within the function by Jienan. The function already exists.)
 
@@ -65,6 +68,10 @@ function preload(){
   //Otherwise, in Charter mode
   cWin1 = loadSound("assets/charterWin1.m4a");
   cWin2 = loadSound("assets/charterWin2.m4a");
+
+  //Images
+  //Background for when choosing between interactive scenes with Blaviken
+  chooseStateBackground = loadImage("assets/pattern2.png");
 }
 
 function setup() {
@@ -129,7 +136,8 @@ function draw() {
   }
 
   if (state === "Choose"){
-    background(0);
+    background(chooseStateBackground);
+    drawChoiceButtons();
   }
   
 }
@@ -186,6 +194,21 @@ function drawButtons(){
     rect(buttonX, buttonAndTextPlacement[i] * buttonY, buttonWidth, buttonHeight);
     text(buttonText[i], buttonX, buttonAndTextPlacement[i] * buttonY);
   }
+}
+
+function drawChoiceButtons(){
+  let yMultipliers = [3/8, 5/8];
+  let choiceTexts = ["Tag Blaviken", "Find Blaviken"];
+  rectMode(CENTER);
+  textAlign(CENTER);
+  
+  for (let i = 0; i< choiceTexts.length; i++){
+    fill(200);
+    rect(width/2, height * yMultipliers[i], width/3, height/6.5);
+    fill("gold");
+    textSize(width/20);
+    text(choiceTexts[i],width/2, height * yMultipliers[i] + width/80); 
+  }     
 }
 
 function displayGrid(){
@@ -355,12 +378,22 @@ function mousePressed() {
   cellSize = width/gridSize;
   let xcoord = floor(mouseX / cellSize);
   let ycoord = floor(mouseY / cellSize);
+  
   if (state === 2) {
     for (let i = 0; i < buttonAndTextPlacement.length; i++) {
       if (mouseX > buttonX - buttonWidth / 2 & mouseX < buttonX + buttonWidth / 2 & mouseY > buttonAndTextPlacement[i] * buttonY - buttonHeight / 2 & mouseY < buttonAndTextPlacement[i] * buttonY + buttonHeight / 2){
         state = difficulty[i];
     }
   }
+}
+
+  if (state === "Choose"){
+    if (mouseX > width/4 && mouseX < width/4 * 3 && mouseY > height*3/8 - (height/6.5)/2 && mouseY < height*3/8 + (height/6.5)/2){
+      state = "Tag";
+    }
+    if (mouseX > width/4 && mouseX < width/4 * 3 && mouseY > height*5/8 - (height/6.5)/2 && mouseY < height*5/8 + (height/6.5)/2){
+      state = "Find"
+    }
   }
 
   //Playing and stopping the playing of sounds according to the modes (Spasky and Charter) and displaying Blaviken when he is found (adapted by Jienan from Mr. Schellenberg's Game of Life Demo)
