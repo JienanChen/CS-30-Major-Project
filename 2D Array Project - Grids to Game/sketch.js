@@ -151,7 +151,7 @@ function preload(){
   win6 = loadSound("assets/BlavikenWin6.m4a");
   win7 = loadSound("assets/BlavikenWin7.m4a");
   win8 = loadSound("assets/BlavikenWin8.m4a");
-  
+
   //Sounds to be played when Blaviken's clicked
   loss1 = loadSound("assets/BlavikenLoss1.m4a");
   loss2 = loadSound("assets/BlavikenLoss2.m4a");
@@ -201,6 +201,21 @@ function setup() {
   buttonHeight = (height / 2 - 10) / 2;
   size = (height / 2 - 10) / 4;
   gridsDrawn = 0;
+
+  //Tag Blaviken
+  rectWidth = width / 9.78;
+  rectHeight = width / 9;
+  rectX = random(0, width - rectWidth);
+  rectY = random(0, height - rectHeight);
+  imageRectWidth = width / 2;
+  imageRectHeight = width / 3.2;
+  userLossCounter = 0;
+  userWinCounter = 0;
+  livesLeft = 3;
+  hits = 0;
+  user = createCapture(VIDEO);
+  user.size(width/4, height/4);
+  user.hide();
 }
 
 function draw() {
