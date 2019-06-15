@@ -407,6 +407,93 @@ function placeEnemies(cols, rows){
   return emptyArray;
 }
 
+function displayBlaviken() {
+  stroke("red");
+  strokeWeight(7);
+  smooth();
+  rectMode(CORNER);
+  imageMode(CORNER);
+  rect(rectX, rectY, rectWidth, rectHeight);
+  image(blaviken, rectX, rectY);
+  blaviken.resize(rectWidth, rectHeight);
+}
+
+function writeInstructions(){
+  textAlign(CENTER);
+  fill("maroon");
+  textSize (floor(width/32));
+  text("Click on Blaviken three times to win if you can !", width/2, height/13);
+}
+
+
+function drawLines() {
+  strokeWeight(random(1, 10));
+  stroke(random(48, 250));
+  fill(0);
+  line(0, random(height), height, random(height));
+  line(random(width), 0, height, random(width));
+  fill(random(125, 255));
+  curve(random(width), random(width), random(width), random(width), random(height), random(height), random(height), random(height));
+}
+
+function progressiveLines() {
+  for (let i = 0; i < width; i += 20) {
+    stroke(random(100, 220));
+    strokeWeight(3);
+    fill(random(25, 255));
+    line(i, 0, i, height);
+  }
+}
+
+function drawPoints() {
+  stroke(random(0, 255));
+  strokeWeight(random(1, 35));
+  fill(0);
+  point(random(width), random(height));
+}
+
+function displayLivesLeft(){
+  let livesWidth = width/5.79;
+  let livesHeight = width/4.4;
+  noStroke();
+  fill(255, 255, 255, 100);
+  rectMode(CORNER);
+  rect(width - livesWidth, 0, livesWidth, livesHeight);
+  textAlign(CENTER);
+  fill(0);
+  textSize(width/26);
+  text("Lives Left", width-livesWidth + livesWidth/2, livesHeight/1.25);
+  textSize(width/13);
+  text(livesLeft, width-livesWidth + livesWidth/2, livesHeight/1.75);
+}
+
+function displayHits(){
+  let hitsWidth = width/5.79;
+  let hitsHeight = width/4.4;
+  noStroke();
+  fill(255, 255, 255, 100);
+  rectMode(CORNER);
+  rect(0, 0, hitsWidth, hitsHeight);
+  textAlign(CENTER);
+  fill(0);
+  textSize(width/26);
+  text("Hits", hitsWidth/2, hitsHeight/1.25);
+  textSize(width/13);
+  fill("red");
+  text(hits, hitsWidth/2, hitsHeight/1.75);
+}
+
+function moveRect() {
+  rectX += (-9, 7);
+  rectY += random(-70, 70);
+  if (rectX + rectWidth >= width || rectX <= 0) {
+    rectX = random(0, width - rectWidth);
+  }
+  if (rectY + rectHeight >= height || rectY <= 0) {
+    rectY = random(0, height - rectHeight);
+  }
+}
+
 function playSpaskyLossSound(){
   //When no Blaviken is found in the Spasky mode(by Jienan)
   let choices = [1, 2, 3, 4, 5];
@@ -495,8 +582,84 @@ function playCharterWinSound(){
   }
 }
 
+function playBlavikenWinSound() {
+  let choice = floor(random(1, 9));
+  if (choice === 1) {
+    win1.play();
+    win1.setVolume(0.5);
+  }
+  if (choice === 2) {
+    win2.play();
+    win2.setVolume(0.5);
+  }
+  if (choice === 3) {
+    win3.play();
+    win3.setVolume(0.5);
+  }
+  if (choice === 4) {
+    win4.play();
+    win4.setVolume(0.5);
+  }
+  if (choice === 5) {
+    win5.play();
+    win5.setVolume(0.5);
+  }
+  if (choice === 6) {
+    win6.play();
+    win6.setVolume(0.5);
+  }
+  if (choice === 7) {
+    win7.play();
+    win7.setVolume(0.5);
+  }
+  if (choice === 8) {
+    win8.play();
+    win8.setVolume(0.5);
+  }
+}
+
+function playBlavikenLossSound() {
+  let choice = floor(random(1, 10));
+  if (choice === 1) {
+    loss1.play();
+    loss1.setVolume(0.9);
+  }
+  if (choice === 2) {
+    loss2.play();
+    loss2.setVolume(0.9);
+  }
+  if (choice === 3) {
+    loss3.play();
+    loss3.setVolume(0.9);
+  }
+  if (choice === 4) {
+    loss4.play();
+    loss4.setVolume(0.9);
+  }
+  if (choice === 5) {
+    loss5.play();
+    loss5.setVolume(0.9);
+  }
+  if (choice === 6) {
+    loss6.play();
+    loss6.setVolume(0.9);
+  }
+  if (choice === 7) {
+    loss7.play();
+    loss7.setVolume(0.9);
+  }
+  if (choice === 8) {
+    loss8.play();
+    loss8.setVolume(0.9);
+  }
+  if (choice === 9) {
+    loss9.play();
+    loss9.setVolume(0.9);
+  }
+}
+
 function stopAllSounds(){
-  //Stops the sounds(by Jienan)
+  //Stops the sounds in Grids Mode(by Jienan)
 
   //Spasky loss sounds
   sLoss1.stop();
@@ -518,6 +681,28 @@ function stopAllSounds(){
   //Charter win sounds
   cWin1.stop();
   cWin2.stop();
+}
+
+function stopAllBlavikenSounds() {
+  //Stops sounds in the Tag Blaviken mode
+  win1.stop();
+  win2.stop();
+  win3.stop();
+  win4.stop();
+  win5.stop();
+  win6.stop();
+  win7.stop();
+  win8.stop();
+
+  loss1.stop();
+  loss2.stop();
+  loss3.stop();
+  loss4.stop();
+  loss5.stop();
+  loss6.stop();
+  loss7.stop();
+  loss8.stop();
+  loss9.stop();
 }
 
 function mousePressed() {
