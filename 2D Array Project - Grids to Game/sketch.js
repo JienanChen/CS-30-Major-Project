@@ -109,6 +109,7 @@ let user;
 //Array for the Disctractions
 let distractions = [];
 
+
 function preload(){
   //Preload sounds(Text within the function by Jienan. The function already exists.)
 
@@ -165,6 +166,12 @@ function preload(){
   //Images
   //Background for when choosing between interactive scenes with Blaviken
   chooseStateBackground = loadImage("assets/pattern2.png");
+
+  //Tag Blaviken Images
+  blaviken = loadImage("assets/20180411_154733 (1) (1)A.jpg");
+  winImage = loadImage("assets/DSC01815.JPG");
+  lossImage = loadImage("assets/Capture15.JPG");
+  finger = loadImage("assets/finger.png");
 }
 
 function setup() {
@@ -256,6 +263,7 @@ function draw() {
   }
 
   if (state === "Tag"){
+    clear();
     background(random(125, 250));
     displayBlaviken();
 
@@ -283,7 +291,7 @@ function draw() {
     imageMode(CORNER);
     image(user, 0, height - (height/4+40));
 
-    gameOver();
+    //gameOver();
   }
 
   
