@@ -98,6 +98,7 @@ let imageRectWidth , imageRectHeight;
 //Sounds
 let win1, win2, win3, win4, win5, win6, win7, win8;
 let loss1, loss2, loss3, loss4, loss5, loss6, loss7, loss8, loss9;
+let testSound, testSoundA;
 //Counters
 let userLossCounter;
 let userWinCounter;
@@ -163,6 +164,9 @@ function preload(){
   loss8 = loadSound("assets/BlavikenLoss8.m4a");
   loss9 = loadSound("assets/BlavikenLoss9.m4a");
 
+  testSound = loadSound("assets/东周列国.wav");
+  testSoundA = loadSound("assets/为你歌唱－ｆ调.wav");
+
   //Images
   //Background for when choosing between interactive scenes with Blaviken
   chooseStateBackground = loadImage("assets/pattern2.png");
@@ -209,12 +213,17 @@ function setup() {
   gridsDrawn = 0;
 
   //Tag Blaviken
+  //Dimensions of the box within which the Blaviken image sits in
   rectWidth = width / 9.78;
   rectHeight = width / 9;
+  //Location of said box 
   rectX = random(0, width - rectWidth);
   rectY = random(0, height - rectHeight);
-  imageRectWidth = width / 2;
-  imageRectHeight = width / 3.2;
+
+  // imageRectWidth = width / 2;
+  // imageRectHeight = width / 3.2;
+
+  //Counts the number of times the user has hit or missed Blaviken
   userLossCounter = 0;
   userWinCounter = 0;
   livesLeft = 4;
@@ -263,15 +272,14 @@ function draw() {
   }
 
   if (state === "Tag"){
-    clear();
     background(random(125, 250));
     displayBlaviken();
 
     //Draw distractions
-    for (let i=0; i<distractions.length; i++) {
-      distractions[i].move();
-      distractions[i].display();
-    }
+    // for (let i=0; i<distractions.length; i++) {
+    //   distractions[i].move();
+    //   distractions[i].display();
+    // }
     
     //Cursor
     noCursor();
@@ -483,8 +491,9 @@ function displayHits(){
 }
 
 function moveRect() {
-  rectX += (-9, 7);
-  rectY += random(-70, 70);
+  //rectX += (-9, 7);
+  //rectY += random(-70, 70);
+  rectX += 2;
   if (rectX + rectWidth >= width || rectX <= 0) {
     rectX = random(0, width - rectWidth);
   }
@@ -582,79 +591,81 @@ function playCharterWinSound(){
 }
 
 function playBlavikenWinSound() {
-  let choice = floor(random(1, 9));
-  if (choice === 1) {
-    win1.play();
-    win1.setVolume(0.5);
-  }
-  if (choice === 2) {
-    win2.play();
-    win2.setVolume(0.5);
-  }
-  if (choice === 3) {
-    win3.play();
-    win3.setVolume(0.5);
-  }
-  if (choice === 4) {
-    win4.play();
-    win4.setVolume(0.5);
-  }
-  if (choice === 5) {
-    win5.play();
-    win5.setVolume(0.5);
-  }
-  if (choice === 6) {
-    win6.play();
-    win6.setVolume(0.5);
-  }
-  if (choice === 7) {
-    win7.play();
-    win7.setVolume(0.5);
-  }
-  if (choice === 8) {
-    win8.play();
-    win8.setVolume(0.5);
-  }
+    testSoundA.play();
+  // let choice = floor(random(1, 9));
+  // if (choice === 1) {
+  //   win1.play();
+  //   win1.setVolume(0.5);
+  // }
+  // if (choice === 2) {
+  //   win2.play();
+  //   win2.setVolume(0.5);
+  // }
+  // if (choice === 3) {
+  //   win3.play();
+  //   win3.setVolume(0.5);
+  // }
+  // if (choice === 4) {
+  //   win4.play();
+  //   win4.setVolume(0.5);
+  // }
+  // if (choice === 5) {
+  //   win5.play();
+  //   win5.setVolume(0.5);
+  // }
+  // if (choice === 6) {
+  //   win6.play();
+  //   win6.setVolume(0.5);
+  // }
+  // if (choice === 7) {
+  //   win7.play();
+  //   win7.setVolume(0.5);
+  // }
+  // if (choice === 8) {
+  //   win8.play();
+  //   win8.setVolume(0.5);
+  // }
 }
 
 function playBlavikenLossSound() {
-  let choice = floor(random(1, 10));
-  if (choice === 1) {
-    loss1.play();
-    loss1.setVolume(0.9);
-  }
-  if (choice === 2) {
-    loss2.play();
-    loss2.setVolume(0.9);
-  }
-  if (choice === 3) {
-    loss3.play();
-    loss3.setVolume(0.9);
-  }
-  if (choice === 4) {
-    loss4.play();
-    loss4.setVolume(0.9);
-  }
-  if (choice === 5) {
-    loss5.play();
-    loss5.setVolume(0.9);
-  }
-  if (choice === 6) {
-    loss6.play();
-    loss6.setVolume(0.9);
-  }
-  if (choice === 7) {
-    loss7.play();
-    loss7.setVolume(0.9);
-  }
-  if (choice === 8) {
-    loss8.play();
-    loss8.setVolume(0.9);
-  }
-  if (choice === 9) {
-    loss9.play();
-    loss9.setVolume(0.9);
-  }
+  testSound.play();
+  // let choice = floor(random(1, 10));
+  // if (choice === 1) {
+  //   loss1.play();
+  //   loss1.setVolume(0.9);
+  // }
+  // if (choice === 2) {
+  //   loss2.play();
+  //   loss2.setVolume(0.9);
+  // }
+  // if (choice === 3) {
+  //   loss3.play();
+  //   loss3.setVolume(0.9);
+  // }
+  // if (choice === 4) {
+  //   loss4.play();
+  //   loss4.setVolume(0.9);
+  // }
+  // if (choice === 5) {
+  //   loss5.play();
+  //   loss5.setVolume(0.9);
+  // }
+  // if (choice === 6) {
+  //   loss6.play();
+  //   loss6.setVolume(0.9);
+  // }
+  // if (choice === 7) {
+  //   loss7.play();
+  //   loss7.setVolume(0.9);
+  // }
+  // if (choice === 8) {
+  //   loss8.play();
+  //   loss8.setVolume(0.9);
+  // }
+  // if (choice === 9) {
+  //   loss9.play();
+  //   loss9.setVolume(0.9);
+  // }
 }
 
 function stopAllSounds(){
@@ -683,35 +694,37 @@ function stopAllSounds(){
 }
 
 function stopAllBlavikenSounds() {
+  testSound.stop();
+  testSoundA.stop();
   //Stops sounds in the Tag Blaviken mode
-  win1.stop();
-  win2.stop();
-  win3.stop();
-  win4.stop();
-  win5.stop();
-  win6.stop();
-  win7.stop();
-  win8.stop();
+  // win1.stop();
+  // win2.stop();
+  // win3.stop();
+  // win4.stop();
+  // win5.stop();
+  // win6.stop();
+  // win7.stop();
+  // win8.stop();
 
-  loss1.stop();
-  loss2.stop();
-  loss3.stop();
-  loss4.stop();
-  loss5.stop();
-  loss6.stop();
-  loss7.stop();
-  loss8.stop();
-  loss9.stop();
+  // loss1.stop();
+  // loss2.stop();
+  // loss3.stop();
+  // loss4.stop();
+  // loss5.stop();
+  // loss6.stop();
+  // loss7.stop();
+  // loss8.stop();
+  // loss9.stop();
 }
 
 function gameOver() {
   if (userLossCounter > 2) {
-    stopAllSounds();
+    stopAllBlavikenSounds();
     clear();
     state = 1;
   }
   if (userWinCounter > 2) {
-    stopAllSounds();
+    stopAllBlavikenSounds();
     clear();
     state = 1;
   }
@@ -731,19 +744,18 @@ function mousePressed() {
     }
   }
 }
-
   //Playing and stopping the playing of sounds according to the modes (Spasky and Charter) and displaying Blaviken when he is found (adapted by Jienan from Mr. Schellenberg's Game of Life Demo)
   if  (gridsDrawn===1){
     if (state === "Spasky" && grid[ycoord][xcoord] === 1 ) {
       stopAllSounds();
-      playSpaskyWinSound();
+      //playSpaskyWinSound();
       grid[ycoord][xcoord] = 2;
       displayGrid();
       state = "Choose";
     } 
    else if (state === "Spasky" && grid[ycoord][xcoord] === 0){
       stopAllSounds();
-      playSpaskyLossSound();
+      //playSpaskyLossSound();
     }
     else if (state === "Charter" && grid[ycoord][xcoord] === 1 ) {
       stopAllSounds();
@@ -760,44 +772,50 @@ function mousePressed() {
   if (state === "Choose"){
     if (mouseX > width/4 && mouseX < width/4 * 3 && mouseY > height*3/8 - (height/6.5)/2 && mouseY < height*3/8 + (height/6.5)/2){
       state = "Tag";
+      stopAllBlavikenSounds();
     }
     if (mouseX > width/4 && mouseX < width/4 * 3 && mouseY > height*5/8 - (height/6.5)/2 && mouseY < height*5/8 + (height/6.5)/2){
       state = "Find"
     }
   }
 
-  if (state === "Tag"){
-    stopAllBlavikenSounds();
-    livesLost = 3;
+ // if (state === "Tag"){
+   // stopAllBlavikenSounds();
   if (state === "Tag" && (userWinCounter < 3 || userLossCounter < 3)) {
+    stopAllBlavikenSounds();
     if ((mouseX >= rectX && mouseX <= rectX + rectWidth) && (mouseY >= rectY && mouseY <= rectY + rectHeight)) {
+      //stopAllBlavikenSounds();
       playBlavikenLossSound();
       userWinCounter++;
       hits ++;
     } 
     else {
-      playBlavikenWinSound();
+      //stopAllBlavikenSounds();
       userLossCounter++;
       livesLeft --;
+      if (userLosscounter>0){}
+      playBlavikenWinSound();
     }
-  }
+     
+    }
+     }
    if (userWinCounter === 3){
     //  victory.setVolume(1.0);
     //  victory.play();
     //  userWinCounter ++;
-    state = "loss";
+    
    }
   if (userLossCounter === 3){
     let today = day();
     let time = millis();
     let message = ["youLost", "buttKicked", "ohWell", "frustratedFace", "isThatAllYourBest", "sadFace", "booHoo", "badLuck", "sorry"];
     let choose = random(message);
-    image(user, 0, 0, width, height);
-    saveCanvas(choose + today + time, "jpg");
-    userLossCounter = 4;
+    // image(user, 0, 0, width, height);
+    // saveCanvas(choose + today + time, "jpg");
+    // userLossCounter = 4;
   }
-  }
-}
+  //}
+//}
 
 function keyPressed() {
   if ((state === "Spasky" || state === "Charter") && (key === "r" || key === "R" )){
