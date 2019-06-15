@@ -217,7 +217,7 @@ function setup() {
   imageRectHeight = width / 3.2;
   userLossCounter = 0;
   userWinCounter = 0;
-  livesLeft = 3;
+  livesLeft = 4;
   hits = 0;
   user = createCapture(VIDEO);
   user.size(width/4, height/4);
@@ -425,13 +425,6 @@ function displayBlaviken() {
   image(blaviken, rectX, rectY);
   blaviken.resize(rectWidth, rectHeight);
 }
-
-// function writeInstructions(){
-//   textAlign(CENTER);
-//   fill("maroon");
-//   textSize (floor(width/32));
-//   text("Click on Blaviken three times to win if you can !", width/2, height/13);
-// }
 
 
 function drawLines() {
@@ -764,6 +757,7 @@ function mousePressed() {
 
   if (state === "Tag"){
     stopAllBlavikenSounds();
+    livesLost = 3;
   if (state === "Tag" && (userWinCounter < 3 || userLossCounter < 3)) {
     if ((mouseX >= rectX && mouseX <= rectX + rectWidth) && (mouseY >= rectY && mouseY <= rectY + rectHeight)) {
       playBlavikenLossSound();
