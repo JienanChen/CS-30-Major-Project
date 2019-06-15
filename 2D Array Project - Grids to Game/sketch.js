@@ -216,6 +216,13 @@ function setup() {
   user = createCapture(VIDEO);
   user.size(width/4, height/4);
   user.hide();
+
+  let choices = ["beige", "black", "orange", "purple", "yellow"];
+  for (let i=0; i< 36; i++) {
+    let colour = random(choices);
+    let vex = new Distractions(random(width), random(height), random(75, 250), random(choices), blaviken, 5);
+    distractions.push(vex);
+  }
 }
 
 function draw() {
