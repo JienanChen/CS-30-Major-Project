@@ -82,8 +82,33 @@ let sWin1, sWin2, sWin3;
 let cLoss1, cLoss2, cLoss3, cLoss4, cLoss5, cLoss6;
 let cWin1, cWin2;
 
-//Images
+//Image for Choosing Interactive Scenes
 let choooseStateBackground;
+
+//Tag Blaviken Images and Variables
+//Images
+let blaviken;
+let winImage;
+let lossImage;
+let finger;
+//Blaviken Rectangle Variables
+let rectX, rectY;
+let rectWidth, rectHeight;
+let imageRectWidth , imageRectHeight;
+//Sounds
+let win1, win2, win3, win4, win5, win6, win7, win8;
+let loss1, loss2, loss3, loss4, loss5, loss6, loss7, loss8, loss9;
+let victory;
+//Counters
+let userLossCounter;
+let userWinCounter;
+let livesLeft;
+let hits;
+//Webcam variable
+let user;
+
+//Array for the Disctractions
+let distractions = [];
 
 function preload(){
   //Preload sounds(Text within the function by Jienan. The function already exists.)
