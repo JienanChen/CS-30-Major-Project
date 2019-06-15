@@ -140,6 +140,29 @@ function preload(){
   cWin1 = loadSound("assets/charterWin1.m4a");
   cWin2 = loadSound("assets/charterWin2.m4a");
 
+  //Tag Blaviken Sounds
+
+  //Sounds to be played when Blaviken's ! clicked
+  win1 = loadSound("assets/BlavikenWin1.m4a");
+  win2 = loadSound("assets/BlavikenWin2.m4a");
+  win3 = loadSound("assets/BlavikenWin3.m4a");
+  win4 = loadSound("assets/BlavikenWin4.m4a");
+  win5 = loadSound("assets/BlavikenWin5.m4a");
+  win6 = loadSound("assets/BlavikenWin6.m4a");
+  win7 = loadSound("assets/BlavikenWin7.m4a");
+  win8 = loadSound("assets/BlavikenWin8.m4a");
+  
+  //Sounds to be played when Blaviken's clicked
+  loss1 = loadSound("assets/BlavikenLoss1.m4a");
+  loss2 = loadSound("assets/BlavikenLoss2.m4a");
+  loss3 = loadSound("assets/BlavikenLoss3.m4a");
+  loss4 = loadSound("assets/BlavikenLoss4.m4a");
+  loss5 = loadSound("assets/BlavikenLoss5.m4a");
+  loss6 = loadSound("assets/BlavikenLoss6.m4a");
+  loss7 = loadSound("assets/BlavikenLoss7.m4a");
+  loss8 = loadSound("assets/BlavikenLoss8.m4a");
+  loss9 = loadSound("assets/BlavikenLoss9.m4a");
+
   //Images
   //Background for when choosing between interactive scenes with Blaviken
   chooseStateBackground = loadImage("assets/pattern2.png");
