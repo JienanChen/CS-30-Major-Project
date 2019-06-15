@@ -98,7 +98,6 @@ let imageRectWidth , imageRectHeight;
 //Sounds
 let win1, win2, win3, win4, win5, win6, win7, win8;
 let loss1, loss2, loss3, loss4, loss5, loss6, loss7, loss8, loss9;
-let victory;
 //Counters
 let userLossCounter;
 let userWinCounter;
@@ -293,6 +292,7 @@ function draw() {
 function loadStartScreen(){
   //display a large button on which is printed "start" (adapted by Pouya from Jienan's Le Chartier Project, fixed by Jienan)
   textAlign(CENTER);
+  rectMode(CENTER);
   textSize((floor(height / 2) - 10) / 5);
   background("brown");
   fill("white");
@@ -418,12 +418,12 @@ function displayBlaviken() {
   blaviken.resize(rectWidth, rectHeight);
 }
 
-function writeInstructions(){
-  textAlign(CENTER);
-  fill("maroon");
-  textSize (floor(width/32));
-  text("Click on Blaviken three times to win if you can !", width/2, height/13);
-}
+// function writeInstructions(){
+//   textAlign(CENTER);
+//   fill("maroon");
+//   textSize (floor(width/32));
+//   text("Click on Blaviken three times to win if you can !", width/2, height/13);
+// }
 
 
 function drawLines() {
