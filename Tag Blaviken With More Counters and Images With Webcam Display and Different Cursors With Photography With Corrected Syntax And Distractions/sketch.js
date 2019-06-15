@@ -114,7 +114,7 @@ function setup() {
   imageRectHeight = width / 3.2;
   userLossCounter = 0;
   userWinCounter = 0;
-  livesLeft = 3;
+  //livesLeft = 3;
   hits = 0;
   user = createCapture(VIDEO);
   user.size(width/4, height/4);
