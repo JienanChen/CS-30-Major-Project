@@ -122,7 +122,7 @@ function setup() {
   state = 0;
 
   let choices = ["beige", "black", "orange", "purple", "yellow"];
-  for (let i=0; i< 100; i++) {
+  for (let i=0; i< 36; i++) {
     let colour = random(choices);
     let vex = new Distractions(random(width), random(height), random(75, 250), random(choices), blaviken, 5);
     distractions.push(vex);
