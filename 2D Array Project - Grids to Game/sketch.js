@@ -720,15 +720,6 @@ function mousePressed() {
   }
 }
 
-  if (state === "Choose"){
-    if (mouseX > width/4 && mouseX < width/4 * 3 && mouseY > height*3/8 - (height/6.5)/2 && mouseY < height*3/8 + (height/6.5)/2){
-      state = "Tag";
-    }
-    if (mouseX > width/4 && mouseX < width/4 * 3 && mouseY > height*5/8 - (height/6.5)/2 && mouseY < height*5/8 + (height/6.5)/2){
-      state = "Find"
-    }
-  }
-
   //Playing and stopping the playing of sounds according to the modes (Spasky and Charter) and displaying Blaviken when he is found (adapted by Jienan from Mr. Schellenberg's Game of Life Demo)
   if  (gridsDrawn===1){
     if (state === "Spasky" && grid[ycoord][xcoord] === 1 ) {
@@ -751,6 +742,15 @@ function mousePressed() {
     else if (state === "Charter" && grid[ycoord][xcoord] === 0){
       stopAllSounds();
       playCharterLossSound();
+    }
+  }
+
+  if (state === "Choose"){
+    if (mouseX > width/4 && mouseX < width/4 * 3 && mouseY > height*3/8 - (height/6.5)/2 && mouseY < height*3/8 + (height/6.5)/2){
+      state = "Tag";
+    }
+    if (mouseX > width/4 && mouseX < width/4 * 3 && mouseY > height*5/8 - (height/6.5)/2 && mouseY < height*5/8 + (height/6.5)/2){
+      state = "Find"
     }
   }
 }
