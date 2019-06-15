@@ -257,7 +257,34 @@ function draw() {
   }
 
   if (state === "Tag"){
+    background(random(125, 250));
+    displayBlaviken();
 
+    //Draw distractions
+    for (let i=0; i<distractions.length; i++) {
+      distractions[i].move();
+      distractions[i].display();
+    }
+    
+    //Cursor
+    noCursor();
+    imageMode(CENTER);
+    image(finger, mouseX, mouseY + 5, width/27, height/8);
+    
+    //Draws the rest of the "distractions" in the background
+    moveRect();
+    drawLines();
+    progressiveLines();
+    drawPoints();
+    displayLivesLeft();
+    displayHits();
+
+    //Display user's face through the webcam on the screen. 
+    //If the webcam is nor turned on, the image will not appear.
+    imageMode(CORNER);
+    image(user, 0, height - (height/4+40));
+
+    gameOver();
   }
 
   
