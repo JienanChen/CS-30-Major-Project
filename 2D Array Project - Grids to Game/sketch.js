@@ -721,12 +721,12 @@ function gameOver() {
   if (userLossCounter > 3) {
     stopAllBlavikenSounds();
     clear();
-    state = 1;
+    state = "looseScreen";
   }
   if (userWinCounter > 3) {
     stopAllBlavikenSounds();
     clear();
-    state = 1;
+    state = "winScreen";
   }
 }
 
