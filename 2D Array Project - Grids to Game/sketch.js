@@ -762,6 +762,7 @@ function mousePressed() {
       playCharterWinSound();
       grid[ycoord][xcoord] = 2;
       displayGrid();
+      state = "Choose";
     }
     else if (state === "Charter" && grid[ycoord][xcoord] === 0){
       stopAllSounds();
