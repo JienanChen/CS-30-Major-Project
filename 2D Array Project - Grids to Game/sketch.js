@@ -718,12 +718,12 @@ function stopAllBlavikenSounds() {
 }
 
 function gameOver() {
-  if (userLossCounter > 2) {
+  if (userLossCounter > 3) {
     stopAllBlavikenSounds();
     clear();
     state = 1;
   }
-  if (userWinCounter > 2) {
+  if (userWinCounter > 3) {
     stopAllBlavikenSounds();
     clear();
     state = 1;
