@@ -88,9 +88,8 @@ let choooseStateBackground;
 //Tag Blaviken Images and Variables
 //Images
 let blaviken;
-let winImage;
-let lossImage;
 let finger;
+
 //Blaviken Rectangle Variables
 let rectX, rectY;
 let rectWidth, rectHeight;
@@ -173,8 +172,6 @@ function preload(){
 
   //Tag Blaviken Images
   blaviken = loadImage("assets/20180411_154733 (1) (1)A.jpg");
-  winImage = loadImage("assets/DSC01815.JPG");
-  lossImage = loadImage("assets/Capture15.JPG");
   finger = loadImage("assets/finger.png");
 }
 
@@ -246,9 +243,11 @@ function draw() {
     loadStartScreen();
     writeInstructions();
   }
+
   if (state === 2){
     introductionMenu();
   }
+
   if (state === "Spasky"){
     gridSize = 3;
     if (gridsDrawn===0){
@@ -257,6 +256,7 @@ function draw() {
       gridsDrawn = 1;
       }
   }
+
   if (state === "Charter"){
     gridSize = 8;
     if (gridsDrawn===0){
@@ -301,6 +301,25 @@ function draw() {
 
     gameOver();
   }
+
+  if (state === "looseScreen"){
+    cursor(CROSS);
+    background(0);
+    textAlign(CENTER);
+    fill(255);
+    textSize(height/28);
+    text("You Lost !\n\n Press x to go back to grids.", width/2, height/2);
+  }
+
+  if (state === "winScreen"){
+    cursor(ARROW);
+    background(0);
+    textAlign(CENTER);
+    fill(255);
+    textSize(height/28);
+    text("You Won !\n\n Press x to go back to grids.", width/2, height/2);
+  }
+
 }
 
 function loadStartScreen(){
@@ -723,7 +742,7 @@ function gameOver() {
     clear();
     state = "looseScreen";
   }
-  if (userWinCounter > 3) {
+  if (userWinCounter > 2) {
     stopAllBlavikenSounds();
     clear();
     state = "winScreen";
