@@ -581,7 +581,7 @@ function draw() {
 
     showLivesLeft();
 
-    playersFate();
+    playersFateSpasky();
   }
 
   if (state === "charterNavigator"){
@@ -609,9 +609,36 @@ function draw() {
 
     showLivesLeft();
 
-    playersFate();
+    playersFateCharter();
   }
 
+  if (state === "spaskyLost") {
+    background(0);
+    textAlign(CENTER);
+    fill("red");
+    text("You Lost! \n\n  Press r to try again.", width / 2, 3 * height / 8);
+  }
+  
+  if (state === "spaskyWon") {
+    background(255);
+    textAlign(CENTER);
+    fill("green");
+    text("You Won! \n\n  Press r to try again.", width / 2, 3 * height / 8);
+  }
+
+  if (state === "charterLost") {
+    background(0);
+    textAlign(CENTER);
+    fill("red");
+    text("You Lost! \n\n  Press r to try again.", width / 2, 3 * height / 8);
+  }
+
+  if (state === "charterWon") {
+    background(255);
+    textAlign(CENTER);
+    fill("green");
+    text("You Won! \n\n  Press r to try again.", width / 2, 3 * height / 8);
+  }
 }
 
 function loadStartScreen(){
