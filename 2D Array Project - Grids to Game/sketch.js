@@ -181,6 +181,47 @@ let user;
 //Array for the Disctractions
 let distractions = [];
 
+//Blaviken's Lair
+//Arrays for the Classes
+let weakestTraps = [];
+let nextWeakestTraps = [];
+let mediocreTraps = [];
+let secondMostPowerfulTraps = [];
+let best = [];
+
+//Arrays to store the x and y coordinates of the ellipses drawn by the classes of Blaviken's Lair
+//Class 1
+let weakestTrapX = [];
+let weakestTrapY = [];
+
+//Class 2
+let nextWeakestTrapX = [];
+let nextWeakestTrapY = [];
+
+//Class 3
+let mediocreTrapX = [];
+let mediocreTrapY = [];
+
+//Class 4
+let secondBestX = [];
+let secondBestY = [];
+
+//Class 5
+let bestTrapX = [];
+let bestTrapY = [];
+
+//Variables for the user controlled "ball"
+let ellipseX;
+let ellipseY;
+let ballWidthHeight;
+let ballRadius;
+
+//Variables for the "target," into which the user must direct himself/herself
+let targetX, targetY, targetWidth, targetHeight;
+
+//Counts the total amount of lives of the players. The player begins with 30, and loses some when in contact with a boobytrap placed by the 5 classes.
+let totalLives;
+
 
 function preload(){
   //Preload sounds(Text within the function by Jienan. The function already exists.)
@@ -242,7 +283,7 @@ function preload(){
   //Background for when choosing between interactive scenes with Blaviken
   chooseStateBackground = loadImage("assets/pattern2.png");
 
-  //Tag Blaviken Images
+  //Tag Blaviken Images (Blaviken image used in Blaviken's Lair Game Too)
   blaviken = loadImage("assets/20180411_154733 (1) (1)A.jpg");
   finger = loadImage("assets/finger.png");
 }
@@ -308,6 +349,70 @@ function setup() {
     distractions.push(vex);
 
   cursor(ARROW);
+
+  //Blaviken's Lair
+  for (let i = 0; i < 7; i++) {
+    x1 = random(width + 7);
+    y1 = random(height - 7);
+    let someWeakTrap = new WeakestBoobytraps(x1, y1);
+    weakestTraps.push(someWeakTrap);
+    weakestTrapX.push(x1);
+    weakestTrapY.push(y1);
+    x1 = 0;
+    y1 = 0;
+  }
+  for (let i = 0; i < 5; i++) {
+    x2 = random(width + 7);
+    y2 = random(height - 7);
+    let someOtherWeakTrap = new SecondWeakestBoobytraps(x2, y2);
+    nextWeakestTraps.push(someOtherWeakTrap);
+    nextWeakestTrapX.push(x2);
+    nextWeakestTrapY.push(y2);
+    x2 = 0;
+    y2 = 0;
+  }
+  for (let i = 0; i < 4; i++) {
+    x3 = random(width + 7);
+    y3 = random(height - 7);
+    let someMediocreTrap = new MediocreBoobytraps(x3, y3);
+    mediocreTraps.push(someMediocreTrap);
+    mediocreTrapX.push(x3);
+    mediocreTrapY.push(y3);
+    x3 = 0;
+    y3 = 0;
+  }
+  for (let i = 0; i < 2; i++) {
+    x4 = random(width + 13);
+    y4 = random(height - 6)
+    let someAlmostTrap = new SecondMostPowerfulBoobytraps(x4, y4);
+    secondMostPowerfulTraps.push(someAlmostTrap);
+    secondBestX.push(x4);
+    secondBestY.push(y4);
+    x4 = 0;
+    y4 = 0;
+  }
+  for (let i = 0; i < 2; i++) {
+    x5 = random(width + 13);
+    y5 = random(height - 6);
+    let someGoodTrap = new MostPowerfulBoobytraps(x5, y5);
+    best.push(someGoodTrap);
+    bestTrapX.push(x5);
+    bestTrapY.push(y5);
+    x5 = 0;
+    y5 = 0;
+  }
+
+  ellipseX = 100;
+  ellipseY = 100;
+  ballWidthHeight = 40;
+  ballRadius = 20;
+
+  targetX = random(255, width - 100);
+  targetY = random(400, height - 100);
+  targetWidth = 100;
+  targetHeight = 100;
+
+  totalLives = 30;
   }
 }
 
