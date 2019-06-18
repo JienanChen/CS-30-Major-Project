@@ -5,8 +5,26 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
-//Tag Blaviken Class
+//Landscaping Class
+class Tree {
+  constructor (x, y, w, hMaker, im){
+  this.x = x;
+  this.y = y;
+  this.width = w;
+  this.heightDeterminer = hMaker;
+  this.image = im;
+}
+display(){     
+  noStroke();
+  rectMode(CENTER);
+  imageMode(CENTER);
+  noFill();
+  rect(this.x, this.y, this.width, this.width - this.heightDeterminer);  
+  image(this.image, this.x, this.y, this.width,this.width - this.heightDeterminer);    
+  }
+}
 
+//Tag Blaviken Class
 class Distractions {
   constructor(x, y, someWidth,someColour, someImage, someSpeed){
     this.x = x;
@@ -119,6 +137,23 @@ class MostPowerfulBoobytraps {
 }
 
 let state;
+
+//Landscaping
+let trees = [];
+let numOfTrees;
+
+let grass;
+
+let tree;
+let colliflower;
+let pine;
+let palm;
+let fir;
+let sprangy;
+let spindly;
+let redMaple;
+let greenMaple;
+let orange;
 
 //Button related global variables(by Pouya)
 let buttonText = ["Spasky", "Charter"];
@@ -281,6 +316,19 @@ function preload(){
   testSoundA = loadSound("assets/为你歌唱－ｆ调.wav");
 
   //Images
+
+  //Landscaping
+  grass = loadImage("assets/grassland.png");
+  
+  tree =loadImage("assets/tree1A.png");
+  colliflower = loadImage("assets/tree2.png");
+  pine = loadImage("assets/tree3A.png");
+  fir = loadImage("assets/tree5A.png");
+  sprangy = loadImage("assets/tree6.png");
+  spindly = loadImage("assets/tree7.png");
+  redMaple = loadImage("assets/tree8.png");
+  orange = loadImage("assets/tree10.png");
+
   //Background for when choosing between interactive scenes with Blaviken
   chooseStateBackground = loadImage("assets/pattern2.png");
 
@@ -292,14 +340,37 @@ function preload(){
 function setup() {
 
   //Screen for the grid(by Pouya)
-  if (windowWidth > windowHeight){
-    createCanvas(windowHeight, windowHeight);
-  } else {
-    createCanvas(windowWidth, windowWidth);
-  }
+  // if (windowWidth > windowHeight){
+  //   createCanvas(windowHeight, windowHeight);
+  // } else {
+  //   createCanvas(windowWidth, windowWidth);
+  // }
+  createCanvas(windowWidth, windowHeight);
   
   //Setting the mode(by Pouya)
   state = 1;
+
+  //Landscaping
+  let treeImages = new Map();
+  treeImages.set("tree", tree);
+  treeImages.set("colliflower", colliflower);
+  treeImages.set("pine", pine);
+
+  treeImages.set("fir", fir);
+  treeImages.set("sprangy", sprangy);
+  treeImages.set("spindly", spindly);
+  treeImages.set("redMaple", redMaple);
+  treeImages.set("orange", orange);
+
+  numOfTrees = random(7,22);
+
+  for (let i = 0; i < numOfTrees; i++) {  
+    let choices = ["tree","colliflower", "pine", "fir", "sprangy", "spindly", "redMaple",  "orange"];
+    let choice = random(choices);
+    let someTree = new Tree(random(0, width - 7), random(0, height - 7), random(100, 316), random(1,21), treeImages.get(choice));
+    trees.push(someTree); 
+    choice = "";
+  }
   
   //Setting text location on the buttons(by Pouya)
   rectMode(CENTER);
@@ -1251,8 +1322,8 @@ function mousePressed() {
 
   clicked = true;
   cellSize = width/gridSize;
-  let xcoord = floor(mouseX / cellSize);
-  let ycoord = floor(mouseY / cellSize);
+  // let xcoord = floor(mouseX / cellSize);
+  // let ycoord = floor(mouseY / cellSize);
 
   //console.log("hello,state =", state);
   
@@ -1266,6 +1337,8 @@ function mousePressed() {
 }
   //Playing and stopping the playing of sounds according to the modes (Spasky and Charter) and displaying Blaviken when he is found (adapted by Jienan from Mr. Schellenberg's Game of Life Demo)
   if  (gridsDrawn===1){
+    let xcoord=floor((mouseX-width/3) /cellSize )
+    let ycoord=floor((mouseY-width/8) /cellSize)+1
     if (state === "Spasky" && grid[ycoord][xcoord] === 1 ) {
       stopAllSounds();
       //playSpaskyWinSound();
