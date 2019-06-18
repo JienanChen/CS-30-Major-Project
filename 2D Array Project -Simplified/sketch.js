@@ -861,7 +861,6 @@ function displayHits(){
   text(hits, hitsWidth/2, hitsHeight/1.75);
 }
 
-
 function moveRect() {
   //Moves the rectangle in which Pouya sit
   rectX += (-9, 7);
@@ -873,7 +872,6 @@ function moveRect() {
     rectY = random(0, height - rectHeight);
   }
 }
-
 
 function playSpaskyLossSound(){
   //When no Blaviken is found in the Spasky mode(by Jienan)
@@ -962,7 +960,6 @@ function playCharterWinSound(){
     cWin2.play();
   }
 }
-
 
 function stopAllSounds(){
   //Stops the sounds in Grids Mode(by Jienan)
