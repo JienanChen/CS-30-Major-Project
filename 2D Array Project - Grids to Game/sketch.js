@@ -62,8 +62,7 @@ class WeakestBoobytraps {
   }
 
   display() {
-    noStroke();
-    fill(255);
+    fill(0);
     ellipse(this.x, this.y, 5, 5);
   }
 }
@@ -75,8 +74,7 @@ class SecondWeakestBoobytraps {
   }
 
   display() {
-    noStroke();
-    fill(255);
+    fill(0);
     ellipse(this.x, this.y, 5, 5);
   }
 }
@@ -89,8 +87,7 @@ class MediocreBoobytraps {
 
   display() {
     ellipseMode(CENTER);
-    noStroke();
-    fill(255);
+    fill(0);
     ellipse(this.x, this.y, 5, 5);
   }
 }
@@ -103,8 +100,7 @@ class SecondMostPowerfulBoobytraps {
 
   display() {
     ellipseMode(CENTER);
-    noStroke();
-    fill(255);
+    fill(0);
     ellipse(this.x, this.y, 5, 5);
   }
 }
@@ -117,8 +113,7 @@ class MostPowerfulBoobytraps {
 
   display() {
     ellipseMode(CENTER);
-    noStroke();
-    fill(255);
+    fill(0);
     ellipse(this.x, this.y, 5, 5);
   }
 }
