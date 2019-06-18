@@ -499,24 +499,32 @@ function setup() {
 
 function draw() {
   //Displays the appropriate images on the screen depending on the mode(by Pouya, fixed by Jienan)
+  
+  console.log("state=",state,"gridsDrawn=",gridsDrawn);
   if (state === 1){    
     loadStartScreen();
     writeInstructions();
   }
 
-  if (state === 2){
+  if (state === 2){    
     introductionMenu();
   }
 
   if (state === "Spasky"){
     console.log("Spasky:",ellipseX - 20 , targetX , ellipseX + 20 ,targetWidth + targetX , ellipseY - 20 , targetY , ellipseY + 20 , targetY + targetHeight);
+    
     cursor(ARROW);
     text(turnCounterSpasky, 50, 100);
     text(totalWinsSpasky, 50, 200);
     gridSize = 3;
+    //background(grass);
     if (gridsDrawn===0){
+      background(grass);
       grid = placeEnemies(gridSize, gridSize);
       displayGrid();
+      for (let i = 0; i< trees.length; i++) {
+        trees[i].display();
+      }
       gridsDrawn = 1;
       }
   }
@@ -782,12 +790,13 @@ function clickedOnStartButton(){
 
 function introductionMenu(){
   //Sets up the background and other settings for the menu page with two modes(by Pouya, edited by Jienan)
+    setup()
     textAlign(CENTER);
     background("black");
-    fill("white");
+    //fill("white");
     stroke("red");
     strokeWeight(3);
-    drawButtons();
+    drawButtons();    
 }
 
 function drawButtons(){
@@ -816,7 +825,7 @@ function drawChoiceButtons(){
 
 function displayGrid(){
   //Displays the grids(adapted by Jienan from Mr. Schellenberg's Game of Life Demo) 
-  cellSize=width/gridSize;
+  cellSize=(width/gridSize) * 0.35;
   rectMode(CORNER);
   strokeWeight(3);
   stroke(0);
@@ -828,7 +837,7 @@ function displayGrid(){
       else {
         fill(0);
       }
-      rect(x * cellSize, y * cellSize, cellSize, cellSize);
+      rect(width/3 + x*cellSize, height/8 + y*cellSize, cellSize, cellSize);
     }
   }
 }
@@ -1337,7 +1346,7 @@ function mousePressed() {
 }
   //Playing and stopping the playing of sounds according to the modes (Spasky and Charter) and displaying Blaviken when he is found (adapted by Jienan from Mr. Schellenberg's Game of Life Demo)
   if  (gridsDrawn===1){
-    let xcoord=floor((mouseX-width/3) /cellSize )
+    let xcoord=floor((mouseX-width/3) /cellSize)+1
     let ycoord=floor((mouseY-width/8) /cellSize)+1
     if (state === "Spasky" && grid[ycoord][xcoord] === 1 ) {
       stopAllSounds();
@@ -1453,10 +1462,10 @@ console.log("almost there.")
       //stopAllBlavikenSounds();
       userLossCounter++;
       livesLeft --;
-      if (userLosscounter>0){}
+      if (userLosscounter>0){
       playBlavikenWinSound();
     }
-     
+  }
    if (userWinCounter === 3){
     //  victory.setVolume(1.0);
     //  victory.play();
