@@ -428,8 +428,8 @@ function draw() {
   if (state === 1){    
     loadStartScreen();
     writeInstructions();
-    textSize(15);
-    text("About the games: \n Win against Pouya 3 times in the interactives games to win the whole game in the Spasky Mode \nand 5 times in the Charter Mode. In Tag Pouya, click on the image of Pouya in the red box 3 times to win. \n In Pouya's Lair, move the ball onto Pouya using the arrow keys. Be aware that he has set up invisible boobytraps. \n You have up to 30 lives.", width/26, 7* height/8);
+    textSize(width/52);
+    text("About the games: \n Win against Pouya 3 times in the interactives games to win the whole game in the Spasky Mode \nand 5 times in the Charter Mode. In Tag Pouya, click on the image of Pouya in the red box 3 times to win. \n In Pouya's Lair, move the ball onto Pouya using the arrow keys. Be aware that he has set up invisible boobytraps. \n You have up to 30 lives.", width/32, 7* height/8);
   }
 
   if (state === 2){    
