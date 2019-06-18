@@ -130,8 +130,9 @@ let startButtonX, startButtonY, startButtonWidth, startButtonHeight;
 let clicked = false;
 
 //Instructions related global variables (by Jienan)
-let instructionText = ["1. Select one of the two modes.", "2. Find the enemies by clicking on the grid.","3. If you desire to change modes, click r."];
+let instructionText = ["1. Select one of the two modes.", "2. Find Pouya by clicking on the grid.","3. If you desire to change modes, click r."];
 let instructionPlacement = [130, 160, 190];
+
 
 
 //Grid related global variables (adapted by Jienan)
@@ -279,21 +280,6 @@ function preload(){
 
   //Images
 
-  //Landscaping
-  // grass = loadImage("assets/grassland.png");
-  
-  // tree =loadImage("assets/tree1A.png");
-  // colliflower = loadImage("assets/tree2.png");
-  // pine = loadImage("assets/tree3A.png");
-  // fir = loadImage("assets/tree5A.png");
-  // sprangy = loadImage("assets/tree6.png");
-  // spindly = loadImage("assets/tree7.png");
-  // redMaple = loadImage("assets/tree8.png");
-  // orange = loadImage("assets/tree10.png");
-
-  // //Background for when choosing between interactive scenes with Blaviken
-  // chooseStateBackground = loadImage("assets/pattern2.png");
-
   //Tag Blaviken Images (Blaviken image used in Blaviken's Lair Game Too)
   blaviken = loadImage("assets/20180411_154733 (1) (1)A.jpg");
   finger = loadImage("assets/finger.png");
@@ -312,8 +298,7 @@ function setup() {
   //Setting the mode(by Pouya)
   state = 1;
 
-  
-  
+
   //Setting text location on the buttons(by Pouya)
   rectMode(CENTER);
   textAlign(CENTER);
@@ -443,6 +428,8 @@ function draw() {
   if (state === 1){    
     loadStartScreen();
     writeInstructions();
+    textSize(15);
+    text("About the games: \n Win against Pouya 3 times in the interactives games to win the whole game in the Spasky Mode \nand 5 times in the Charter Mode. In Tag Pouya, click on the image of Pouya in the red box 3 times to win. \n In Pouya's Lair, move the ball onto Pouya using the arrow keys. Be aware that he has set up invisible boobytraps. \n You have up to 30 lives.", width/26, 14* height/16);
   }
 
   if (state === 2){    
@@ -1179,7 +1166,6 @@ function mousePressed() {
     else if (state === "Charter" && grid[ycoord][xcoord] === 0){
       stopAllSounds();
       playCharterLossSound();
-      turnCounterCharter -- ;
     }
   }
 
@@ -1228,7 +1214,6 @@ function mousePressed() {
   }
 }
 
-
   if (state === "charterTag"){
      console.log("charterTag state","position comparison:",mouseX,mouseY,rectX,rectY,"userWinCounter=",userWinCounter,"userLossCounter=",userLossCounter)
     if ((mouseX >= rectX && mouseX <= rectX + rectWidth) && (mouseY >= rectY && mouseY <= rectY + rectHeight)) {
@@ -1244,16 +1229,6 @@ function mousePressed() {
    if (userWinCounter === 3){  
       userWinCounter ++; 
    }
-
-  if (userLossCounter === 3){
-    let today = day();
-    let time = millis();
-    let message = ["youLost", "buttKicked", "ohWell", "frustratedFace", "isThatAllYourBest", "sadFace", "booHoo", "badLuck", "sorry"];
-    let choose = random(message);
-     image(user, 0, 0, width, height);
-     saveCanvas(choose + today + time, "jpg");
-     userLossCounter = 4;
-  }
 } 
 }
 
