@@ -27,7 +27,7 @@ Created the classes which "plant" boobytraps in the Pouya's Lair game.
 ### May 31, 2019
 Finished landscaping algorithm, utilizing both a class and maps.
 
-##June
+## June
 
 ### June 10, 2019
 Created class for the disctrations in Tag Pouya.
