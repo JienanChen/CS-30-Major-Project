@@ -5,24 +5,6 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
-//Landscaping Class
-class Tree {
-  constructor (x, y, w, hMaker, im){
-  this.x = x;
-  this.y = y;
-  this.width = w;
-  this.heightDeterminer = hMaker;
-  this.image = im;
-}
-display(){     
-  noStroke();
-  rectMode(CENTER);
-  imageMode(CENTER);
-  noFill();
-  rect(this.x, this.y, this.width, this.width - this.heightDeterminer);  
-  image(this.image, this.x, this.y, this.width,this.width - this.heightDeterminer);    
-  }
-}
 
 //Tag Blaviken Class
 class Distractions {
@@ -138,23 +120,6 @@ class MostPowerfulBoobytraps {
 
 let state;
 
-//Landscaping
-let trees = [];
-let numOfTrees;
-
-let grass;
-
-let tree;
-let colliflower;
-let pine;
-let palm;
-let fir;
-let sprangy;
-let spindly;
-let redMaple;
-let greenMaple;
-let orange;
-
 //Button related global variables(by Pouya)
 let buttonText = ["Spasky", "Charter"];
 let difficulty = ["Spasky", "Charter"];
@@ -174,9 +139,6 @@ let gridSize;
 let grid;
 let cellSize;
 let gridsDrawn
-
-let turnCounterSpasky;
-let turnCounterCharter;
 
 let totalWinsSpasky;
 let totalWinsCharter;
@@ -318,19 +280,19 @@ function preload(){
   //Images
 
   //Landscaping
-  grass = loadImage("assets/grassland.png");
+  // grass = loadImage("assets/grassland.png");
   
-  tree =loadImage("assets/tree1A.png");
-  colliflower = loadImage("assets/tree2.png");
-  pine = loadImage("assets/tree3A.png");
-  fir = loadImage("assets/tree5A.png");
-  sprangy = loadImage("assets/tree6.png");
-  spindly = loadImage("assets/tree7.png");
-  redMaple = loadImage("assets/tree8.png");
-  orange = loadImage("assets/tree10.png");
+  // tree =loadImage("assets/tree1A.png");
+  // colliflower = loadImage("assets/tree2.png");
+  // pine = loadImage("assets/tree3A.png");
+  // fir = loadImage("assets/tree5A.png");
+  // sprangy = loadImage("assets/tree6.png");
+  // spindly = loadImage("assets/tree7.png");
+  // redMaple = loadImage("assets/tree8.png");
+  // orange = loadImage("assets/tree10.png");
 
-  //Background for when choosing between interactive scenes with Blaviken
-  chooseStateBackground = loadImage("assets/pattern2.png");
+  // //Background for when choosing between interactive scenes with Blaviken
+  // chooseStateBackground = loadImage("assets/pattern2.png");
 
   //Tag Blaviken Images (Blaviken image used in Blaviken's Lair Game Too)
   blaviken = loadImage("assets/20180411_154733 (1) (1)A.jpg");
@@ -340,37 +302,17 @@ function preload(){
 function setup() {
 
   //Screen for the grid(by Pouya)
-  // if (windowWidth > windowHeight){
-  //   createCanvas(windowHeight, windowHeight);
-  // } else {
-  //   createCanvas(windowWidth, windowWidth);
-  // }
-  createCanvas(windowWidth, windowHeight);
+   if (windowWidth > windowHeight){
+     createCanvas(windowHeight, windowHeight);
+   } else {
+     createCanvas(windowWidth, windowWidth);
+   }
+  //createCanvas(windowWidth, windowHeight);
   
   //Setting the mode(by Pouya)
   state = 1;
 
-  //Landscaping
-  let treeImages = new Map();
-  treeImages.set("tree", tree);
-  treeImages.set("colliflower", colliflower);
-  treeImages.set("pine", pine);
-
-  treeImages.set("fir", fir);
-  treeImages.set("sprangy", sprangy);
-  treeImages.set("spindly", spindly);
-  treeImages.set("redMaple", redMaple);
-  treeImages.set("orange", orange);
-
-  numOfTrees = random(7,22);
-
-  for (let i = 0; i < numOfTrees; i++) {  
-    let choices = ["tree","colliflower", "pine", "fir", "sprangy", "spindly", "redMaple",  "orange"];
-    let choice = random(choices);
-    let someTree = new Tree(random(0, width - 7), random(0, height - 7), random(100, 316), random(1,21), treeImages.get(choice));
-    trees.push(someTree); 
-    choice = "";
-  }
+  
   
   //Setting text location on the buttons(by Pouya)
   rectMode(CENTER);
@@ -396,11 +338,9 @@ function setup() {
   gridsDrawn = 0;
 
   //Counter values for Charter and Spasky mode (by Pouya)
-  turnCounterSpasky = 3;
-  turnCounterCharter = 5;
 
-  totalWinsSpasky = 0;
-  totalWinsCharter = 0;
+   totalWinsSpasky = 0;
+   totalWinsCharter = 0;
 
   //Tag Blaviken
   //Dimensions of the box within which the Blaviken image sits in
@@ -500,7 +440,6 @@ function setup() {
 function draw() {
   //Displays the appropriate images on the screen depending on the mode(by Pouya, fixed by Jienan)
   
-  console.log("state=",state,"gridsDrawn=",gridsDrawn);
   if (state === 1){    
     loadStartScreen();
     writeInstructions();
@@ -514,17 +453,11 @@ function draw() {
     console.log("Spasky:",ellipseX - 20 , targetX , ellipseX + 20 ,targetWidth + targetX , ellipseY - 20 , targetY , ellipseY + 20 , targetY + targetHeight);
     
     cursor(ARROW);
-    text(turnCounterSpasky, 50, 100);
-    text(totalWinsSpasky, 50, 200);
     gridSize = 3;
-    //background(grass);
     if (gridsDrawn===0){
-      background(grass);
+      background(255);
       grid = placeEnemies(gridSize, gridSize);
       displayGrid();
-      for (let i = 0; i< trees.length; i++) {
-        trees[i].display();
-      }
       gridsDrawn = 1;
       }
   }
@@ -540,24 +473,18 @@ function draw() {
   }
 
   if (state === "spaskyChoose"){
-    background(chooseStateBackground);
+    //background(chooseStateBackground);
     drawChoiceButtons();
   }
 
   if (state === "charterChoose"){
-    background(chooseStateBackground);
+    //background(chooseStateBackground);
     drawChoiceButtons();
   }
 
   if (state === "spaskyTag"){
     background(random(125, 250));
     displayBlaviken();
-
-    //Draw distractions
-    //  for (let i=0; i<distractions.length; i++) {
-    //    distractions[i].move();
-    //    distractions[i].display();
-    //   }
     
     //Cursor
     noCursor();
@@ -790,10 +717,9 @@ function clickedOnStartButton(){
 
 function introductionMenu(){
   //Sets up the background and other settings for the menu page with two modes(by Pouya, edited by Jienan)
-    setup()
     textAlign(CENTER);
     background("black");
-    //fill("white");
+    fill("white");
     stroke("red");
     strokeWeight(3);
     drawButtons();    
@@ -825,7 +751,7 @@ function drawChoiceButtons(){
 
 function displayGrid(){
   //Displays the grids(adapted by Jienan from Mr. Schellenberg's Game of Life Demo) 
-  cellSize=(width/gridSize) * 0.35;
+  cellSize= width/gridSize;
   rectMode(CORNER);
   strokeWeight(3);
   stroke(0);
@@ -837,7 +763,7 @@ function displayGrid(){
       else {
         fill(0);
       }
-      rect(width/3 + x*cellSize, height/8 + y*cellSize, cellSize, cellSize);
+      rect(x* cellSize,  + y*cellSize, cellSize, cellSize);
     }
   }
 }
@@ -882,7 +808,6 @@ function displayBlaviken() {
   image(blaviken, rectX, rectY);
   blaviken.resize(rectWidth, rectHeight);
 }
-
 
 function drawLines() {
   strokeWeight(random(1, 10));
@@ -944,7 +869,6 @@ function displayHits(){
 function moveRect() {
   rectX += (-9, 7);
   rectY += random(-70, 70);
-  //rectX += 2;
   if (rectX + rectWidth >= width || rectX <= 0) {
     rectX = random(0, width - rectWidth);
   }
@@ -1041,83 +965,6 @@ function playCharterWinSound(){
   }
 }
 
-function playBlavikenWinSound() {
-    testSoundA.play();
-  // let choice = floor(random(1, 9));
-  // if (choice === 1) {
-  //   win1.play();
-  //   win1.setVolume(0.5);
-  // }
-  // if (choice === 2) {
-  //   win2.play();
-  //   win2.setVolume(0.5);
-  // }
-  // if (choice === 3) {
-  //   win3.play();
-  //   win3.setVolume(0.5);
-  // }
-  // if (choice === 4) {
-  //   win4.play();
-  //   win4.setVolume(0.5);
-  // }
-  // if (choice === 5) {
-  //   win5.play();
-  //   win5.setVolume(0.5);
-  // }
-  // if (choice === 6) {
-  //   win6.play();
-  //   win6.setVolume(0.5);
-  // }
-  // if (choice === 7) {
-  //   win7.play();
-  //   win7.setVolume(0.5);
-  // }
-  // if (choice === 8) {
-  //   win8.play();
-  //   win8.setVolume(0.5);
-  // }
-}
-
-function playBlavikenLossSound() {
-  testSound.play();
-  // let choice = floor(random(1, 10));
-  // if (choice === 1) {
-  //   loss1.play();
-  //   loss1.setVolume(0.9);
-  // }
-  // if (choice === 2) {
-  //   loss2.play();
-  //   loss2.setVolume(0.9);
-  // }
-  // if (choice === 3) {
-  //   loss3.play();
-  //   loss3.setVolume(0.9);
-  // }
-  // if (choice === 4) {
-  //   loss4.play();
-  //   loss4.setVolume(0.9);
-  // }
-  // if (choice === 5) {
-  //   loss5.play();
-  //   loss5.setVolume(0.9);
-  // }
-  // if (choice === 6) {
-  //   loss6.play();
-  //   loss6.setVolume(0.9);
-  // }
-  // if (choice === 7) {
-  //   loss7.play();
-  //   loss7.setVolume(0.9);
-  // }
-  // if (choice === 8) {
-  //   loss8.play();
-  //   loss8.setVolume(0.9);
-  // }
-  // if (choice === 9) {
-  //   loss9.play();
-  //   loss9.setVolume(0.9);
-  // }
-}
 
 function stopAllSounds(){
   //Stops the sounds in Grids Mode(by Jienan)
@@ -1144,41 +991,14 @@ function stopAllSounds(){
   cWin2.stop();
 }
 
-function stopAllBlavikenSounds() {
-  testSound.stop();
-  testSoundA.stop();
-  //Stops sounds in the Tag Blaviken mode
-  // win1.stop();
-  // win2.stop();
-  // win3.stop();
-  // win4.stop();
-  // win5.stop();
-  // win6.stop();
-  // win7.stop();
-  // win8.stop();
-
-  // loss1.stop();
-  // loss2.stop();
-  // loss3.stop();
-  // loss4.stop();
-  // loss5.stop();
-  // loss6.stop();
-  // loss7.stop();
-  // loss8.stop();
-  // loss9.stop();
-}
 
 function spaskyGameOver() {
   if (userLossCounter > 3) {
-    stopAllBlavikenSounds();
-    //clear();
     state = "spaskyLooseScreen";
   }
   if (userWinCounter > 2) {
-    stopAllBlavikenSounds();
-    //clear();
+   
     state = "spaskyWinScreen";
-    turnCounterSpasky ++;
     totalWinsSpasky ++;
   }
 }
@@ -1187,15 +1007,10 @@ function charterGameOver() {
 console.log("gameover:","userLossCounter=",userLossCounter,"userWinCounter > 2=",userWinCounter > 2)
 
   if (userLossCounter > 3) {
-    stopAllBlavikenSounds();
-    //clear();
     state = "charterLooseScreen";
   }
   if (userWinCounter > 2) {
-    stopAllBlavikenSounds();
-    //clear();
     state = "charterWinScreen";
-    turnCounterCharter ++;
     totalWinsCharter ++;
   }
 }
@@ -1293,7 +1108,6 @@ function showLivesLeft() {
 
 function target() {
   rectMode(CORNER);
-  //fill("blue");
   fill(0);
   rect(targetX, targetY, width/8, height/6.4);
   imageMode(CORNER);
@@ -1306,7 +1120,6 @@ function playersFateSpasky() {
   }
 
   if (ellipseX - 20 > targetX && ellipseX + 20 < targetWidth + targetX && ellipseY - 20 > targetY && ellipseY + 20 < targetY + targetHeight) {
-    //console.log("got it");
     state = "spaskyWon";
     totalWinsSpasky ++;
   }
@@ -1331,10 +1144,9 @@ function mousePressed() {
 
   clicked = true;
   cellSize = width/gridSize;
-  // let xcoord = floor(mouseX / cellSize);
-  // let ycoord = floor(mouseY / cellSize);
+   let xcoord = floor(mouseX / cellSize);
+   let ycoord = floor(mouseY / cellSize);
 
-  //console.log("hello,state =", state);
   
 //While in the character selection mode
   if (state === 2) {
@@ -1346,43 +1158,28 @@ function mousePressed() {
 }
   //Playing and stopping the playing of sounds according to the modes (Spasky and Charter) and displaying Blaviken when he is found (adapted by Jienan from Mr. Schellenberg's Game of Life Demo)
   if  (gridsDrawn===1){
-    let xcoord=floor((mouseX-width/3) /cellSize)+1
-    let ycoord=floor((mouseY-width/8) /cellSize)+1
     if (state === "Spasky" && grid[ycoord][xcoord] === 1 ) {
       stopAllSounds();
-      //playSpaskyWinSound();
+      playSpaskyWinSound();
       grid[ycoord][xcoord] = 2;
       displayGrid();
       state = "spaskyChoose";
-      if (turnCounterSpasky === 0) {
-        gameOver();
-      }
     } 
    else if (state === "Spasky" && grid[ycoord][xcoord] === 0){
       stopAllSounds();
-      //playSpaskyLossSound();
-      turnCounterSpasky -- ;
-      if (turnCounterSpasky === 0) {
-        gameOver();
-      }
+      playSpaskyLossSound();
     }
     else if (state === "Charter" && grid[ycoord][xcoord] === 1 ) {
       stopAllSounds();
-      //playCharterWinSound();
+      playCharterWinSound();
       grid[ycoord][xcoord] = 2;
       displayGrid();
       state = "charterChoose";
-      if (turnCounterSpasky === 0) {
-        gameOver();
-      }
     }
     else if (state === "Charter" && grid[ycoord][xcoord] === 0){
       stopAllSounds();
-      //playCharterLossSound();
+      playCharterLossSound();
       turnCounterCharter -- ;
-      if (turnCounterSpasky === 0) {
-        gameOver();
-      }
     }
   }
 
@@ -1390,7 +1187,6 @@ function mousePressed() {
   if (state === "spaskyChoose"){
     if (mouseX > width/4 && mouseX < width/4 * 3 && mouseY > height*3/8 - (height/6.5)/2 && mouseY < height*3/8 + (height/6.5)/2){
       state = "spaskyTag";
-      stopAllBlavikenSounds();
     }
     if (mouseX > width/4 && mouseX < width/4 * 3 && mouseY > height*5/8 - (height/6.5)/2 && mouseY < height*5/8 + (height/6.5)/2){
       state = "spaskyNavigator";
@@ -1401,84 +1197,62 @@ function mousePressed() {
   if (state === "charterChoose"){
     if (mouseX > width/4 && mouseX < width/4 * 3 && mouseY > height*3/8 - (height/6.5)/2 && mouseY < height*3/8 + (height/6.5)/2){
       state = "charterTag";
-      stopAllBlavikenSounds();
     }
     if (mouseX > width/4 && mouseX < width/4 * 3 && mouseY > height*5/8 - (height/6.5)/2 && mouseY < height*5/8 + (height/6.5)/2){
       state = "charterNavigator";
     }
   }
 
- // if (state === "Tag"){
-   // stopAllBlavikenSounds();
   if (state === "spaskyTag" && (userWinCounter < 3 || userLossCounter < 3)) {
-    stopAllBlavikenSounds();
     if ((mouseX >= rectX && mouseX <= rectX + rectWidth) && (mouseY >= rectY && mouseY <= rectY + rectHeight)) {
-      //stopAllBlavikenSounds();
-      playBlavikenLossSound();
       userWinCounter++;
       hits ++;
     } 
     else {
-      //stopAllBlavikenSounds();
       userLossCounter++;
       livesLeft --;
       if (userLossCounter>0){}
-      playBlavikenWinSound();
     }  
-  //}
      
    if (userWinCounter === 3){
-    //  victory.setVolume(1.0);
-    //  victory.play();
-    //  userWinCounter ++;  
+      userWinCounter ++;  
    }
   if (userLossCounter === 3){
     let today = day();
     let time = millis();
     let message = ["youLost", "buttKicked", "ohWell", "frustratedFace", "isThatAllYourBest", "sadFace", "booHoo", "badLuck", "sorry"];
     let choose = random(message);
-    // image(user, 0, 0, width, height);
-    // saveCanvas(choose + today + time, "jpg");
-    // userLossCounter = 4;
+     image(user, 0, 0, width, height);
+     saveCanvas(choose + today + time, "jpg");
+     userLossCounter = 4;
   }
-  //}
 }
 
-console.log("almost there.")
- // if (state === "Tag"){
-   // stopAllBlavikenSounds();
-   //if (state === "charterTag" && (userWinCounter < 3 || userLossCounter < 3)) {
+
   if (state === "charterTag"){
      console.log("charterTag state","position comparison:",mouseX,mouseY,rectX,rectY,"userWinCounter=",userWinCounter,"userLossCounter=",userLossCounter)
-    stopAllBlavikenSounds();
     if ((mouseX >= rectX && mouseX <= rectX + rectWidth) && (mouseY >= rectY && mouseY <= rectY + rectHeight)) {
-      //console.log("position comparison:",mouseX,mouseY,rectX,rectY)
-      //stopAllBlavikenSounds();
-      playBlavikenLossSound();
       userWinCounter++;
       hits ++;
     } 
     else {
-      //stopAllBlavikenSounds();
       userLossCounter++;
       livesLeft --;
       if (userLosscounter>0){
-      playBlavikenWinSound();
     }
   }
-   if (userWinCounter === 3){
-    //  victory.setVolume(1.0);
-    //  victory.play();
-    //  userWinCounter ++; 
+   if (userWinCounter === 3){  
+      userWinCounter ++; 
    }
+
   if (userLossCounter === 3){
     let today = day();
     let time = millis();
     let message = ["youLost", "buttKicked", "ohWell", "frustratedFace", "isThatAllYourBest", "sadFace", "booHoo", "badLuck", "sorry"];
     let choose = random(message);
-    // image(user, 0, 0, width, height);
-    // saveCanvas(choose + today + time, "jpg");
-    // userLossCounter = 4;
+     image(user, 0, 0, width, height);
+     saveCanvas(choose + today + time, "jpg");
+     userLossCounter = 4;
   }
 } 
 }
@@ -1530,14 +1304,3 @@ function keyPressed() {
   }
 }
 
-function gameOver(){
-  gridsDrawn = 0;
-  state = 2;
-  rectMode(CENTER);
-  textAlign(CENTER);
-  stopAllSounds();
-  turnCounterSpasky = 3;
-  turnCounterCharter = 5;
-  totalWinsSpasky = 0;
-  totalWinsCharter = 0;
-}
