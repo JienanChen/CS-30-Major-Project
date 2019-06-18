@@ -1,12 +1,12 @@
-// La redemption Game (Innitial Version)
+// La redemption Game (Simple Version)
 // Jienan Chen, Pouya Pourhaj
-// April 28, 2019
+// June 17, 2019
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
 
-//Tag Blaviken Class
+//Tag Pouya Class (by Jienan)
 class Distractions {
   constructor(x, y, someWidth,someColour, someImage, someSpeed){
     this.x = x;
@@ -53,7 +53,7 @@ class Distractions {
   }
 }
 
-//Blaviken's Lair Class
+//Pouya's Lair Classes (by Jienan)
 
 class WeakestBoobytraps {
   constructor(x, y) {
@@ -133,14 +133,13 @@ let clicked = false;
 let instructionText = ["1. Select one of the two modes.", "2. Find Pouya by clicking on the grid.","3. If you desire to change modes, click r."];
 let instructionPlacement = [130, 160, 190];
 
-
-
 //Grid related global variables (adapted by Jienan)
 let gridSize;
 let grid;
 let cellSize;
 let gridsDrawn
 
+//Counter for the number of times the user wins (by Jienan)
 let totalWinsSpasky;
 let totalWinsCharter;
 
@@ -156,12 +155,12 @@ let cWin1, cWin2;
 //Image for Choosing Interactive Scenes
 let choooseStateBackground;
 
-//Tag Blaviken Images and Variables
+//Tag Blaviken Images and Variables (by Jienan)
 //Images
 let blaviken;
 let finger;
 
-//Blaviken Rectangle Variables
+//Pouya Rectangle Variables
 let rectX, rectY;
 let rectWidth, rectHeight;
 let imageRectWidth , imageRectHeight;
@@ -180,7 +179,7 @@ let user;
 //Array for the Disctractions
 let distractions = [];
 
-//Blaviken's Lair
+//Pouya's Lair Variables (by Jienan)
 //Arrays for the Classes
 let weakestTraps = [];
 let nextWeakestTraps = [];
@@ -252,7 +251,7 @@ function preload(){
   cWin1 = loadSound("assets/charterWin1.m4a");
   cWin2 = loadSound("assets/charterWin2.m4a");
 
-  //Tag Blaviken Sounds
+  //Tag Pouya Sounds
 
   //Sounds to be played when Blaviken's ! clicked
   win1 = loadSound("assets/BlavikenWin1.m4a");
@@ -275,12 +274,9 @@ function preload(){
   loss8 = loadSound("assets/BlavikenLoss8.m4a");
   loss9 = loadSound("assets/BlavikenLoss9.m4a");
 
-  testSound = loadSound("assets/东周列国.wav");
-  testSoundA = loadSound("assets/为你歌唱－ｆ调.wav");
-
   //Images
 
-  //Tag Blaviken Images (Blaviken image used in Blaviken's Lair Game Too)
+  //Tag Pouya Images (Pouya image used in Pouya's Lair Game Too)
   blaviken = loadImage("assets/20180411_154733 (1) (1)A.jpg");
   finger = loadImage("assets/finger.png");
 }
@@ -293,11 +289,9 @@ function setup() {
    } else {
      createCanvas(windowWidth, windowWidth);
    }
-  //createCanvas(windowWidth, windowHeight);
   
   //Setting the mode(by Pouya)
   state = 1;
-
 
   //Setting text location on the buttons(by Pouya)
   rectMode(CENTER);
@@ -327,26 +321,26 @@ function setup() {
    totalWinsSpasky = 0;
    totalWinsCharter = 0;
 
-  //Tag Blaviken
-  //Dimensions of the box within which the Blaviken image sits in
+  //Tag Pouya (by Jienan)
+  //Dimensions of the box within which the Pouya image sits in
   rectWidth = width / 9.78;
   rectHeight = width / 9;
   //Location of said box 
   rectX = random(0, width - rectWidth);
   rectY = random(0, height - rectHeight);
 
-  // imageRectWidth = width / 2;
-  // imageRectHeight = width / 3.2;
-
-  //Counts the number of times the user has hit or missed Blaviken
+  //Counts the number of times the user has hit or missed Pouya
   userLossCounter = 0;
   userWinCounter = 0;
   livesLeft = 4;
   hits = 0;
+
+  //Webcam
   user = createCapture(VIDEO);
   user.size(width/4, height/4);
   user.hide();
 
+  //Adds in the distractions by furnishing the class which does so with the right info
   let choices = ["beige", "black", "orange", "purple", "yellow"];
   for (let i=0; i< 36; i++) {
     let colour = random(choices);
@@ -354,8 +348,8 @@ function setup() {
     distractions.push(vex);
   }
 
-  console.log("setup:weakestTraps.length=",weakestTraps.length,"nextWeakestTraps.length=",nextWeakestTraps.length,"mediocreTraps.length=",mediocreTraps.length,"secondMostPowerfulTraps.length=",secondMostPowerfulTraps.length);
-  //Blaviken's Lair
+  //Pouya's Lair (by Jienan)
+  //Furnishing the 5 classes which places the boobytraps
   for (let i = 0; i < 7; i++) {
     x1 = random(width + 7);
     y1 = random(height - 7);
@@ -407,11 +401,13 @@ function setup() {
     y5 = 0;
   }
 
+  //x, y, width and height, as well as the overall radius of the ball
   ellipseX = 100;
   ellipseY = 100;
   ballWidthHeight = 40;
   ballRadius = 20;
 
+  //x, y, width, height of the target/Pouya
   targetX = random(255, width - 100);
   targetY = random(400, height - 100);
   targetWidth = 100;
@@ -437,8 +433,6 @@ function draw() {
   }
 
   if (state === "Spasky"){
-    console.log("Spasky:",ellipseX - 20 , targetX , ellipseX + 20 ,targetWidth + targetX , ellipseY - 20 , targetY , ellipseY + 20 , targetY + targetHeight);
-    
     cursor(ARROW);
     gridSize = 3;
     if (gridsDrawn===0){
@@ -460,12 +454,10 @@ function draw() {
   }
 
   if (state === "spaskyChoose"){
-    //background(chooseStateBackground);
     drawChoiceButtons();
   }
 
   if (state === "charterChoose"){
-    //background(chooseStateBackground);
     drawChoiceButtons();
   }
 
@@ -509,7 +501,6 @@ function draw() {
     imageMode(CENTER);
     image(finger, mouseX, mouseY + 5, width/27, height/8);
     
-    //console.log("mouse:",mouseX,mouseY)
     //Draws the rest of the "distractions" in the background
     moveRect();
     drawLines();
@@ -526,78 +517,85 @@ function draw() {
     charterGameOver();
   }
 
+  //When Spasky loses Tag Pouya
   if (state === "spaskyLooseScreen"){
     cursor(CROSS);
     background(0);
+    textSize(height/28);
     textAlign(CENTER);
     fill(255);
-    textSize(height/28);
     text("You Lost !\n\n Press r to go back to grids.", width/2, height/2);
   }
-
+  //When Spasky wins Tag Pouya
   if (state === "spaskyWinScreen"){
     cursor(ARROW);
     background(0);
+    textSize(height/28);
     textAlign(CENTER);
     fill(255);
-    textSize(height/28);
     text("You Won !\n\n Press r to go back to grids.", width/2, height/2);
   }
-
+  
+  //Ditto above for Charter
   if (state === "charterLooseScreen"){
     cursor(ARROW);
     background(0);
+    textSize(height/28);
     textAlign(CENTER);
     fill(255);
-    textSize(height/28);
     text("You Lost !\n\n Press r to go back to grids.", width/2, height/2);
   }
 
   if (state === "charterWinScreen"){
     cursor(ARROW);
     background(0);
+    textSize(height/28);
     textAlign(CENTER);
     fill(255);
-    textSize(height/28);
     text("You Won !\n\n Press r to go back to grids.", width/2, height/2);
   }
 
-  //Blaviken's Lair
+  //Pouya's Lair
   if (state === "spaskyNavigator"){
     background(0);
     target();
-    //console.log("weakestTraps.length=",weakestTraps.length,"nextWeakestTraps.length=",nextWeakestTraps.length,"mediocreTraps.length=",mediocreTraps.length,"secondMostPowerfulTraps.length=",secondMostPowerfulTraps.length);
-    for (let i = 0; i < weakestTraps.length; i++) {
 
+    //"shows" all the traps
+
+    for (let i = 0; i < weakestTraps.length; i++) {
       weakestTraps[i].display();
     }
-
-    console.log("setup: weakestTraps=",weakestTraps.length)
-     for (let i = 0; i < nextWeakestTraps.length; i++) {
+    for (let i = 0; i < nextWeakestTraps.length; i++) {
        nextWeakestTraps[i].display();
      }
-     for (let i = 0; i < mediocreTraps.length; i++) {
+    for (let i = 0; i < mediocreTraps.length; i++) {
        mediocreTraps[i].display();
      }
-     for (let i = 0; i < secondMostPowerfulTraps.length; i++) {
+    for (let i = 0; i < secondMostPowerfulTraps.length; i++) {
        secondMostPowerfulTraps[i].display();
      }
-     for (let i = 0; i < best.length; i++) {
+    for (let i = 0; i < best.length; i++) {
        best[i].display();
      }
-    movingBall();
-    if (keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) || keyIsDown(UP_ARROW) || keyIsDown(DOWN_ARROW)) {
+    
+     //moves ball
+     movingBall();
+
+     //so that the following code will only be executed when the following keys are pressed
+
+  if (keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) || keyIsDown(UP_ARROW) || keyIsDown(DOWN_ARROW)) {
       detectCollision();
     }
-
     showLivesLeft();
-
     playersFateSpasky();
   }
 
   if (state === "charterNavigator"){
     background(0);
     target();
+
+    //"shows" all the traps
+
     for (let i = 0; i < weakestTraps.length; i++) {
       weakestTraps[i].display();
     }
@@ -613,7 +611,11 @@ function draw() {
     for (let i = 0; i < best.length; i++) {
       best[i].display();
     }
+
+    //moves ball
     movingBall();
+
+    //Ensures that the following code will only be executed when the following keys are down
     if (keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) || keyIsDown(UP_ARROW) || keyIsDown(DOWN_ARROW)) {
       detectCollision();
     }
@@ -623,6 +625,7 @@ function draw() {
     playersFateCharter();
   }
 
+  //When either Spasky or Charter have lost a round of Pouya's Lair
   if (state === "spaskyLost") {
     background(0);
     textAlign(CENTER);
@@ -653,6 +656,7 @@ function draw() {
 
   if (totalWinsSpasky === 3){
     background(255);
+    textSize(width/15);
     textAlign(CENTER);
     fill("orange");
     text("Congratulations Alec Spasky! \n You won!", width / 2, 3 * height / 8);
@@ -660,6 +664,7 @@ function draw() {
 
   if (totalWinsCharter === 5){
     background(255);
+    textSize(width/15);
     textAlign(CENTER);
     fill("red");
     text("Congratulations Cad Charter! \n You won!", width / 2, 3 * height / 8);
@@ -723,7 +728,7 @@ function drawButtons(){
 
 function drawChoiceButtons(){
   let yMultipliers = [3/8, 5/8];
-  let choiceTexts = ["Tag Blaviken", "Blaviken's Lair"];
+  let choiceTexts = ["Tag Pouya", "Pouya's Lair"];
   rectMode(CENTER);
   textAlign(CENTER);
   
@@ -786,6 +791,7 @@ function placeEnemies(cols, rows){
 }
 
 function displayBlaviken() {
+  //Displays Blaviken aka Pouya
   stroke("red");
   strokeWeight(7);
   smooth();
@@ -795,6 +801,8 @@ function displayBlaviken() {
   image(blaviken, rectX, rectY);
   blaviken.resize(rectWidth, rectHeight);
 }
+
+//The next four functions create a distracting and busy background
 
 function drawLines() {
   strokeWeight(random(1, 10));
@@ -853,7 +861,9 @@ function displayHits(){
   text(hits, hitsWidth/2, hitsHeight/1.75);
 }
 
+
 function moveRect() {
+  //Moves the rectangle in which Pouya sit
   rectX += (-9, 7);
   rectY += random(-70, 70);
   if (rectX + rectWidth >= width || rectX <= 0) {
@@ -863,6 +873,7 @@ function moveRect() {
     rectY = random(0, height - rectHeight);
   }
 }
+
 
 function playSpaskyLossSound(){
   //When no Blaviken is found in the Spasky mode(by Jienan)
@@ -978,8 +989,8 @@ function stopAllSounds(){
   cWin2.stop();
 }
 
-
 function spaskyGameOver() {
+  //When Spasky loses or wins in Tag Pouya (by Jienan)
   if (userLossCounter > 3) {
     state = "spaskyLooseScreen";
   }
@@ -991,8 +1002,7 @@ function spaskyGameOver() {
 }
 
 function charterGameOver() {
-console.log("gameover:","userLossCounter=",userLossCounter,"userWinCounter > 2=",userWinCounter > 2)
-
+//When Charter loses or wins in Tag Pouya (by Jienan)
   if (userLossCounter > 3) {
     state = "charterLooseScreen";
   }
@@ -1003,6 +1013,7 @@ console.log("gameover:","userLossCounter=",userLossCounter,"userWinCounter > 2="
 }
 
 function movingBall() {
+  //Moving the ball in Pouya's Lair (by Jienan)
   fill("red");
   noStroke();
   ellipseMode(CENTER);
@@ -1026,6 +1037,7 @@ function movingBall() {
 }
 
 function detectCollision() {
+//Detecting whether the ball aka the player is over any boobytraps (by Jienan)
   let interval = ballRadius - 5;
 
   for (let i = 0; i < weakestTrapX.length; i++) {
@@ -1085,15 +1097,17 @@ function detectCollision() {
 }
 
 function showLivesLeft() {
+  //Displays how many lives are left in Pouya's Lair
 
   textAlign(CENTER);
-  textSize(40);
+  textSize(width/40);
   fill(255);
   text("Lives Left", width - 200 / 2, 80);
   text(totalLives, width - 200 / 2, 150);
 }
 
 function target() {
+  //Pouya
   rectMode(CORNER);
   fill(0);
   rect(targetX, targetY, width/8, height/6.4);
@@ -1102,10 +1116,10 @@ function target() {
 }
 
 function playersFateSpasky() {
+  //What happens after Spasky wins or loses
   if (totalLives < 1) {
     state = "spaskyLost";
   }
-
   if (ellipseX - 20 > targetX && ellipseX + 20 < targetWidth + targetX && ellipseY - 20 > targetY && ellipseY + 20 < targetY + targetHeight) {
     state = "spaskyWon";
     totalWinsSpasky ++;
@@ -1113,12 +1127,11 @@ function playersFateSpasky() {
 }
 
 function playersFateCharter() {
+  //What happens after Charter wins or loses
   if (totalLives < 1) {
     state = "charterLost"
   }
-
   if (ellipseX - 20 > targetX && ellipseX + 20 < targetWidth + targetX && ellipseY - 20 > targetY && ellipseY + 20 < targetY + targetHeight) {
-    //console.log("got it");
     state = "charterWon";
     totalWinsCharter ++;
   }
@@ -1127,7 +1140,6 @@ function playersFateCharter() {
 
 function mousePressed() {
   //Changing states during the mode selection page(adapted by Pouya from Jienan's Le Chartier Project)
-
 
   clicked = true;
   cellSize = width/gridSize;
@@ -1169,7 +1181,7 @@ function mousePressed() {
     }
   }
 
-//Game selection for Spasky mode during the grids
+//Game selection for Spasky mode during the grids (by Jienan)
   if (state === "spaskyChoose"){
     if (mouseX > width/4 && mouseX < width/4 * 3 && mouseY > height*3/8 - (height/6.5)/2 && mouseY < height*3/8 + (height/6.5)/2){
       state = "spaskyTag";
@@ -1189,6 +1201,7 @@ function mousePressed() {
     }
   }
 
+  //When Spasky wins or loses, what happens to his score of hits and lives
   if (state === "spaskyTag" && (userWinCounter < 3 || userLossCounter < 3)) {
     if ((mouseX >= rectX && mouseX <= rectX + rectWidth) && (mouseY >= rectY && mouseY <= rectY + rectHeight)) {
       userWinCounter++;
@@ -1203,7 +1216,7 @@ function mousePressed() {
    if (userWinCounter === 3){
       userWinCounter ++;  
    }
-  if (userLossCounter === 3){
+  if (userLossCounter === 4){
     let today = day();
     let time = millis();
     let message = ["youLost", "buttKicked", "ohWell", "frustratedFace", "isThatAllYourBest", "sadFace", "booHoo", "badLuck", "sorry"];
@@ -1214,8 +1227,8 @@ function mousePressed() {
   }
 }
 
+//When Charter wins or loses, what happens to his score of hits and lives
   if (state === "charterTag"){
-     console.log("charterTag state","position comparison:",mouseX,mouseY,rectX,rectY,"userWinCounter=",userWinCounter,"userLossCounter=",userLossCounter)
     if ((mouseX >= rectX && mouseX <= rectX + rectWidth) && (mouseY >= rectY && mouseY <= rectY + rectHeight)) {
       userWinCounter++;
       hits ++;
@@ -1233,7 +1246,7 @@ function mousePressed() {
 }
 
 function keyPressed() {
-  console.log("state =", state);
+ //By Jienan
   if ((state === "Spasky" || state === "Charter") && (key === "r" || key === "R" )){
     gridsDrawn = 0;
     state = 2;
