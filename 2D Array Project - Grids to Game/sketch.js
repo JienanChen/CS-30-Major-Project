@@ -140,6 +140,12 @@ let grid;
 let cellSize;
 let gridsDrawn
 
+let turnCounterSpasky;
+let turnCounterCharter;
+
+let totalWinsSpasky;
+let totalWinsCharter;
+
 //Sounds related global variables(by Jienan)
 //Spasky sounds
 let sLoss1, sLoss2, sLoss3, sLoss4, sLoss5;
@@ -285,8 +291,6 @@ function preload(){
 
 function setup() {
 
-
-
   //Screen for the grid(by Pouya)
   if (windowWidth > windowHeight){
     createCanvas(windowHeight, windowHeight);
@@ -320,6 +324,13 @@ function setup() {
   size = (height / 2 - 10) / 4;
   gridsDrawn = 0;
 
+  //Counter values for Charter and Spasky mode (by Pouya)
+  turnCounterSpasky = 3;
+  turnCounterCharter = 5;
+
+  totalWinsSpasky = 0;
+  totalWinsCharter = 0;
+
   //Tag Blaviken
   //Dimensions of the box within which the Blaviken image sits in
   rectWidth = width / 9.78;
@@ -347,7 +358,6 @@ function setup() {
     distractions.push(vex);
   }
 
-  cursor(ARROW);
   console.log("setup:weakestTraps.length=",weakestTraps.length,"nextWeakestTraps.length=",nextWeakestTraps.length,"mediocreTraps.length=",mediocreTraps.length,"secondMostPowerfulTraps.length=",secondMostPowerfulTraps.length);
   //Blaviken's Lair
   for (let i = 0; i < 7; i++) {
@@ -412,6 +422,8 @@ function setup() {
   targetHeight = 100;
 
   totalLives = 30;
+
+  cursor(ARROW);
 }
 
 function draw() {
@@ -428,6 +440,8 @@ function draw() {
   if (state === "Spasky"){
     console.log("Spasky:",ellipseX - 20 , targetX , ellipseX + 20 ,targetWidth + targetX , ellipseY - 20 , targetY , ellipseY + 20 , targetY + targetHeight);
     cursor(ARROW);
+    text(turnCounterSpasky, 50, 100);
+    text(totalWinsSpasky, 50, 200);
     gridSize = 3;
     if (gridsDrawn===0){
       grid = placeEnemies(gridSize, gridSize);
@@ -642,6 +656,20 @@ function draw() {
     textAlign(CENTER);
     fill("green");
     text("You Won! \n\n  Press r to try again.", width / 2, 3 * height / 8);
+  }
+
+  if (totalWinsSpasky === 3){
+    background(255);
+    textAlign(CENTER);
+    fill("orange");
+    text("Congratulations Alec Spasky! \n You won!", width / 2, 3 * height / 8);
+  }
+
+  if (totalWinsCharter === 5){
+    background(255);
+    textAlign(CENTER);
+    fill("red");
+    text("Congratulations Cad Charter! \n You won!", width / 2, 3 * height / 8);
   }
 }
 
@@ -1063,13 +1091,15 @@ function stopAllBlavikenSounds() {
 function spaskyGameOver() {
   if (userLossCounter > 3) {
     stopAllBlavikenSounds();
-    clear();
+    //clear();
     state = "spaskyLooseScreen";
   }
   if (userWinCounter > 2) {
     stopAllBlavikenSounds();
-    clear();
+    //clear();
     state = "spaskyWinScreen";
+    turnCounterSpasky ++;
+    totalWinsSpasky ++;
   }
 }
 
@@ -1078,13 +1108,15 @@ console.log("gameover:","userLossCounter=",userLossCounter,"userWinCounter > 2="
 
   if (userLossCounter > 3) {
     stopAllBlavikenSounds();
-    clear();
+    //clear();
     state = "charterLooseScreen";
   }
   if (userWinCounter > 2) {
     stopAllBlavikenSounds();
-    clear();
+    //clear();
     state = "charterWinScreen";
+    turnCounterCharter ++;
+    totalWinsCharter ++;
   }
 }
 
@@ -1196,6 +1228,7 @@ function playersFateSpasky() {
   if (ellipseX - 20 > targetX && ellipseX + 20 < targetWidth + targetX && ellipseY - 20 > targetY && ellipseY + 20 < targetY + targetHeight) {
     //console.log("got it");
     state = "spaskyWon";
+    totalWinsSpasky ++;
   }
 }
 
@@ -1207,6 +1240,7 @@ function playersFateCharter() {
   if (ellipseX - 20 > targetX && ellipseX + 20 < targetWidth + targetX && ellipseY - 20 > targetY && ellipseY + 20 < targetY + targetHeight) {
     //console.log("got it");
     state = "charterWon";
+    totalWinsCharter ++;
   }
 }
 
@@ -1238,10 +1272,17 @@ function mousePressed() {
       grid[ycoord][xcoord] = 2;
       displayGrid();
       state = "spaskyChoose";
+      if (turnCounterSpasky === 0) {
+        gameOver();
+      }
     } 
    else if (state === "Spasky" && grid[ycoord][xcoord] === 0){
       stopAllSounds();
       //playSpaskyLossSound();
+      turnCounterSpasky -- ;
+      if (turnCounterSpasky === 0) {
+        gameOver();
+      }
     }
     else if (state === "Charter" && grid[ycoord][xcoord] === 1 ) {
       stopAllSounds();
@@ -1249,10 +1290,17 @@ function mousePressed() {
       grid[ycoord][xcoord] = 2;
       displayGrid();
       state = "charterChoose";
+      if (turnCounterSpasky === 0) {
+        gameOver();
+      }
     }
     else if (state === "Charter" && grid[ycoord][xcoord] === 0){
       stopAllSounds();
       //playCharterLossSound();
+      turnCounterCharter -- ;
+      if (turnCounterSpasky === 0) {
+        gameOver();
+      }
     }
   }
 
@@ -1398,4 +1446,16 @@ function keyPressed() {
     ballRadius = 20;
     totalLives = 30;
   }
+}
+
+function gameOver(){
+  gridsDrawn = 0;
+  state = 2;
+  rectMode(CENTER);
+  textAlign(CENTER);
+  stopAllSounds();
+  turnCounterSpasky = 3;
+  turnCounterCharter = 5;
+  totalWinsSpasky = 0;
+  totalWinsCharter = 0;
 }
