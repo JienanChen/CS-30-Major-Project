@@ -5,6 +5,8 @@
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
 
+//Tag Blaviken Class
+
 class Distractions {
   constructor(x, y, someWidth,someColour, someImage, someSpeed){
     this.x = x;
@@ -48,6 +50,76 @@ class Distractions {
       //right
       this.x += this.speed * random(10);
     }
+  }
+}
+
+//Blaviken's Lair Class
+
+class WeakestBoobytraps {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  display() {
+    noStroke();
+    fill(0);
+    ellipse(this.x, this.y, 5, 5);
+  }
+}
+
+class SecondWeakestBoobytraps {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  display() {
+    noStroke();
+    fill(0);
+    ellipse(this.x, this.y, 5, 5);
+  }
+}
+
+class MediocreBoobytraps {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  display() {
+    ellipseMode(CENTER);
+    noStroke();
+    fill(0);
+    ellipse(this.x, this.y, 5, 5);
+  }
+}
+
+class SecondMostPowerfulBoobytraps {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  display() {
+    ellipseMode(CENTER);
+    noStroke();
+    fill(0);
+    ellipse(this.x, this.y, 5, 5);
+  }
+}
+
+class MostPowerfulBoobytraps {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  display() {
+    ellipseMode(CENTER);
+    noStroke();
+    fill(0);
+    ellipse(this.x, this.y, 5, 5);
   }
 }
 
@@ -285,10 +357,10 @@ function draw() {
     displayBlaviken();
 
     //Draw distractions
-    // for (let i=0; i<distractions.length; i++) {
-    //   distractions[i].move();
-    //   distractions[i].display();
-    // }
+    //  for (let i=0; i<distractions.length; i++) {
+    //    distractions[i].move();
+    //    distractions[i].display();
+    //   }
     
     //Cursor
     noCursor();
@@ -316,10 +388,10 @@ function draw() {
     displayBlaviken();
 
     //Draw distractions
-    // for (let i=0; i<distractions.length; i++) {
-    //   distractions[i].move();
-    //   distractions[i].display();
-    // }
+     for (let i=0; i<distractions.length; i++) {
+       distractions[i].move();
+       distractions[i].display();
+     }
     
     //Cursor
     noCursor();
@@ -570,9 +642,9 @@ function displayHits(){
 }
 
 function moveRect() {
-  //rectX += (-9, 7);
-  //rectY += random(-70, 70);
-  rectX += 2;
+  rectX += (-9, 7);
+  rectY += random(-70, 70);
+  //rectX += 2;
   if (rectX + rectWidth >= width || rectX <= 0) {
     rectX = random(0, width - rectWidth);
   }
@@ -859,14 +931,14 @@ function mousePressed() {
     }
     else if (state === "Charter" && grid[ycoord][xcoord] === 1 ) {
       stopAllSounds();
-      playCharterWinSound();
+      //playCharterWinSound();
       grid[ycoord][xcoord] = 2;
       displayGrid();
       state = "charterChoose";
     }
     else if (state === "Charter" && grid[ycoord][xcoord] === 0){
       stopAllSounds();
-      playCharterLossSound();
+      //playCharterLossSound();
     }
   }
 
