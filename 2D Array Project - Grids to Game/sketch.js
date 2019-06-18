@@ -438,7 +438,7 @@ function drawButtons(){
 
 function drawChoiceButtons(){
   let yMultipliers = [3/8, 5/8];
-  let choiceTexts = ["Tag Blaviken", "Find Blaviken"];
+  let choiceTexts = ["Tag Blaviken", "Blaviken's Lair"];
   rectMode(CENTER);
   textAlign(CENTER);
   
