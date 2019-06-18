@@ -259,7 +259,7 @@ function drawButtons(){
 
 function displayGrid(){
   //Displays the grids(adapted by Jienan from Mr. Schellenberg's Game of Life Demo) 
-  cellSize = (width/gridSize) * 0.35;
+  cellSize = (width/gridSize)*0.35 ;
   rectMode(CORNER);
   stroke(0);
   for (let y = 0; y < gridSize; y++){
@@ -421,10 +421,11 @@ function stopAllSounds(){
 
 function mousePressed() {
   //Changing states during the mode selection page(adapted by Pouya from Jienan's Le Chartier Project)
+  //console.log("xcoord=",mouseX,"ycoord=",mouseY);
   clicked = true;
   cellSize = (width/gridSize) * 0.35;
-  let xcoord = floor(mouseX / cellSize);
-  let ycoord = floor(mouseY / cellSize);
+  //let xcoord = floor(mouseX / cellSize);
+  //let ycoord = floor(mouseY / cellSize);
   if (state === 2) {
     for (let i = 0; i < buttonAndTextPlacement.length; i++) {
       if (mouseX > buttonX - buttonWidth / 2 & mouseX < buttonX + buttonWidth / 2 & mouseY > buttonAndTextPlacement[i] * buttonY - buttonHeight / 2 & mouseY < buttonAndTextPlacement[i] * buttonY + buttonHeight / 2){
@@ -435,6 +436,12 @@ function mousePressed() {
 
   //Playing and stopping the playing of sounds according to the modes (Spasky and Charter) and displaying Blaviken when he is found (adapted by Jienan from Mr. Schellenberg's Game of Life Demo)
   if  (gridsDrawn===1){
+    let xcoord=floor((mouseX-width/3) /cellSize )
+    let ycoord=floor((mouseY-width/8) /cellSize)+1
+
+console.log("testing:","mouseX=",mouseX,"mouseY=",mouseY,"width=",width,"gridsize=",gridSize,"cellsize=",cellSize,"xcoord=",xcoord,"ycoor=",ycoord);
+
+
     if (state === "Spasky" && grid[ycoord][xcoord] === 1 ) {
       stopAllSounds();
       playSpaskyWinSound();
