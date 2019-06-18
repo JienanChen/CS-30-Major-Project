@@ -789,8 +789,7 @@ function clickedOnStartButton(){
 }
 
 function introductionMenu(){
-  //Sets up the background and other settings for the menu page with two modes(by Pouya, edited by Jienan)
-    setup()
+  //Sets up the background and other settings for the menu page with two modes(by Pouya, edited by Jienan)    
     textAlign(CENTER);
     background("black");
     //fill("white");
