@@ -234,6 +234,8 @@ function setup() {
     let colour = random(choices);
     let vex = new Distractions(random(width), random(height), random(75, 250), random(choices), blaviken, 5);
     distractions.push(vex);
+
+  cursor(ARROW);
   }
 }
 
@@ -249,6 +251,7 @@ function draw() {
   }
 
   if (state === "Spasky"){
+    cursor(ARROW);
     gridSize = 3;
     if (gridsDrawn===0){
       grid = placeEnemies(gridSize, gridSize);
@@ -258,6 +261,7 @@ function draw() {
   }
 
   if (state === "Charter"){
+    cursor(ARROW);
     gridSize = 8;
     if (gridsDrawn===0){
       grid = placeEnemies(gridSize, gridSize);
@@ -266,12 +270,17 @@ function draw() {
     }
   }
 
-  if (state === "Choose"){
+  if (state === "spaskyChoose"){
     background(chooseStateBackground);
     drawChoiceButtons();
   }
 
-  if (state === "Tag"){
+  if (state === "charterChoose"){
+    background(chooseStateBackground);
+    drawChoiceButtons();
+  }
+
+  if (state === "spaskyTag"){
     background(random(125, 250));
     displayBlaviken();
 
@@ -299,25 +308,75 @@ function draw() {
     imageMode(CORNER);
     image(user, 0, height - (height/4+40));
 
-    gameOver();
+    spaskyGameOver();
   }
 
-  if (state === "looseScreen"){
+  if (state === "charterTag"){
+    background(random(125, 250));
+    displayBlaviken();
+
+    //Draw distractions
+    // for (let i=0; i<distractions.length; i++) {
+    //   distractions[i].move();
+    //   distractions[i].display();
+    // }
+    
+    //Cursor
+    noCursor();
+    imageMode(CENTER);
+    image(finger, mouseX, mouseY + 5, width/27, height/8);
+    
+    //console.log("mouse:",mouseX,mouseY)
+    //Draws the rest of the "distractions" in the background
+    moveRect();
+    drawLines();
+    progressiveLines();
+    drawPoints();
+    displayLivesLeft();
+    displayHits();
+
+    //Display user's face through the webcam on the screen. 
+    //If the webcam is nor turned on, the image will not appear.
+    imageMode(CORNER);
+    image(user, 0, height - (height/4+40));
+
+    charterGameOver();
+  }
+
+  if (state === "spaskyLooseScreen"){
     cursor(CROSS);
     background(0);
     textAlign(CENTER);
     fill(255);
     textSize(height/28);
-    text("You Lost !\n\n Press x to go back to grids.", width/2, height/2);
+    text("You Lost !\n\n Press r to go back to grids.", width/2, height/2);
   }
 
-  if (state === "winScreen"){
+  if (state === "spaskyWinScreen"){
     cursor(ARROW);
     background(0);
     textAlign(CENTER);
     fill(255);
     textSize(height/28);
-    text("You Won !\n\n Press x to go back to grids.", width/2, height/2);
+    text("You Won !\n\n Press r to go back to grids.", width/2, height/2);
+  }
+
+  if (state === "charterLooseScreen"){
+    cursor(ARROW);
+    background(0);
+    textAlign(CENTER);
+    fill(255);
+    textSize(height/28);
+    text("You Lost !\n\n Press r to go back to grids.", width/2, height/2);
+  }
+
+  if (state === "charterWinScreen"){
+    cursor(ARROW);
+    background(0);
+    textAlign(CENTER);
+    fill(255);
+    textSize(height/28);
+    text("You Won !\n\n Press r to go back to grids.", width/2, height/2);
   }
 
 }
@@ -736,26 +795,47 @@ function stopAllBlavikenSounds() {
   // loss9.stop();
 }
 
-function gameOver() {
+function spaskyGameOver() {
   if (userLossCounter > 3) {
     stopAllBlavikenSounds();
     clear();
-    state = "looseScreen";
+    state = "spaskyLooseScreen";
   }
   if (userWinCounter > 2) {
     stopAllBlavikenSounds();
     clear();
-    state = "winScreen";
+    state = "spaskyWinScreen";
+  }
+}
+
+function charterGameOver() {
+
+console.log("gameover:","userLossCounter=",userLossCounter,"userWinCounter > 2=",userWinCounter > 2)
+
+  if (userLossCounter > 3) {
+    stopAllBlavikenSounds();
+    clear();
+    state = "charterLooseScreen";
+  }
+  if (userWinCounter > 2) {
+    stopAllBlavikenSounds();
+    clear();
+    state = "charterWinScreen";
   }
 }
 
 function mousePressed() {
   //Changing states during the mode selection page(adapted by Pouya from Jienan's Le Chartier Project)
+
+
   clicked = true;
   cellSize = width/gridSize;
   let xcoord = floor(mouseX / cellSize);
   let ycoord = floor(mouseY / cellSize);
+
+  //console.log("hello,state =", state);
   
+//While in the character selection mode
   if (state === 2) {
     for (let i = 0; i < buttonAndTextPlacement.length; i++) {
       if (mouseX > buttonX - buttonWidth / 2 & mouseX < buttonX + buttonWidth / 2 & mouseY > buttonAndTextPlacement[i] * buttonY - buttonHeight / 2 & mouseY < buttonAndTextPlacement[i] * buttonY + buttonHeight / 2){
@@ -770,7 +850,7 @@ function mousePressed() {
       //playSpaskyWinSound();
       grid[ycoord][xcoord] = 2;
       displayGrid();
-      state = "Choose";
+      state = "spaskyChoose";
     } 
    else if (state === "Spasky" && grid[ycoord][xcoord] === 0){
       stopAllSounds();
@@ -781,7 +861,7 @@ function mousePressed() {
       playCharterWinSound();
       grid[ycoord][xcoord] = 2;
       displayGrid();
-      state = "Choose";
+      state = "charterChoose";
     }
     else if (state === "Charter" && grid[ycoord][xcoord] === 0){
       stopAllSounds();
@@ -789,21 +869,73 @@ function mousePressed() {
     }
   }
 
-  if (state === "Choose"){
+//Game selection for Spasky mode during the grids
+  if (state === "spaskyChoose"){
     if (mouseX > width/4 && mouseX < width/4 * 3 && mouseY > height*3/8 - (height/6.5)/2 && mouseY < height*3/8 + (height/6.5)/2){
-      state = "Tag";
+      state = "spaskyTag";
       stopAllBlavikenSounds();
     }
     if (mouseX > width/4 && mouseX < width/4 * 3 && mouseY > height*5/8 - (height/6.5)/2 && mouseY < height*5/8 + (height/6.5)/2){
-      state = "Find"
+      state = "spaskyFind";
+    }
+  }
+
+  //Game selection for Charter mode during the grids
+  if (state === "charterChoose"){
+    if (mouseX > width/4 && mouseX < width/4 * 3 && mouseY > height*3/8 - (height/6.5)/2 && mouseY < height*3/8 + (height/6.5)/2){
+      state = "charterTag";
+      stopAllBlavikenSounds();
+    }
+    if (mouseX > width/4 && mouseX < width/4 * 3 && mouseY > height*5/8 - (height/6.5)/2 && mouseY < height*5/8 + (height/6.5)/2){
+      state = "charterFind";
     }
   }
 
  // if (state === "Tag"){
    // stopAllBlavikenSounds();
-  if (state === "Tag" && (userWinCounter < 3 || userLossCounter < 3)) {
+  if (state === "spaskyTag" && (userWinCounter < 3 || userLossCounter < 3)) {
     stopAllBlavikenSounds();
     if ((mouseX >= rectX && mouseX <= rectX + rectWidth) && (mouseY >= rectY && mouseY <= rectY + rectHeight)) {
+      //stopAllBlavikenSounds();
+      playBlavikenLossSound();
+      userWinCounter++;
+      hits ++;
+    } 
+    else {
+      //stopAllBlavikenSounds();
+      userLossCounter++;
+      livesLeft --;
+      if (userLossCounter>0){}
+      playBlavikenWinSound();
+    }  
+  //}
+     
+   if (userWinCounter === 3){
+    //  victory.setVolume(1.0);
+    //  victory.play();
+    //  userWinCounter ++;  
+   }
+  if (userLossCounter === 3){
+    let today = day();
+    let time = millis();
+    let message = ["youLost", "buttKicked", "ohWell", "frustratedFace", "isThatAllYourBest", "sadFace", "booHoo", "badLuck", "sorry"];
+    let choose = random(message);
+    // image(user, 0, 0, width, height);
+    // saveCanvas(choose + today + time, "jpg");
+    // userLossCounter = 4;
+  }
+  //}
+}
+
+console.log("almost there.")
+ // if (state === "Tag"){
+   // stopAllBlavikenSounds();
+   //if (state === "charterTag" && (userWinCounter < 3 || userLossCounter < 3)) {
+  if (state === "charterTag"){
+     console.log("charterTag state","position comparison:",mouseX,mouseY,rectX,rectY,"userWinCounter=",userWinCounter,"userLossCounter=",userLossCounter)
+    stopAllBlavikenSounds();
+    if ((mouseX >= rectX && mouseX <= rectX + rectWidth) && (mouseY >= rectY && mouseY <= rectY + rectHeight)) {
+      //console.log("position comparison:",mouseX,mouseY,rectX,rectY)
       //stopAllBlavikenSounds();
       playBlavikenLossSound();
       userWinCounter++;
@@ -817,13 +949,10 @@ function mousePressed() {
       playBlavikenWinSound();
     }
      
-    }
-     }
    if (userWinCounter === 3){
     //  victory.setVolume(1.0);
     //  victory.play();
-    //  userWinCounter ++;
-    
+    //  userWinCounter ++; 
    }
   if (userLossCounter === 3){
     let today = day();
@@ -834,15 +963,30 @@ function mousePressed() {
     // saveCanvas(choose + today + time, "jpg");
     // userLossCounter = 4;
   }
-  //}
-//}
+} 
+}
 
 function keyPressed() {
+  console.log("state =", state);
   if ((state === "Spasky" || state === "Charter") && (key === "r" || key === "R" )){
     gridsDrawn = 0;
     state = 2;
     rectMode(CENTER);
     textAlign(CENTER);
     stopAllSounds();      
+  }
+  if ((state === "spaskyLooseScreen" || state === "spaskyWinScreen") && (key === "r" || key === "R")){
+    state = "Spasky";
+    userLossCounter = 0;
+    userWinCounter = 0;
+    livesLeft = 4;
+    hits = 0;
+  }
+  if ((state === "charterLooseScreen" || state === "charterWinScreen") && (key === "r" || key === "R")){
+    state = "Charter";
+    userLossCounter = 0;
+    userWinCounter = 0;
+    livesLeft = 4;
+    hits = 0;
   }
 }
