@@ -556,6 +556,62 @@ function draw() {
     text("You Won !\n\n Press r to go back to grids.", width/2, height/2);
   }
 
+  if (state === "spaskyNavigator"){
+    background(0);
+    target();
+    for (let i = 0; i < weakestTraps.length; i++) {
+      weakestTraps[i].display();
+    }
+    for (let i = 0; i < nextWeakestTraps.length; i++) {
+      nextWeakestTraps[i].display();
+    }
+    for (let i = 0; i < mediocreTraps.length; i++) {
+      mediocreTraps[i].display();
+    }
+    for (let i = 0; i < secondMostPowerfulTraps.length; i++) {
+      secondMostPowerfulTraps[i].display();
+    }
+    for (let i = 0; i < best.length; i++) {
+      best[i].display();
+    }
+    moving();
+    if (keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) || keyIsDown(UP_ARROW) || keyIsDown(DOWN_ARROW)) {
+      detectCollision();
+    }
+
+    showLivesLeft();
+
+    playersFate();
+  }
+
+  if (state === "charterNavigator"){
+    background(0);
+    target();
+    for (let i = 0; i < weakestTraps.length; i++) {
+      weakestTraps[i].display();
+    }
+    for (let i = 0; i < nextWeakestTraps.length; i++) {
+      nextWeakestTraps[i].display();
+    }
+    for (let i = 0; i < mediocreTraps.length; i++) {
+      mediocreTraps[i].display();
+    }
+    for (let i = 0; i < secondMostPowerfulTraps.length; i++) {
+      secondMostPowerfulTraps[i].display();
+    }
+    for (let i = 0; i < best.length; i++) {
+      best[i].display();
+    }
+    moving();
+    if (keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) || keyIsDown(UP_ARROW) || keyIsDown(DOWN_ARROW)) {
+      detectCollision();
+    }
+
+    showLivesLeft();
+
+    playersFate();
+  }
+
 }
 
 function loadStartScreen(){
