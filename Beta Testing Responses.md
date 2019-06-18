@@ -1,6 +1,6 @@
 # Results from Beta Testing
 
-## Tag Blaviken
+## Tag Blaviken (June 7)
 ### Wilson
 Instructions not clear. The game's alright.
 ### Kennie
@@ -10,7 +10,13 @@ Instructions not clear, frustrating, encouraging sounds.
 ### Henry
 Instructions not clear, siezure inducing.
 
-## Blaviken's Lair
+## Tag Blaviken (June 14)
+### Muhammad
+Fun game.
+### Jack
+Enjoyable.
+
+## Blaviken's Lair (June 17)
 ### Wilson
 Entertaining if instructions are added.
 
