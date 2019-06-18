@@ -455,6 +455,7 @@ function displayGrid(){
   //Displays the grids(adapted by Jienan from Mr. Schellenberg's Game of Life Demo) 
   cellSize=width/gridSize;
   rectMode(CORNER);
+  strokeWeight(3);
   stroke(0);
   for (let y = 0; y < gridSize; y++){
     for (let x = 0; x < gridSize; x++) { 
@@ -977,6 +978,7 @@ function keyPressed() {
   }
   if ((state === "spaskyLooseScreen" || state === "spaskyWinScreen") && (key === "r" || key === "R")){
     state = "Spasky";
+    gridsDrawn = 0;
     userLossCounter = 0;
     userWinCounter = 0;
     livesLeft = 4;
@@ -984,6 +986,7 @@ function keyPressed() {
   }
   if ((state === "charterLooseScreen" || state === "charterWinScreen") && (key === "r" || key === "R")){
     state = "Charter";
+    gridsDrawn = 0;
     userLossCounter = 0;
     userWinCounter = 0;
     livesLeft = 4;
