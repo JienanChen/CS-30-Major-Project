@@ -63,7 +63,7 @@ class WeakestBoobytraps {
 
   display() {
     noStroke();
-    fill(0);
+    fill(255);
     ellipse(this.x, this.y, 5, 5);
   }
 }
@@ -76,7 +76,7 @@ class SecondWeakestBoobytraps {
 
   display() {
     noStroke();
-    fill(0);
+    fill(255);
     ellipse(this.x, this.y, 5, 5);
   }
 }
@@ -90,7 +90,7 @@ class MediocreBoobytraps {
   display() {
     ellipseMode(CENTER);
     noStroke();
-    fill(0);
+    fill(255);
     ellipse(this.x, this.y, 5, 5);
   }
 }
@@ -104,7 +104,7 @@ class SecondMostPowerfulBoobytraps {
   display() {
     ellipseMode(CENTER);
     noStroke();
-    fill(0);
+    fill(255);
     ellipse(this.x, this.y, 5, 5);
   }
 }
@@ -118,7 +118,7 @@ class MostPowerfulBoobytraps {
   display() {
     ellipseMode(CENTER);
     noStroke();
-    fill(0);
+    fill(255);
     ellipse(this.x, this.y, 5, 5);
   }
 }
@@ -289,6 +289,9 @@ function preload(){
 }
 
 function setup() {
+
+
+
   //Screen for the grid(by Pouya)
   if (windowWidth > windowHeight){
     createCanvas(windowHeight, windowHeight);
@@ -347,9 +350,10 @@ function setup() {
     let colour = random(choices);
     let vex = new Distractions(random(width), random(height), random(75, 250), random(choices), blaviken, 5);
     distractions.push(vex);
+  }
 
   cursor(ARROW);
-
+  console.log("setup:weakestTraps.length=",weakestTraps.length,"nextWeakestTraps.length=",nextWeakestTraps.length,"mediocreTraps.length=",mediocreTraps.length,"secondMostPowerfulTraps.length=",secondMostPowerfulTraps.length);
   //Blaviken's Lair
   for (let i = 0; i < 7; i++) {
     x1 = random(width + 7);
@@ -413,7 +417,6 @@ function setup() {
   targetHeight = 100;
 
   totalLives = 30;
-  }
 }
 
 function draw() {
@@ -428,6 +431,7 @@ function draw() {
   }
 
   if (state === "Spasky"){
+    console.log("Spasky:",ellipseX - 20 , targetX , ellipseX + 20 ,targetWidth + targetX , ellipseY - 20 , targetY , ellipseY + 20 , targetY + targetHeight);
     cursor(ARROW);
     gridSize = 3;
     if (gridsDrawn===0){
@@ -556,25 +560,30 @@ function draw() {
     text("You Won !\n\n Press r to go back to grids.", width/2, height/2);
   }
 
+  //Blaviken's Lair
   if (state === "spaskyNavigator"){
     background(0);
     target();
+    //console.log("weakestTraps.length=",weakestTraps.length,"nextWeakestTraps.length=",nextWeakestTraps.length,"mediocreTraps.length=",mediocreTraps.length,"secondMostPowerfulTraps.length=",secondMostPowerfulTraps.length);
     for (let i = 0; i < weakestTraps.length; i++) {
+
       weakestTraps[i].display();
     }
-    for (let i = 0; i < nextWeakestTraps.length; i++) {
-      nextWeakestTraps[i].display();
-    }
-    for (let i = 0; i < mediocreTraps.length; i++) {
-      mediocreTraps[i].display();
-    }
-    for (let i = 0; i < secondMostPowerfulTraps.length; i++) {
-      secondMostPowerfulTraps[i].display();
-    }
-    for (let i = 0; i < best.length; i++) {
-      best[i].display();
-    }
-    moving();
+
+    console.log("setup: weakestTraps=",weakestTraps.length)
+     for (let i = 0; i < nextWeakestTraps.length; i++) {
+       nextWeakestTraps[i].display();
+     }
+     for (let i = 0; i < mediocreTraps.length; i++) {
+       mediocreTraps[i].display();
+     }
+     for (let i = 0; i < secondMostPowerfulTraps.length; i++) {
+       secondMostPowerfulTraps[i].display();
+     }
+     for (let i = 0; i < best.length; i++) {
+       best[i].display();
+     }
+    movingBall();
     if (keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) || keyIsDown(UP_ARROW) || keyIsDown(DOWN_ARROW)) {
       detectCollision();
     }
@@ -602,7 +611,7 @@ function draw() {
     for (let i = 0; i < best.length; i++) {
       best[i].display();
     }
-    moving();
+    movingBall();
     if (keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) || keyIsDown(UP_ARROW) || keyIsDown(DOWN_ARROW)) {
       detectCollision();
     }
@@ -1070,7 +1079,6 @@ function spaskyGameOver() {
 }
 
 function charterGameOver() {
-
 console.log("gameover:","userLossCounter=",userLossCounter,"userWinCounter > 2=",userWinCounter > 2)
 
   if (userLossCounter > 3) {
@@ -1084,6 +1092,129 @@ console.log("gameover:","userLossCounter=",userLossCounter,"userWinCounter > 2="
     state = "charterWinScreen";
   }
 }
+
+function movingBall() {
+  fill("red");
+  noStroke();
+  ellipseMode(CENTER);
+  ellipse(ellipseX, ellipseY, ballWidthHeight);
+
+  if (keyIsDown(LEFT_ARROW) && ellipseX >= 0) {
+    ellipseX -= 8;
+  }
+
+  if (keyIsDown(RIGHT_ARROW) && ellipseX <= windowWidth) {
+    ellipseX += 8;
+  }
+
+  if (keyIsDown(UP_ARROW) && ellipseY >= 0) {
+    ellipseY -= 8;
+  }
+
+  if (keyIsDown(DOWN_ARROW) && ellipseY <= windowHeight) {
+    ellipseY += 8;
+  }
+}
+
+function detectCollision() {
+  let interval = ballRadius - 5;
+
+  for (let i = 0; i < weakestTrapX.length; i++) {
+    let distance1 = ((ellipseX - weakestTrapX[i]) ** 2 + (ellipseY - weakestTrapY[i]) ** 2) ** 0.5;
+    if (distance1 <= interval) {
+      totalLives -= 2;
+      ellipseX = 200;
+      ellipseY = 200;
+      targetX = random(width / 3.13, width - 100);
+      targetY = random(height / 2, height - 100);
+    }
+  }
+
+  for (let i = 0; i < nextWeakestTrapX.length; i++) {
+    let distance2 = ((ellipseX - nextWeakestTrapX[i]) ** 2 + (ellipseY - nextWeakestTrapY[i]) ** 2) ** 0.5;
+    if (distance2 <= interval) {
+      totalLives -= 5;
+      ellipseX = 200;
+      ellipseY = 200;
+      targetX = random(width / 3.13, width - 100);
+      targetY = random(height / 2, height - 100);
+    }
+  }
+
+  for (let i = 0; i < mediocreTrapX.length; i++) {
+    let distance3 = ((ellipseX - mediocreTrapX[i]) ** 2 + (ellipseY - mediocreTrapY[i]) ** 2) ** 0.5;
+    if (distance3 <= interval) {
+      totalLives -= 7;
+      ellipseX = 200;
+      ellipseY = 200;
+      targetX = random(width / 3.13, width - 100);
+      targetY = random(height / 2, height - 100);
+    }
+  }
+
+  for (let i = 0; i < secondBestX.length; i++) {
+    let distance4 = ((ellipseX - secondBestX[i]) ** 2 + (ellipseY - secondBestY[i]) ** 2) ** 0.5;
+    if (distance4 <= interval) {
+      totalLives -= 10;
+      ellipseX = 200;
+      ellipseY = 200;
+      targetX = random(width / 3.13, width - 100);
+      targetY = random(height / 2, height - 100);
+    }
+  }
+
+  for (let i = 0; i < bestTrapX.length; i++) {
+    let distance5 = ((ellipseX - bestTrapX[i]) ** 2 + (ellipseY - bestTrapY[i]) ** 2) ** 0.5;
+    if (distance5 <= interval) {
+      totalLives -= 15;
+      ellipseX = 200;
+      ellipseY = 200;
+      targetX = random(width / 3.13, width - 100);
+      targetY = random(height / 2, height - 100);
+    }
+  }
+}
+
+function showLivesLeft() {
+
+  textAlign(CENTER);
+  textSize(40);
+  fill(255);
+  text("Lives Left", width - 200 / 2, 80);
+  text(totalLives, width - 200 / 2, 150);
+}
+
+function target() {
+  rectMode(CORNER);
+  //fill("blue");
+  fill(0);
+  rect(targetX, targetY, width/8, height/6.4);
+  imageMode(CORNER);
+  image(blaviken, targetX, targetY, width/8, height/6.4);
+}
+
+function playersFateSpasky() {
+  if (totalLives < 1) {
+    state = "spaskyLost";
+  }
+
+  if (ellipseX - 20 > targetX && ellipseX + 20 < targetWidth + targetX && ellipseY - 20 > targetY && ellipseY + 20 < targetY + targetHeight) {
+    //console.log("got it");
+    state = "spaskyWon";
+  }
+}
+
+function playersFateCharter() {
+  if (totalLives < 1) {
+    state = "charterLost"
+  }
+
+  if (ellipseX - 20 > targetX && ellipseX + 20 < targetWidth + targetX && ellipseY - 20 > targetY && ellipseY + 20 < targetY + targetHeight) {
+    //console.log("got it");
+    state = "charterWon";
+  }
+}
+
 
 function mousePressed() {
   //Changing states during the mode selection page(adapted by Pouya from Jienan's Le Chartier Project)
@@ -1137,7 +1268,7 @@ function mousePressed() {
       stopAllBlavikenSounds();
     }
     if (mouseX > width/4 && mouseX < width/4 * 3 && mouseY > height*5/8 - (height/6.5)/2 && mouseY < height*5/8 + (height/6.5)/2){
-      state = "spaskyFind";
+      state = "spaskyNavigator";
     }
   }
 
@@ -1148,7 +1279,7 @@ function mousePressed() {
       stopAllBlavikenSounds();
     }
     if (mouseX > width/4 && mouseX < width/4 * 3 && mouseY > height*5/8 - (height/6.5)/2 && mouseY < height*5/8 + (height/6.5)/2){
-      state = "charterFind";
+      state = "charterNavigator";
     }
   }
 
@@ -1251,5 +1382,25 @@ function keyPressed() {
     userWinCounter = 0;
     livesLeft = 4;
     hits = 0;
+  }
+
+  if ((state === "spaskyLost" || state === "spaskyWon") && (key === "r" || key === "R")) {
+    state = "Spasky";
+    gridsDrawn = 0;
+    ellipseX = 100;
+    ellipseY = 100;
+    ballWidthHeight = 40;
+    ballRadius = 20;
+    totalLives = 30;
+  }
+
+  if ((state === "charterLost" || state === "charterWon") && (key === "r" || key === "R")) {
+    state = "Charter";
+    gridsDrawn = 0;
+    ellipseX = 100;
+    ellipseY = 100;
+    ballWidthHeight = 40;
+    ballRadius = 20;
+    totalLives = 30;
   }
 }
