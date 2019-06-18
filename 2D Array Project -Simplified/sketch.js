@@ -863,7 +863,7 @@ function displayHits(){
 
 function moveRect() {
   //Moves the rectangle in which Pouya sit
-  rectX += (-9, 7);
+  rectX += (-3, 5);
   rectY += random(-70, 70);
   if (rectX + rectWidth >= width || rectX <= 0) {
     rectX = random(0, width - rectWidth);
